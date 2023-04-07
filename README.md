@@ -12,15 +12,13 @@
 
 1. Clone o repositório em sua máquina local:
 
-   `git clone https://github.com/eugeogeo/api-nobanco.git`
+   `git clone https://github.com/ES1-saleHunter/FrontEnd.git`
 
 2. Instalar as dependências:
 
    `yarn install`
 
 3. Para rodar a primeira vez
-
-   `yarn build`
 
    `yarn serve`	
 
