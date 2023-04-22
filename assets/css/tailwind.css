@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+button:focus {
+  outline: none !important;
+}
+
+label {
+  @apply flex leading-normal !important;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: inline !important;
+  vertical-align: middle;
+}
