@@ -1,0 +1,239 @@
+/* scroll style - inicio */
+body {
+  overflow: hidden;
+}
+
+.el-loading-spinner {
+  left: 50%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* transition routers */
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* reset estilos element.ui */
+.el-form-item {
+  @apply mb-5 !important;
+}
+
+.el-select {
+  @apply w-full !important;
+}
+
+.money {
+  @apply w-full !important;
+}
+
+.el-upload-list__item is-success el-list-enter-to {
+  @apply w-1/2 !important;
+}
+
+.el-switch__label * {
+  @apply font-light text-xs !important;
+  text-decoration: none !important;
+}
+
+.el-notification__group {
+  @apply m-0 !important;
+}
+
+.el-menu-item {
+  @apply inline-block align-middle w-full;
+}
+
+.resetIcon {
+  width: auto !important;
+  height: auto !important;
+  visibility: visible !important;
+}
+
+.headerText {
+  @apply text-[25px];
+  @apply font-semibold;
+}
+
+.botaoHeader {
+  color: #66a253 !important;
+  background-color: #fff !important;
+  padding: 10px 15px !important;
+}
+
+.botaoHeader:hover {
+  color: #fff !important;
+  background-color: #85ce61 !important;
+}
+
+/* PADRAO BOTAO */
+.btn-edit {
+  color: #66a253 !important;
+  border: 1px solid #a6cb9a !important;
+}
+
+.btn-edit:hover {
+  background-color: #cce2c5 !important;
+  border: 1px solid #8bbb7c !important;
+}
+
+.btn-edit:focus {
+  background-color: #cce2c5 !important;
+  border: 1px solid #8bbb7c !important;
+}
+
+.btn-delete {
+  color: #d9162c !important;
+  border: 1px solid #e8b4bc !important;
+}
+
+.btn-delete:hover {
+  background-color: #e8b4bc !important;
+  border: 1px solid #e34058 !important;
+}
+
+/* .btn:hover {
+  background-color: #F5F9F3 !important;
+  border: 1px solid #8BBB7C !important;
+  color: #66A253 !important
+} */
+
+.btn-primary {
+  color: #76cfdb !important;
+  border: 1px solid #bce7ee !important;
+}
+
+.btn-primary:hover {
+  background-color: #d9f1f5 !important;
+  border: 1px solid #76cfdb !important;
+}
+
+.btn-info {
+  color: #909090 !important;
+  border: 1px solid #c0c0c0 !important;
+}
+
+.btn-info:hover {
+  background-color: #efefef !important;
+  border: 1px solid #909090 !important;
+}
+
+/* KANBAN */
+.itemKanban {
+  background-color: white;
+  border-radius: 0.375rem;
+  border-radius: 0.375rem;
+  border-left-width: 4px;
+}
+
+.resetInput .el-input__inner {
+  border: none !important;
+  background: transparent !important;
+  font-size: 20px !important;
+}
+
+.resetInput .el-input__inner:focus {
+  border: 1px solid #dcdfe6 !important;
+  background: transparent !important;
+  font-size: 20px !important;
+}
+
+.el-tooltip__popper.is-light {
+  border: 1px solid #7cb36b !important;
+}
+
+.cardBody {
+  background-color: white !important;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06)) !important;
+  cursor: pointer !important;
+  border-radius: 6px;
+}
+
+.radioGenero {
+  display: flex !important;
+}
+
+.el-radio-group label {
+  display: inline-block !important;
+}
+
+.el-date-editor.el-input,
+.el-date-editor.el-input__inner {
+  @apply !w-full;
+}
+
+.el-menu--popup {
+  padding: 0 !important;
+}
+
+.el-table .success-row {
+  background: #ebebeb;
+  opacity: 70%;
+}
+.el-pagination {
+  box-shadow: inset;
+  background-color: white;
+  padding: 10px !important;
+  border-radius: 3px !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.el-table {
+  background-color: white;
+  border-radius: 3px !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active,
+.el-tabs__active-bar {
+  background-color: rgb(124, 179, 107) !important;
+}
+.el-pagination.is-background .el-pager li:not(.disabled):hover,
+.el-radio-button__inner:hover,
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active,
+.el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover,
+.el-select-dropdown__item.selected,
+.el-tabs__item.is-active,
+.el-tabs__item:hover,
+.border-color {
+  color: rgb(124, 179, 107) !important;
+}
+.el-input__inner:hover,
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+  border: 1px solid rgb(124, 179, 107) !important;
+}
+.el-radio-button__orig-radio:checked + .el-radio-button__inner {
+  background-color: rgb(124, 179, 107) !important;
+  border: 1px solid rgb(124, 179, 107) !important;
+  box-shadow: -1px 0 0 0 rgb(124, 179, 107) !important;
+  color: white !important;
+}
