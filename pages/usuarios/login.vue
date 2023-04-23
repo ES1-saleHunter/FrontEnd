@@ -11,7 +11,7 @@
       <div class="login2">
         <div id="options">
           <a href="register" target="_blank" rel="noopener noreferrer">Don't have an account?</a>
-          <a href="recoverpassword" target="_blank" rel="noopener noreferrer">forgot password?</a>
+          <a href="recuperarsenha" target="_blank" rel="noopener noreferrer">forgot password?</a>
         </div>
       </div>
   </div>
