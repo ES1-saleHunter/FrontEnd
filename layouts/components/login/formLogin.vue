@@ -31,8 +31,7 @@ export default {
             email: null,
             password: null,
             msg: null,
-            urlback: "http://localhost:3333",
-            urlbackprocess: process.env.VITE_APP_API_LINK,
+            urlback: process.env.API_BASE_URL,
         }
     },
     methods: {

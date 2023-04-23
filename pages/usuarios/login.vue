@@ -12,7 +12,6 @@
         <div id="options">
           <router-link to="/usuarios/cadastro">Don't have an account?</router-link>
           <router-link to="/usuarios/recuperarsenha">forgot password?</router-link>
-         
         </div>
       </div>
   </div>
