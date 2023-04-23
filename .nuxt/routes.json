@@ -1,30 +1,20 @@
 [
   {
-    "name": "home",
-    "path": "/home",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\home.vue",
-    "chunkName": "pages/home",
-    "_name": "_069e6bcc"
-  },
-  {
     "name": "usuarios",
     "path": "/usuarios",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
-    "chunkName": "pages/usuarios/index",
-    "_name": "_03d9a0c2"
+    "chunkName": "pages/usuarios/index"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
-    "chunkName": "pages/usuarios/login",
-    "_name": "_64fd784e"
+    "chunkName": "pages/usuarios/login"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_24b486b2"
+    "chunkName": "pages/index"
   }
 ]

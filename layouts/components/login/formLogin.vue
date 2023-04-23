@@ -31,32 +31,37 @@ export default {
             email: null,
             password: null,
             msg: null,
-            urlback: "http://localhost:3333" 
+            urlback: "http://localhost:3333",
+            urlbackprocess: process.env.VITE_APP_API_LINK,
         }
     },
     methods: {
         async logado(){ 
             const token = JSON.parse( localStorage.getItem('token') );
-            if(!token) return 1;
+            console.log(process.env.VITE_APP_API_LINK);
+            if(!token){
+                console.log("saindo");
+                return 1;
+            } 
             const obj = {
                 token: token
             }
-            
-            const req = await fetch("http://localhost:3333/verificationonline", {
+            const req = await fetch(`http://localhost:3333/verificationonline`, {
                     method: "POST",
                     headers: { "Content-Type" : "application/json" },
                     body: JSON.stringify(obj)
                 });
             const res = await req.json()
-            console.log(obj)
-            console.log(res)
+            console.log(res.status);
+            if(res.status == "false"){
+                localStorage. removeItem("token");
+            } 
+                
             if(res.mensagem == "logado") this.$router.push('/home')
-            console.log(res)
                 
         },
         async login(e) {
             e.preventDefault();
-            
             const data = {
                 email: this.email,
                 password: this.password,
