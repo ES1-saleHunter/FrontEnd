@@ -3,58 +3,49 @@
     "name": "lojas",
     "path": "/lojas",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
-    "chunkName": "pages/lojas/index"
+    "chunkName": "pages/lojas/index",
+    "_name": "_0d13c56f"
   },
   {
     "name": "usuarios",
     "path": "/usuarios",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
-    "chunkName": "pages/usuarios/index"
-  },
-  {
-    "name": "usuarios",
-    "path": "/usuarios",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
     "chunkName": "pages/usuarios/index",
-    "_name": "_03d9a0c2"
+    "_name": "_b40163b6"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
     "chunkName": "pages/usuarios/cadastro",
-    "_name": "_64110cf9"
+    "_name": "_bac57e94"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/login.vue",
     "chunkName": "pages/usuarios/login",
-    "_name": "_64fd784e"
+    "_name": "_6fa6f13c"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
     "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_16b61c28"
+    "_name": "_05f8a3e9"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/redefinirsenha.vue",
     "chunkName": "pages/usuarios/redefinirsenha",
-    "_name": "_af7d33d6"
+    "_name": "_8cd5cfdc"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
-    "chunkName": "pages/index"
-  },
-  {
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_24b486b2"
+    "_name": "_0e9c4af6"
   }
 ]
