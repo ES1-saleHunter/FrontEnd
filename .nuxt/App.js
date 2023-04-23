@@ -10,6 +10,7 @@ import '..\\assets\\css\\tailwind.css'
 
 import '..\\node_modules\\element-ui\\lib\\theme-chalk\\index.css'
 
+import _9f3a2e20 from '..\\layouts\\components\\cadastro\\formCadastro.vue'
 import _8542348e from '..\\layouts\\components\\loading.vue'
 import _2754c95c from '..\\layouts\\components\\login\\formLogin.vue'
 import _7a147216 from '..\\layouts\\components\\navbar\\avatar.vue'
@@ -19,7 +20,7 @@ import _4cbc6f26 from '..\\layouts\\components\\sidebar\\sidebar.vue'
 import _7e152806 from '..\\layouts\\default1.vue'
 import _6f6c098b from './layouts/default.vue'
 
-const layouts = { "_components/loading": sanitizeComponent(_8542348e),"_components/login/formLogin": sanitizeComponent(_2754c95c),"_components/navbar/avatar": sanitizeComponent(_7a147216),"_components/navbar/navbar": sanitizeComponent(_4ff3bca8),"_components/navbar/navbarcompose": sanitizeComponent(_3ff45666),"_components/sidebar/sidebar": sanitizeComponent(_4cbc6f26),"_default1": sanitizeComponent(_7e152806),"_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_components/cadastro/formCadastro": sanitizeComponent(_9f3a2e20),"_components/loading": sanitizeComponent(_8542348e),"_components/login/formLogin": sanitizeComponent(_2754c95c),"_components/navbar/avatar": sanitizeComponent(_7a147216),"_components/navbar/navbar": sanitizeComponent(_4ff3bca8),"_components/navbar/navbarcompose": sanitizeComponent(_3ff45666),"_components/sidebar/sidebar": sanitizeComponent(_4cbc6f26),"_default1": sanitizeComponent(_7e152806),"_default": sanitizeComponent(_6f6c098b) }
 
 export default {
   render (h, props) {

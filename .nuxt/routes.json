@@ -3,18 +3,28 @@
     "name": "usuarios",
     "path": "/usuarios",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
-    "chunkName": "pages/usuarios/index"
+    "chunkName": "pages/usuarios/index",
+    "_name": "_03d9a0c2"
+  },
+  {
+    "name": "usuarios-cadastro",
+    "path": "/usuarios/cadastro",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
+    "chunkName": "pages/usuarios/cadastro",
+    "_name": "_64110cf9"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
-    "chunkName": "pages/usuarios/login"
+    "chunkName": "pages/usuarios/login",
+    "_name": "_64fd784e"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_24b486b2"
   }
 ]
