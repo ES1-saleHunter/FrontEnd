@@ -7,6 +7,12 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _0d13c56f = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
 const _b40163b6 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
 const _0e9c4af6 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _03d9a0c2 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+const _64110cf9 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
+const _64fd784e = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
+const _16b61c28 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
+const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
+const _24b486b2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -28,8 +34,28 @@ export const routerOptions = {
     component: _b40163b6,
     name: "usuarios"
   }, {
+    path: "/usuarios",
+    component: _03d9a0c2,
+    name: "usuarios"
+  }, {
+    path: "/usuarios/cadastro",
+    component: _64110cf9,
+    name: "usuarios-cadastro"
+  }, {
+    path: "/usuarios/login",
+    component: _64fd784e,
+    name: "usuarios-login"
+  }, {
+    path: "/usuarios/recuperarsenha",
+    component: _16b61c28,
+    name: "usuarios-recuperarsenha"
+  }, {
+    path: "/usuarios/redefinirsenha",
+    component: _af7d33d6,
+    name: "usuarios-redefinirsenha"
+  }, {
     path: "/",
-    component: _0e9c4af6,
+    component: _24b486b2,
     name: "index"
   }],
 
