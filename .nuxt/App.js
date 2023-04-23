@@ -6,8 +6,7 @@ import NuxtError from '..\\layouts\\error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '..\\assets\\css\\tailwind.css'
-
+import '../assets/css/tailwind.css'
 import '..\\node_modules\\element-ui\\lib\\theme-chalk\\index.css'
 
 import _9f3a2e20 from '..\\layouts\\components\\cadastro\\formCadastro.vue'
