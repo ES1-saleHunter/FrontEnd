@@ -2,7 +2,10 @@
   <div class="login-container">
     <el-alert title="error alert" type="error" center show-icon />
       <div class="login">
-        <h1>Login</h1>
+        <div id="texte" >
+          <h1>Login</h1>
+          <img  src="../../assets/public/logo.png" :alt="alt" id="logo" >
+        </div>
         <formLogin />
       </div>
       <div class="login2">
@@ -17,6 +20,11 @@
 import formLogin from "../../layouts/components/login/formLogin.vue";
 export default {
   name: "login",
+  data(){
+    return {
+      logo_src:"../../assets/public/logo.png",
+    }
+  },
   components: { formLogin},
 
 
@@ -24,6 +32,23 @@ export default {
 </script>
 
 <style>
+
+  #texte {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  #logo {
+    margin-top: -15px;
+    transform: rotate(5deg);
+    margin-left: 30px;
+    max-width:145px;
+    max-height:95px;
+   
+  }
   .el-alert {
     height: 50px;
     width: 200px;
@@ -52,7 +77,7 @@ export default {
     }
     .login {
         width: 400px;
-        height: 370px;
+        height: 380px;
         background: #D9D9D9;
         
         border-radius: 20px 20px 0px 0px;      
@@ -63,7 +88,7 @@ export default {
       font-family: Arial, Helvetica, sans-serif;
       font-weight: 300;
       text-align: center;
-      color: #5AA6DF;
+      color: #C94F32;
     }
     .login2 {
         width: 400px;

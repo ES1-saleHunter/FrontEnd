@@ -113,7 +113,7 @@ export default {
     margin-bottom: 15px;
     color: #222;;
     padding: 5px 10px;
-    border-left: 4px solid #0384fc;
+    border-left: 4px solid #C94F32;
   }
   input, select {
     padding: 5px 10px;
@@ -130,10 +130,10 @@ export default {
 
  
   .submit-btn {
-    background-color: #5AA6DF;
+    background-color: #C94F32;
     color:#FFF;
     font-weight: bold;
-    border: 2px solid #5AA6DF;
+    border: 2px solid #C94F32;
     padding: 10px;
 
     border-radius: 20px;
