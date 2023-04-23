@@ -64,7 +64,7 @@ export default {
                 password: this.password,
             }
             if(this.password == "" || this.email == "" ){
-                alert("dado informado");
+                alert("dados não informados");
             }
             else{
 
