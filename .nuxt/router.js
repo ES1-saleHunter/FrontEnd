@@ -8,6 +8,7 @@ const _03d9a0c2 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /
 const _64110cf9 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
 const _64fd784e = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _16b61c28 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
+const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
 const _24b486b2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -37,6 +38,10 @@ export const routerOptions = {
     path: "/usuarios/recuperarsenha",
     component: _16b61c28,
     name: "usuarios-recuperarsenha"
+  }, {
+    path: "/usuarios/redefinirsenha",
+    component: _af7d33d6,
+    name: "usuarios-redefinirsenha"
   }, {
     path: "/",
     component: _24b486b2,

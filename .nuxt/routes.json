@@ -3,35 +3,36 @@
     "name": "usuarios",
     "path": "/usuarios",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
-    "chunkName": "pages/usuarios/index",
-    "_name": "_03d9a0c2"
+    "chunkName": "pages/usuarios/index"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
-    "chunkName": "pages/usuarios/cadastro",
-    "_name": "_64110cf9"
+    "chunkName": "pages/usuarios/cadastro"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
-    "chunkName": "pages/usuarios/login",
-    "_name": "_64fd784e"
+    "chunkName": "pages/usuarios/login"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
-    "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_16b61c28"
+    "chunkName": "pages/usuarios/recuperarsenha"
+  },
+  {
+    "name": "usuarios-redefinirsenha",
+    "path": "/usuarios/redefinirsenha",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
+    "chunkName": "pages/usuarios/redefinirsenha"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_24b486b2"
+    "chunkName": "pages/index"
   }
 ]

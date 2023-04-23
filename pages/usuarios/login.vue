@@ -10,8 +10,9 @@
       </div>
       <div class="login2">
         <div id="options">
-          <a href="register" target="_blank" rel="noopener noreferrer">Don't have an account?</a>
-          <a href="recuperarsenha" target="_blank" rel="noopener noreferrer">forgot password?</a>
+          <router-link to="/usuarios/cadastro">Don't have an account?</router-link>
+          <router-link to="/usuarios/recuperarsenha">forgot password?</router-link>
+         
         </div>
       </div>
   </div>
