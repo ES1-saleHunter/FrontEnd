@@ -1,9 +1,20 @@
 [
   {
+    "name": "usuarios",
+    "path": "/usuarios",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
+    "chunkName": "pages/usuarios/index"
+  },
+  {
+    "name": "usuarios-login",
+    "path": "/usuarios/login",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
+    "chunkName": "pages/usuarios/login"
+  },
+  {
     "name": "index",
     "path": "/",
-    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_0e9c4af6"
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]
