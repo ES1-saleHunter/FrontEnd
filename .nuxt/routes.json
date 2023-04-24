@@ -14,6 +14,13 @@
     "_name": "_b40163b6"
   },
   {
+    "name": "components-image",
+    "path": "/components/image",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/components/image.vue",
+    "chunkName": "pages/components/image",
+    "_name": "_63bbd3bf"
+  },
+  {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",

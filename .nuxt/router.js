@@ -6,6 +6,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _0d13c56f = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
 const _b40163b6 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+const _63bbd3bf = () => interopDefault(import('../pages/components/image.vue' /* webpackChunkName: "pages/components/image" */))
 const _bac57e94 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
 const _6fa6f13c = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _05f8a3e9 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
@@ -31,6 +32,10 @@ export const routerOptions = {
     path: "/usuarios",
     component: _b40163b6,
     name: "usuarios"
+  }, {
+    path: "/components/image",
+    component: _63bbd3bf,
+    name: "components-image"
   }, {
     path: "/usuarios/cadastro",
     component: _bac57e94,
