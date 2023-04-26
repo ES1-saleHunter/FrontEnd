@@ -23,7 +23,14 @@
             <el-table-column prop="name" label="Name"> </el-table-column>
             <el-table-column prop="describe" label="Description"> </el-table-column>
             <el-table-column prop="link" label="Link"> </el-table-column>
-          </el-table>
+            <el-table-column prop="name" label="Name" :v-bind="name"> 
+              <template slot-scope="scope">
+                <el-button type="danger" size="small" @click="DeleteGame(scope.row.name)">
+                  Apagar
+                </el-button>
+              </template>
+            </el-table-column>
+            </el-table>
         </div>
       </div>
     </div>
@@ -41,7 +48,7 @@
           <el-form-item label="Link" prop="link">
             <el-input v-model="game.link"></el-input>
           </el-form-item>
-          <input type="file" v-on:change="onChangeFileUpload" />
+          <input type="file" id="file" v-on:change="onChangeFileUpload" />
         </div>
         <div class="flex justify-end">
           <el-button type="danger" size="small" @click="dialogo = false">
@@ -115,7 +122,11 @@ export default {
             trigger: 'blur',
           },
         ]
-      }
+      },
+      iconButtons: [
+        {icon: "fa-smile"},
+        {icon: "fa-sad-tear"}
+      ]
     }
   },
   mounted() {
@@ -164,16 +175,7 @@ export default {
       console.log('event', event.target.files[0]);
       this.file = event.target.files[0];
     },
-    async getimage(){
-      const { data, status } = await this.$axios.get(`/files/uploads/steam.png`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            token: token
-          },
-        });
-        console.log(data);
-        return data;
-    },
+
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
         if (valid) {
@@ -210,11 +212,10 @@ export default {
             message: "Jogo cadastrado com sucesso",
             type: "success",
           });
-          this.file=null
-          this.game.name=""
-          this.game.describe=""
-          this.game.link=""
-          
+          this.dialogo = false;
+          const fileInput = document.querySelector("#file")
+          fileInput.value = ""
+          this.allData();
         } else {
           this.$message({
             message: "Algo deu problema.",
@@ -224,6 +225,41 @@ export default {
       }
       )
     },
+    async DeleteGame(game){
+        
+
+      try {
+        const token = JSON.parse(localStorage.getItem('token'));
+        const gamename ={
+          name: game
+        }
+        const { data, status } = await this.$axios({
+            method: "DELETE",
+            url: "/deletegame",
+            data: gamename,
+            headers: {
+              Authorization: `Bearer ${token}`,
+              token: token,
+            },
+          })
+        if (status === 200){
+          this.$message({
+            message: "Jogo Deletado com Sucesso",
+            type: "success",
+          });
+          this.allData();
+        }
+        else
+        this.$message({
+            message: "Algo deu problema.",
+            type: "danger",
+        });
+        
+        console.log(data);
+        } catch (error) {
+        throw error;
+      }
+    }
   }
 };
 </script>
