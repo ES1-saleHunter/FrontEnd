@@ -14,7 +14,7 @@
         </div>
         <!-- TABLE -->
         <div class="flex">
-          <el-table empty-text="No Stores Indexed" :data="tableData" v-loading="loading" size="small" style="width: 80%">
+          <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
             <el-table-column prop="Image" label="Image"></el-table-column>
             <el-table-column prop="name" label="Name"> </el-table-column>
             <el-table-column prop="describe" label="Description"> </el-table-column>
@@ -37,10 +37,12 @@
           <el-form-item label="Link" prop="link">
             <el-input v-model="loja.link"></el-input>
           </el-form-item>
-          <el-form-item prop="image">
+          <!-- <el-form-item prop="image">
             <ImageLoad :validate-on-rule-change="true" class="w-48" v-model="loja.image" :if-capture="true"
               :image="loja.image" />
-          </el-form-item>
+          </el-form-item> -->
+          {{ file }}
+          <input type="file" v-on:change="onChangeFileUpload" />
         </div>
         <div class="flex justify-end">
           <el-button type="danger" size="small" @click="dialogo = false">
@@ -76,12 +78,12 @@ export default {
       dialogo: false,
       methods: "POST",
       link: "getallstore",
-      data: [],
+      stores: [],
       showDrawer: false,
       loading: false,
-      tableData: [],
       drawer: false,
       urlFiltro: null,
+      file: null,
       loja: limpaLoja(),
       rules: {
         name: [
@@ -128,8 +130,12 @@ export default {
             token: token
           },
         });
-        return { data, status };
-      } catch (error) {
+        if (status === 200)
+          this.stores = data.store
+        else
+          this.stores = []
+
+        } catch (error) {
         throw error;
       }
     },
@@ -142,6 +148,11 @@ export default {
     statusDialogoDepartamento(value) {
       this.dialogo = value;
     },
+    onChangeFileUpload(event) {
+      console.log('event', event.target.files[0]);
+      // this.file = this.$refs.file.files[0];
+      this.file = event.target.files[0];
+    },
     async submitLoja() {
       this.$refs["loja"].validate(async (valid) => {
         if (valid) {
@@ -150,15 +161,19 @@ export default {
             : this.link = '/updatestore'
 
           const token = JSON.parse(localStorage.getItem('token'));
-          const formData = new FormData();
-          formData.append("file", this.loja.image);
 
-          console.log(this.link);
+          let formData = new FormData();
+          formData.append('file', this.file);
+          formData.append('name', this.loja.name)
+          formData.append('describe', this.loja.describe)
+          formData.append('link', this.loja.link)
+          console.log('form', formData);
+          
           const { data, status } = await this.$axios({
             method: this.methods,
             url: this.link,
-            body: this.loja,
-            formData: formData,
+            body: formData,
+            file: this.file,
             headers: {
               Authorization: `Bearer ${token}`,
               token: token,
@@ -170,6 +185,7 @@ export default {
               status: error.response.status,
             };
           });
+          console.log('data', data);
         } else {
           this.$message({
             message: "Algo deu problema.",
