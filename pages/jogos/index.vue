@@ -1,65 +1,67 @@
 <template>
-  <div class="w-full flex justify-center">
-    <!-- Table -->
-    <div class="w-3/4">
-      <!-- HEADER -->
-      <div class="">
-        <div class="flex justify-between items-center py-4">
-          <h1 class="font"><b>games</b></h1>
-          <el-row :gutter="1">
-            <div class="display-flex justify-end">
-              <el-button icon="el-icon-plus" class="button-style" @click="novagame()">New game</el-button>
-            </div>
-          </el-row>
-        </div>
-        <!-- TABLE -->
-        <div class="flex">
-          <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
-            <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image" >
-              <template slot-scope="scope">
-                <img :src="scope.row.Image"/>
-              </template>
-            </el-table-column>
-            <el-table-column prop="name" label="Name"> </el-table-column>
-            <el-table-column prop="describe" label="Description"> </el-table-column>
-            <el-table-column prop="link" label="Link"> </el-table-column>
-          </el-table>
+  <div>
+    <sideBar />
+    <div class="w-full flex justify-center">
+      <!-- Table -->
+      <div class="w-3/4">
+        <!-- HEADER -->
+        <div class="">
+          <div class="flex justify-between items-center py-4">
+            <h1 class="font"><b>Games</b></h1>
+            <el-row :gutter="1">
+              <div class="display-flex justify-end">
+                <el-button icon="el-icon-plus" class="button-style" @click="novoJogo()">New game</el-button>
+              </div>
+            </el-row>
+          </div>
+          <!-- TABLE -->
+          <div class="flex">
+            <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
+              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
+                <template slot-scope="scope">
+                  <img :src="scope.row.Image" />
+                </template>
+              </el-table-column>
+              <el-table-column prop="name" label="Name"> </el-table-column>
+              <el-table-column prop="describe" label="Description"> </el-table-column>
+              <el-table-column prop="link" label="Link"> </el-table-column>
+            </el-table>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Form -->
-    <el-dialog width="40%" height="40%" ref="game" title="New game" :visible.sync="dialogo"
-      :close-on-click-modal="false">
-      <el-form ref="game" :model="game" :rules="rules" label-position="top">
-        <div class="flex flex-wrap flex-col">
-          <el-form-item label="Name" prop="name">
-            <el-input v-model="game.name"></el-input>
-          </el-form-item>
-          <el-form-item label="Description" prop="describe">
-            <el-input v-model="game.describe"></el-input>
-          </el-form-item>
-          <el-form-item label="Link" prop="link">
-            <el-input v-model="game.link"></el-input>
-          </el-form-item>
-          <input type="file" v-on:change="onChangeFileUpload" />
-        </div>
-        <div class="flex justify-end">
-          <el-button type="danger" size="small" @click="dialogo = false">
-            Cancelar
-          </el-button>
-          <el-button type="success" @click="submitGame()" size="small ">
-            Salvar
-          </el-button>
-        </div>
-      </el-form>
+      <!-- Form -->
+      <el-dialog width="40%" height="40%" ref="game" title="New game" :visible.sync="dialogo"
+        :close-on-click-modal="false">
+        <el-form ref="game" :model="game" :rules="rules" label-position="top">
+          <div class="flex flex-wrap flex-col">
+            <el-form-item label="Name" prop="name">
+              <el-input v-model="game.name"></el-input>
+            </el-form-item>
+            <el-form-item label="Description" prop="describe">
+              <el-input v-model="game.describe"></el-input>
+            </el-form-item>
+            <el-form-item label="Link" prop="link">
+              <el-input v-model="game.link"></el-input>
+            </el-form-item>
+            <input type="file" v-on:change="onChangeFileUpload" />
+          </div>
+          <div class="flex justify-end">
+            <el-button type="danger" size="small" @click="dialogo = false">
+              Cancelar
+            </el-button>
+            <el-button type="success" @click="submitGame()" size="small ">
+              Salvar
+            </el-button>
+          </div>
+        </el-form>
 
-    </el-dialog>
+      </el-dialog>
+    </div>
   </div>
 </template>
   
 <script>
-import { Fire } from '@icon-park/vue/es/map';
-import ImageLoad from '../components/image.vue'
+import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 
 function limpaGame() {
   return {
@@ -71,8 +73,10 @@ function limpaGame() {
 }
 
 export default {
+  components: { sideBar },
   data() {
     return {
+      Image: null,
       hover: false,
       dialogo: false,
       methods: "POST",
@@ -87,34 +91,26 @@ export default {
       urlFile: process.env.API_FILES,
       game: limpaGame(),
       rules: {
-        name: [
-          {
-            required: true,
-            message: 'Input the game´s name.',
-            trigger: 'blur',
-          },
-        ],
-        describe: [
-          {
-            required: true,
-            message: 'Input the game´s description.',
-            trigger: 'blur',
-          },
-        ],
-        link: [
-          {
-            required: true,
-            message: 'Input the game´s address link.',
-            trigger: 'blur',
-          },
-        ],
-        image: [
-          {
-            required: true,
-            message: 'Select the game´s image.',
-            trigger: 'blur',
-          },
-        ]
+        name: [{
+          required: true,
+          message: 'Input the game´s name.',
+          trigger: 'blur',
+        },],
+        describe: [{
+          required: true,
+          message: 'Input the game´s description.',
+          trigger: 'blur',
+        },],
+        link: [{
+          required: true,
+          message: 'Input the game´s address link.',
+          trigger: 'blur',
+        },],
+        Image: [{
+          required: true,
+          message: 'Select the game´s image.',
+          trigger: 'blur',
+        },]
       }
     }
   },
@@ -122,7 +118,6 @@ export default {
     this.allData();
   },
   methods: {
- 
     async allData() {
       const token = JSON.parse(localStorage.getItem('token'));
       try {
@@ -132,54 +127,46 @@ export default {
             token: token
           },
         });
-        if (status === 200){
+        if (status === 200) {
           let datagame = [];
-          let temp ="";
+          let temp = "";
           data.game.forEach(element => {
             temp = this.urlBack + this.urlFile + element.Image.replace('src', '');
-            datagame[element.id - 1]= element
+            datagame[element.id - 1] = element
             datagame[element.id - 1].Image = temp
           });
-          console.log(datagame);
           this.games = datagame;
-       
-        }
-        else
+        } else
           this.games = []
 
-        } catch (error) {
+      } catch (error) {
         throw error;
       }
     },
-    novagame() {
+    novoJogo() {
       this.dialogo = true;
     },
     statusDrawer(value) {
       this.showDrawer = value;
     },
-    statusDialogoDepartamento(value) {
-      this.dialogo = value;
-    },
     onChangeFileUpload(event) {
-      console.log('event', event.target.files[0]);
       this.file = event.target.files[0];
     },
-    async getimage(){
+    async getimage() {
       const { data, status } = await this.$axios.get(`/files/uploads/steam.png`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            token: token
-          },
-        });
-        console.log(data);
-        return data;
+        headers: {
+          Authorization: `Bearer ${token}`,
+          token: token
+        },
+      });
+      return data;
     },
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
         if (valid) {
-          this.methods === 'POST'
-            ? this.link = '/registergame'
-            : this.link = '/updategame'
+          this.methods === 'POST' ?
+            this.link = '/registergame' :
+            this.link = '/updategame'
 
           const token = JSON.parse(localStorage.getItem('token'));
 
@@ -188,8 +175,7 @@ export default {
           formData.append('name', this.game.name)
           formData.append('describe', this.game.describe)
           formData.append('link', this.game.link)
-          console.log('form', formData);
-          
+
           const { data, status } = await this.$axios({
             method: this.methods,
             url: this.link,
@@ -205,24 +191,22 @@ export default {
               status: error.response.status,
             };
           });
-          console.log('data', data);
           this.$message({
             message: "Jogo cadastrado com sucesso",
             type: "success",
           });
-          this.file=null
-          this.game.name=""
-          this.game.describe=""
-          this.game.link=""
-          
+          this.dialogo = false
+          this.file = null
+          this.game = limpaGame()
+          location.reload()
+
         } else {
           this.$message({
             message: "Algo deu problema.",
             type: "danger",
           });
         }
-      }
-      )
+      })
     },
   }
 };

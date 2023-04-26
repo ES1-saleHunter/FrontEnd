@@ -1,65 +1,68 @@
 <template>
-  <div class="w-full flex justify-center">
-    <!-- Table -->
-    <div class="w-3/4">
-      <!-- HEADER -->
-      <div class="">
-        <div class="flex justify-between items-center py-4">
-          <h1 class="font"><b>Stores</b></h1>
-          <el-row :gutter="1">
-            <div class="display-flex justify-end">
-              <el-button icon="el-icon-plus" class="button-style" @click="novaLoja()">New Store</el-button>
-            </div>
-          </el-row>
-        </div>
-        <!-- TABLE -->
-        <div class="flex">
-          <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
-            <el-table-column prop="Image" label="Image"></el-table-column>
-            <el-table-column prop="name" label="Name"> </el-table-column>
-            <el-table-column prop="describe" label="Description"> </el-table-column>
-            <el-table-column prop="link" label="Link"> </el-table-column>
-          </el-table>
+  <div>
+    <sideBar />
+    <navbar/>
+    <div class="w-full flex justify-center">
+      <div class="w-3/4">
+        <div>
+          <div class="flex justify-between items-center py-4">
+            <h1 class="font"><b>Stores</b></h1>
+            <el-row :gutter="1">
+              <div class="display-flex justify-end">
+                <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+              </div>
+            </el-row>
+          </div>
+          <!-- TABLE -->
+          <div class="flex">
+            <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
+              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
+                <template slot-scope="scope">
+                  <img :src="scope.row.Image" />
+                </template>
+              </el-table-column> <el-table-column prop="name" label="Name"> </el-table-column>
+              <el-table-column prop="describe" label="Description"> </el-table-column>
+              <el-table-column prop="link" label="Link"> </el-table-column>
+            </el-table>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Form -->
-    <el-dialog width="40%" height="40%" ref="loja" title="New Store" :visible.sync="dialogo"
-      :close-on-click-modal="false">
-      <el-form ref="loja" :model="loja" :rules="rules" label-position="top">
-        <div class="flex flex-wrap flex-col">
-          <el-form-item label="Name" prop="name">
-            <el-input v-model="loja.name"></el-input>
-          </el-form-item>
-          <el-form-item label="Description" prop="describe">
-            <el-input v-model="loja.describe"></el-input>
-          </el-form-item>
-          <el-form-item label="Link" prop="link">
-            <el-input v-model="loja.link"></el-input>
-          </el-form-item>
-          <!-- <el-form-item prop="image">
-            <ImageLoad :validate-on-rule-change="true" class="w-48" v-model="loja.image" :if-capture="true"
-              :image="loja.image" />
-          </el-form-item> -->
-          {{ file }}
-          <input type="file" v-on:change="onChangeFileUpload" />
-        </div>
-        <div class="flex justify-end">
-          <el-button type="danger" size="small" @click="dialogo = false">
-            Cancelar
-          </el-button>
-          <el-button type="success" @click="submitLoja()" size="small ">
-            Salvar
-          </el-button>
-        </div>
-      </el-form>
+      <!-- Form -->
+      <el-dialog width="40%" height="40%" ref="loja" title="New Store" :visible.sync="dialogo"
+        :close-on-click-modal="false">
+        <el-form ref="loja" :model="loja" :rules="rules" label-position="top">
+          <div class="flex flex-wrap flex-col">
+            <el-form-item label="Name" prop="name">
+              <el-input v-model="loja.name"></el-input>
+            </el-form-item>
+            <el-form-item label="Description" prop="describe">
+              <el-input v-model="loja.describe"></el-input>
+            </el-form-item>
+            <el-form-item label="Link" prop="link">
+              <el-input v-model="loja.link"></el-input>
+            </el-form-item>
+            <el-form-item label="Image">
+              <input type="file" v-on:change="onChangeFileUpload" />
+            </el-form-item>
+          </div>
+          <div class="flex justify-end">
+            <el-button type="danger" size="small" @click="dialogo = false">
+              Cancel
+            </el-button>
+            <el-button type="success" @click="submitLoja()" size="small ">
+              Save
+            </el-button>
+          </div>
+        </el-form>
 
-    </el-dialog>
+      </el-dialog>
+    </div>
   </div>
 </template>
   
 <script>
-import ImageLoad from '../components/image.vue'
+import sideBar from '~/layouts/components/sidebar/sidebar.vue';
+import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 
 function limpaLoja() {
   return {
@@ -71,9 +74,10 @@ function limpaLoja() {
 }
 
 export default {
-  components: { ImageLoad },
+  components: { sideBar, navbar },
   data() {
     return {
+      Image: null,
       hover: false,
       dialogo: false,
       methods: "POST",
@@ -84,6 +88,8 @@ export default {
       drawer: false,
       urlFiltro: null,
       file: null,
+      urlBack: process.env.API_BASE_URL,
+      urlFile: process.env.API_FILES,
       loja: limpaLoja(),
       rules: {
         name: [
@@ -107,13 +113,6 @@ export default {
             trigger: 'blur',
           },
         ],
-        image: [
-          {
-            required: true,
-            message: 'Select the store´s image.',
-            trigger: 'blur',
-          },
-        ]
       }
     }
   },
@@ -130,12 +129,20 @@ export default {
             token: token
           },
         });
-        if (status === 200)
+        if (status === 200) {
           this.stores = data.store
-        else
+          let datastores = [];
+          let temp = "";
+          data.store.forEach(element => {
+            temp = this.urlBack + this.urlFile + element.Image.replace('src', '');
+            datastores[element.id - 1] = element
+            datastores[element.id - 1].Image = temp
+          });
+          this.stores = datastores;
+        } else
           this.stores = []
 
-        } catch (error) {
+      } catch (error) {
         throw error;
       }
     },
@@ -145,50 +152,64 @@ export default {
     statusDrawer(value) {
       this.showDrawer = value;
     },
-    statusDialogoDepartamento(value) {
-      this.dialogo = value;
-    },
     onChangeFileUpload(event) {
-      console.log('event', event.target.files[0]);
-      // this.file = this.$refs.file.files[0];
       this.file = event.target.files[0];
     },
     async submitLoja() {
       this.$refs["loja"].validate(async (valid) => {
-        if (valid) {
-          this.methods === 'POST'
-            ? this.link = '/registerstore'
-            : this.link = '/updatestore'
+        if (this.file != null) {
+          if (valid) {
+            this.methods === 'POST'
+              ? this.link = '/registerstore'
+              : this.link = '/updatestore'
 
-          const token = JSON.parse(localStorage.getItem('token'));
+            const token = JSON.parse(localStorage.getItem('token'));
 
-          let formData = new FormData();
-          formData.append('file', this.file);
-          formData.append('name', this.loja.name)
-          formData.append('describe', this.loja.describe)
-          formData.append('link', this.loja.link)
-          console.log('form', formData);
-          
-          const { data, status } = await this.$axios({
-            method: this.methods,
-            url: this.link,
-            body: formData,
-            file: this.file,
-            headers: {
-              Authorization: `Bearer ${token}`,
-              token: token,
-              "Content-Type": "multipart/form-data"
-            },
-          }).catch((error) => {
-            return {
-              data: [],
-              status: error.response.status,
-            };
-          });
-          console.log('data', data);
+            let formData = new FormData();
+            formData.append('image', this.file);
+            formData.append('name', this.loja.name)
+            formData.append('describe', this.loja.describe)
+            formData.append('link', this.loja.link)
+
+            const { data, status } = await this.$axios({
+              method: this.methods,
+              url: this.link,
+              data: formData,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                token: token,
+                "Content-Type": "multipart/form-data"
+              },
+            }).catch((error) => {
+              return {
+                data: [],
+                status: error.response.status,
+              };
+            });
+            if (status === 200) {
+              this.$message({
+                message: "Loja cadastrada com sucesso",
+                type: "success",
+              });
+              this.dialogo = false
+              this.file = null
+              this.store = limpaLoja()
+              location.reload()
+            } else {
+              this.$message({
+                message: "Erro ao cadastrar loja",
+                type: "warning",
+              });
+            }
+          } else {
+            this.$message({
+              message: "Algo deu problema.",
+              type: "danger",
+            });
+          }
         } else {
           this.$message({
-            message: "Algo deu problema.",
+            message: "Selecione uma imagem.",
             type: "danger",
           });
         }
@@ -200,21 +221,9 @@ export default {
 </script>
   
 <style>
-.button-style {
-  border-color: #ec8b0d;
-  background-color: #ec8b0d;
-  color: #ffffff;
-}
-
 .font {
   font-weight: 500;
   font-size: 32px;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
 }
 
 input,
@@ -224,18 +233,21 @@ select {
   width: 300px;
 }
 
-#opcionais-container {
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+.new-btn {
+  background-color: #C94F32;
+  color:#FFF;
+  font-weight: bold;
+  border: 2px solid #C94F32;
+  padding: 10px;
 
-#opcionais-title {
-  width: 100%;
+  border-radius: 20px;
+  font-size: 16px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: .5s;
 }
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.new-btn:hover {
+  background-color: transparent;
+  color: #222;
 }
 </style>

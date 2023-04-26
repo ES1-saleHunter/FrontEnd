@@ -2,64 +2,64 @@
   {
     "name": "jogos",
     "path": "/jogos",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/jogos/index.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/index.vue",
     "chunkName": "pages/jogos/index",
-    "_name": "_25d0dec3"
+    "_name": "_0cea2ec8"
   },
   {
     "name": "lojas",
     "path": "/lojas",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/lojas/index.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
     "chunkName": "pages/lojas/index",
-    "_name": "_3959bb96"
+    "_name": "_0d13c56f"
   },
   {
     "name": "usuarios",
     "path": "/usuarios",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/index.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
     "chunkName": "pages/usuarios/index",
-    "_name": "_71015ac4"
+    "_name": "_b40163b6"
   },
   {
     "name": "components-image",
     "path": "/components/image",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/components/image.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/components/image.vue",
     "chunkName": "pages/components/image",
-    "_name": "_254c9df8"
+    "_name": "_63bbd3bf"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/cadastro.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
     "chunkName": "pages/usuarios/cadastro",
-    "_name": "_1325bd9d"
+    "_name": "_bac57e94"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/login.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/login.vue",
     "chunkName": "pages/usuarios/login",
-    "_name": "_ddb21496"
+    "_name": "_6fa6f13c"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
     "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_30f39790"
+    "_name": "_05f8a3e9"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/redefinirsenha.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/redefinirsenha.vue",
     "chunkName": "pages/usuarios/redefinirsenha",
-    "_name": "_36dfe88e"
+    "_name": "_8cd5cfdc"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/index.vue",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_14cd8c28"
+    "_name": "_0e9c4af6"
   }
 ]
