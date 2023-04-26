@@ -65,7 +65,7 @@ export default {
                 localStorage. removeItem("token");
             } 
                 
-            if(res.mensagem == "logado") this.$router.push('/home')
+            if(res.mensagem == "logado") this.$router.push('/jogos')
                 
         },
         async cadastro(e) {
