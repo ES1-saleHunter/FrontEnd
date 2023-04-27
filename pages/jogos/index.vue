@@ -1,19 +1,22 @@
 <template>
-  <div class="w-full flex justify-center">
-    <!-- Table -->
-    <div class="w-3/4">
-      <!-- HEADER -->
-      <div class="">
-        <div class="flex justify-between items-center py-4">
-          <h1 class="font"><b>games</b></h1>
-          <el-row :gutter="1">
-            <div class="display-flex justify-end">
-              <el-button icon="el-icon-plus" class="button-style" @click="novagame()">New game</el-button>
-            </div>
-          </el-row>
-        </div>
-        <!-- TABLE -->
-        <div class="flex">
+  <div>
+    <sideBar />
+    <navbar/>
+    <div class="w-full flex justify-center">
+      <!-- Table -->
+      <div class="w-3/4">
+        <!-- HEADER -->
+        <div class="">
+          <div class="flex justify-between items-center py-4">
+            <h1 class="font"><b>Games</b></h1>
+            <el-row :gutter="1">
+              <div class="display-flex justify-end">
+                <el-button icon="el-icon-plus" class="new-btn" @click="novagame()">New Game</el-button>
+              </div>
+            </el-row>
+          </div>
+          <!-- TABLE -->
+          <div class="flex">
           <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
             <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image" >
               <template slot-scope="scope">
@@ -23,19 +26,19 @@
             <el-table-column prop="name" label="Name"> </el-table-column>
             <el-table-column prop="describe" label="Description"> </el-table-column>
             <el-table-column prop="link" label="Link"> </el-table-column>
-            <el-table-column prop="name" label="Name" :v-bind="name"> 
+            <el-table-column prop="comands" label="" :v-bind="name"> 
               <template slot-scope="scope">
                 <el-button icon="el-icon-plus"  @click="addinstore(scope.row.name)">add in store</el-button>
                 <el-button icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
                 </el-button>
               </template>
             </el-table-column>
-            </el-table>
+          </el-table>
         </div>
       </div>
     </div>
     <!-- Form -->
-    <el-dialog width="40%" height="40%" ref="game" title="New game" :visible.sync="dialogo"
+    <el-dialog width="40%" height="40%" ref="game" title="New Game" :visible.sync="dialogo"
       :close-on-click-modal="false">
       <el-form ref="game" :model="game" :rules="rules" label-position="top">
         <div class="flex flex-wrap flex-col">
@@ -48,7 +51,7 @@
           <el-form-item label="Link" prop="link">
             <el-input v-model="game.link"></el-input>
           </el-form-item>
-          <input type="file" id="file" v-on:change="onChangeFileUpload" />
+          <input type="file" v-on:change="onChangeFileUpload" />
         </div>
         <div class="flex justify-end">
           <el-button type="danger" size="small" @click="dialogo= false">
@@ -59,48 +62,48 @@
           </el-button>
         </div>
       </el-form>
-
+      
     </el-dialog>
-
-     <!-- Form relationships -->
-     <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
-      :close-on-click-modal="false">
-      <el-form ref="gamainstore" :model="gamainstore" label-position="top">
-        <div class="flex flex-wrap flex-col">
-          <el-form-item label="Store" prop="store" >
-            <el-select v-model="gamainstore.store" :placeholder="Select">
-              <el-option  v-for="item in stores"
-                :key="item.name"
+    
+    <!-- Form relationships -->
+    <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
+    :close-on-click-modal="false">
+    <el-form ref="gamainstore" :model="gamainstore" label-position="top">
+      <div class="flex flex-wrap flex-col">
+        <el-form-item label="Store" prop="store" >
+          <el-select v-model="gamainstore.store" :placeholder="Select">
+            <el-option  v-for="item in stores"
+            :key="item.name"
                 :label="item.name"
                 :value="item.name">
             </el-option>
           </el-select>
-          </el-form-item>
-          <el-form-item label="Price" prop="price">
-            <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
-          </el-form-item>
-          <el-form-item label="Link" prop="link">
-            <el-input v-model="gamainstore.link"></el-input>
-          </el-form-item>
-        </div>
-        <div class="flex justify-end">
-          <el-button type="danger" size="small" @click="dialogostore = false">
-            Cancelar
-          </el-button>
-          <el-button type="success" @click="submitships()" size="small ">
-            Salvar
-          </el-button>
-        </div>
-      </el-form>
-
-    </el-dialog>
-  </div>
+        </el-form-item>
+        <el-form-item label="Price" prop="price">
+          <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
+        </el-form-item>
+        <el-form-item label="Link" prop="link">
+          <el-input v-model="gamainstore.link"></el-input>
+        </el-form-item>
+      </div>
+      <div class="flex justify-end">
+        <el-button type="danger" size="small" @click="dialogostore = false">
+          Cancelar
+        </el-button>
+        <el-button type="success" @click="submitships()" size="small ">
+          Salvar
+        </el-button>
+      </div>
+    </el-form>
+    
+  </el-dialog>
+</div>
+</div>
 </template>
   
 <script>
-import { Fire } from '@icon-park/vue/es/map';
-import ImageLoad from '../components/image.vue'
-import { Sleep } from '@icon-park/vue';
+import sideBar from '~/layouts/components/sidebar/sidebar.vue';
+import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 
 function limpaGame() {
   return {
@@ -293,6 +296,7 @@ export default {
     },
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
+        if (this.file != null) {
         if (valid) {
           this.methods === 'POST'
             ? this.link = '/registergame'
@@ -322,6 +326,7 @@ export default {
               status: error.response.status,
             };
           });
+          if (status === 200) {
           this.$message({
             message: "Jogo cadastrado com sucesso",
             type: "success",
@@ -329,15 +334,30 @@ export default {
           this.dialogo = false;
           const fileInput = document.querySelector("#file")
           fileInput.value = ""
+          this.file = null
+          this.game = limpaGame()
           this.allData();
+
+        }else {
+          this.$message({
+          message: "Erro ao cadastrar Jogo",
+          type: "warning",
+          });
+        }
         } else {
           this.$message({
             message: "Algo deu problema.",
             type: "danger",
           });
         }
-      }
-      )
+        
+      } else {
+         this.$message({
+         message: "Selecione uma imagem.",
+         type: "danger",
+         });
+        }
+    })
     },
     async DeleteGame(game){
         
@@ -379,42 +399,30 @@ export default {
 </script>
   
 <style>
-.button-style {
-  border-color: #ec8b0d;
-  background-color: #ec8b0d;
-  color: #ffffff;
-}
-
 .font {
-  font-weight: 500;
-  font-size: 32px;
+    font-weight: 500;
+    font-size: 32px;
 }
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
 input,
 select {
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: 300px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 300px;
 }
-
-#opcionais-container {
-  flex-direction: row;
-  flex-wrap: wrap;
+.new-btn {
+    background-color: #C94F32;
+    color: #FFF;
+    font-weight: bold;
+    border: 2px solid #C94F32;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
 }
-
-#opcionais-title {
-  width: 100%;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.new-btn:hover {
+    background-color: transparent;
+    color: #222;
 }
 </style>
