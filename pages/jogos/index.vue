@@ -25,8 +25,8 @@
             <el-table-column prop="link" label="Link"> </el-table-column>
             <el-table-column prop="name" label="Name" :v-bind="name"> 
               <template slot-scope="scope">
-                <el-button type="danger" size="small" @click="DeleteGame(scope.row.name)">
-                  Apagar
+                <el-button icon="el-icon-plus"  @click="addinstore(scope.row.name)">add in store</el-button>
+                <el-button icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
                 </el-button>
               </template>
             </el-table-column>
@@ -51,10 +51,43 @@
           <input type="file" id="file" v-on:change="onChangeFileUpload" />
         </div>
         <div class="flex justify-end">
-          <el-button type="danger" size="small" @click="dialogo = false">
+          <el-button type="danger" size="small" @click="dialogo= false">
             Cancelar
           </el-button>
           <el-button type="success" @click="submitGame()" size="small ">
+            Salvar
+          </el-button>
+        </div>
+      </el-form>
+
+    </el-dialog>
+
+     <!-- Form relationships -->
+     <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
+      :close-on-click-modal="false">
+      <el-form ref="gamainstore" :model="gamainstore" label-position="top">
+        <div class="flex flex-wrap flex-col">
+          <el-form-item label="Store" prop="store" >
+            <el-select v-model="gamainstore.store" :placeholder="Select">
+              <el-option  v-for="item in stores"
+                :key="item.name"
+                :label="item.name"
+                :value="item.name">
+            </el-option>
+          </el-select>
+          </el-form-item>
+          <el-form-item label="Price" prop="price">
+            <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
+          </el-form-item>
+          <el-form-item label="Link" prop="link">
+            <el-input v-model="gamainstore.link"></el-input>
+          </el-form-item>
+        </div>
+        <div class="flex justify-end">
+          <el-button type="danger" size="small" @click="dialogostore = false">
+            Cancelar
+          </el-button>
+          <el-button type="success" @click="submitships()" size="small ">
             Salvar
           </el-button>
         </div>
@@ -67,6 +100,7 @@
 <script>
 import { Fire } from '@icon-park/vue/es/map';
 import ImageLoad from '../components/image.vue'
+import { Sleep } from '@icon-park/vue';
 
 function limpaGame() {
   return {
@@ -77,14 +111,26 @@ function limpaGame() {
   }
 }
 
+function gameinstore() {
+  return {
+    store: '',
+    game: '',
+    link: '',
+    price: 0,
+  }
+}
+
 export default {
   data() {
     return {
       hover: false,
       dialogo: false,
+      dialogostore: false,
+      gameinstorename: "",
       methods: "POST",
       link: "getallgame",
       games: [],
+      stores: [],
       showDrawer: false,
       loading: false,
       drawer: false,
@@ -93,6 +139,7 @@ export default {
       urlBack: process.env.API_BASE_URL,
       urlFile: process.env.API_FILES,
       game: limpaGame(),
+      gamainstore: gameinstore(),
       rules: {
         name: [
           {
@@ -131,6 +178,7 @@ export default {
   },
   mounted() {
     this.allData();
+    this.getStores();
   },
   methods: {
  
@@ -151,8 +199,11 @@ export default {
             datagame[element.id - 1]= element
             datagame[element.id - 1].Image = temp
           });
+  
           console.log(datagame);
+
           this.games = datagame;
+
        
         }
         else
@@ -162,8 +213,31 @@ export default {
         throw error;
       }
     },
+    async getStores() {
+      const token = JSON.parse(localStorage.getItem('token'));
+      try {
+        const { data, status } = await this.$axios.get('getallstore', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token
+          },
+        });
+        if (status === 200){ 
+          this.stores = data.store;
+          console.log(this.stores);
+        }
+        else
+          this.stores = []
+        } catch (error) {
+        throw error;
+      }
+    },
     novagame() {
       this.dialogo = true;
+    },
+    addinstore(game){
+      this.gameinstorename = game;
+      this.dialogostore = true;
     },
     statusDrawer(value) {
       this.showDrawer = value;
@@ -176,6 +250,47 @@ export default {
       this.file = event.target.files[0];
     },
 
+    async submitships() {
+        try{
+
+            
+            const token = JSON.parse(localStorage.getItem('token'));
+           
+            this.gamainstore.game = this.gameinstorename;
+            
+            const { data, status } = await this.$axios({
+              method: "POST",
+              url: "/relationgametostores",
+              data: {
+                store: this.gamainstore.store,
+                game: this.gamainstore.game,
+                link: this.gamainstore.link,
+                price: this.gamainstore.price.toString()
+              },
+              headers: {
+              Authorization: `Bearer ${token}`,
+              token: token,
+            },
+          }).catch((error) => {
+            return {
+              data: [],
+              status: error.response.status,
+            };
+          });
+          this.$message({
+            message: `${this.gamainstore.game} adicionado na loja ${this.gamainstore.store} com sucesso`,
+            type: "success",
+          });
+          this.dialogostore = false;
+          
+        } catch
+          {
+          this.$message({
+            message: "Algo deu problema.",
+            type: "danger",
+          });
+        }  
+    },
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
         if (valid) {
@@ -207,7 +322,6 @@ export default {
               status: error.response.status,
             };
           });
-          console.log('data', data);
           this.$message({
             message: "Jogo cadastrado com sucesso",
             type: "success",
