@@ -21,6 +21,13 @@
     "_name": "_64fd784e"
   },
   {
+    "name": "usuarios-recuperarsenha",
+    "path": "/usuarios/recuperarsenha",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
+    "chunkName": "pages/usuarios/recuperarsenha",
+    "_name": "_16b61c28"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",

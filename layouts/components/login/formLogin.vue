@@ -44,7 +44,7 @@ export default {
             const obj = {
                 token: token
             }
-            const req = await fetch(`http://localhost:3333/verificationonline`, {
+            const req = await fetch(`${this.urlback}/verificationonline`, {
                     method: "POST",
                     headers: { "Content-Type" : "application/json" },
                     body: JSON.stringify(obj)
