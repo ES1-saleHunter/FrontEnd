@@ -8,6 +8,7 @@ const _0cea2ec8 = () => interopDefault(import('../pages/jogos/index.vue' /* webp
 const _0d13c56f = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
 const _b40163b6 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
 const _63bbd3bf = () => interopDefault(import('../pages/components/image.vue' /* webpackChunkName: "pages/components/image" */))
+const _17e89a24 = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
 const _bac57e94 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
 const _6fa6f13c = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _05f8a3e9 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
@@ -41,6 +42,10 @@ export const routerOptions = {
     path: "/components/image",
     component: _63bbd3bf,
     name: "components-image"
+  }, {
+    path: "/jogos/compara",
+    component: _17e89a24,
+    name: "jogos-compara"
   }, {
     path: "/usuarios/cadastro",
     component: _bac57e94,

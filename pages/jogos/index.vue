@@ -25,7 +25,13 @@
               </el-table-column>
               <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
-              <el-table-column prop="link" label="Link"> </el-table-column>
+              <el-table-column label="Link" prop="link">
+                <template slot-scope="scope">
+                  <a :href="getLink(scope.row)">{{ scope.row.link }}</a>
+                </template>
+              </el-table-column>
+
+              <!-- <el-table-column prop="link" label="Link"> </el-table-column> -->
               <el-table-column prop="comands" label="" :v-bind="name">
                 <template slot-scope="scope">
                   <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
@@ -39,7 +45,7 @@
       </div>
       <!-- Form -->
       <el-dialog width="40%" height="40%" ref="game" title="New Game" :visible.sync="dialogo"
-        :close-on-click-modal="false">
+      :close-on-click-modal="false">
         <el-form ref="game" :model="game" :rules="rules" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Name" prop="name">
@@ -62,7 +68,6 @@
             </el-button>
           </div>
         </el-form>
-
       </el-dialog>
 
       <!-- Form relationships -->
@@ -71,7 +76,7 @@
         <el-form ref="gamainstore" :model="gamainstore" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Store" prop="store">
-              <el-select v-model="gamainstore.store" :placeholder="Select">
+              <el-select v-model="gamainstore.store" placeholder="Select">
                 <el-option v-for="item in stores" :key="item.name" :label="item.name" :value="item.name">
                 </el-option>
               </el-select>
@@ -200,12 +205,7 @@ export default {
             datagame[element.id - 1] = element
             datagame[element.id - 1].Image = temp
           });
-
-          console.log(datagame);
-
           this.games = datagame;
-
-
         }
         else
           this.games = []
@@ -225,13 +225,15 @@ export default {
         });
         if (status === 200) {
           this.stores = data.store;
-          console.log(this.stores);
         }
         else
           this.stores = []
       } catch (error) {
         throw error;
       }
+    },
+    getLink(row) {
+      return row.link;
     },
     novagame() {
       this.dialogo = true;
@@ -318,17 +320,19 @@ export default {
               };
             });
             if (status === 200) {
-              this.$message({
-                message: "Jogo cadastrado com sucesso",
-                type: "success",
-              });
-              this.dialogo = false;
               const fileInput = document.querySelector("#file")
               fileInput.value = ""
               this.file = null
               this.game = limpaGame()
               this.allData();
+              
+              this.$message({
+                message: "Jogo cadastrado com sucesso",
+                type: "success",
+              });
+              this.dialogo = false;
               location.reload();
+              
             } else {
               this.$message({
                 message: "Erro ao cadastrar Jogo",
@@ -380,7 +384,6 @@ export default {
             type: "danger",
           });
 
-        console.log(data);
       } catch (error) {
         throw error;
       }
@@ -393,13 +396,6 @@ export default {
 .font {
   font-weight: 500;
   font-size: 32px;
-}
-
-input,
-select {
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: 300px;
 }
 
 .new-btn {

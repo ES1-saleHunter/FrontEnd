@@ -28,6 +28,13 @@
             </div>
           </el-menu-item> </el-tooltip></nuxt-link>
 
+          <nuxt-link to="/jogos/compara">
+            <el-tooltip class="item" content="Comparar preços" effect="light" placement="left-start">
+              <el-menu-item index="compara">
+                <div class="inline-block align-middle">
+                  <i-arithmetic-one theme="outline" size="20" fill="#ffffff" :strokeWidth="2" />
+                </div>
+              </el-menu-item> </el-tooltip></nuxt-link>
     </el-menu>
   </div>
 </template>
