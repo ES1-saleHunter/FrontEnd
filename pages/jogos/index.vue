@@ -65,6 +65,7 @@
 
       </el-dialog>
 
+
       <!-- Form relationships -->
       <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
         :close-on-click-modal="false">
@@ -102,6 +103,7 @@
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 
+
 function limpaGame() {
   return {
     name: '',
@@ -121,7 +123,10 @@ function gameinstore() {
 }
 
 export default {
+
   components: { sideBar, navbar },
+
+
   data() {
     return {
       Image: null,
@@ -201,39 +206,15 @@ export default {
             datagame[element.id - 1].Image = temp
           });
 
-          console.log(datagame);
-
           this.games = datagame;
-
-
-        }
-        else
+        } else
           this.games = []
 
       } catch (error) {
         throw error;
       }
     },
-    async getStores() {
-      const token = JSON.parse(localStorage.getItem('token'));
-      try {
-        const { data, status } = await this.$axios.get('getallstore', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            token: token
-          },
-        });
-        if (status === 200) {
-          this.stores = data.store;
-          console.log(this.stores);
-        }
-        else
-          this.stores = []
-      } catch (error) {
-        throw error;
-      }
-    },
-    novagame() {
+    novoJogo() {
       this.dialogo = true;
     },
     addinstore(game) {
@@ -247,52 +228,12 @@ export default {
       this.file = event.target.files[0];
     },
 
-    async submitships() {
-      try {
-        const token = JSON.parse(localStorage.getItem('token'));
-
-        this.gamainstore.game = this.gameinstorename;
-
-        const { data, status } = await this.$axios({
-          method: "POST",
-          url: "/relationgametostores",
-          data: {
-            store: this.gamainstore.store,
-            game: this.gamainstore.game,
-            link: this.gamainstore.link,
-            price: this.gamainstore.price.toString()
-          },
-          headers: {
-            Authorization: `Bearer ${token}`,
-            token: token,
-          },
-        }).catch((error) => {
-          return {
-            data: [],
-            status: error.response.status,
-          };
-        });
-        this.$message({
-          message: `${this.gamainstore.game} adicionado na loja ${this.gamainstore.store} com sucesso`,
-          type: "success",
-        });
-        this.dialogostore = false;
-
-      } catch
-      {
-        this.$message({
-          message: "Algo deu problema.",
-          type: "danger",
-        });
-      }
-    },
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
-        if (this.file != null) {
-          if (valid) {
-            this.methods === 'POST' ?
-              this.link = '/registergame' :
-              this.link = '/updategame'
+        if (valid) {
+          this.methods === 'POST' ?
+            this.link = '/registergame' :
+            this.link = '/updategame'
 
             const token = JSON.parse(localStorage.getItem('token'));
 
@@ -342,6 +283,36 @@ export default {
             });
           }
 
+
+          let formData = new FormData();
+          formData.append('image', this.file);
+          formData.append('name', this.game.name)
+          formData.append('describe', this.game.describe)
+          formData.append('link', this.game.link)
+
+          const { data, status } = await this.$axios({
+            method: this.methods,
+            url: this.link,
+            data: formData,
+            headers: {
+              Authorization: `Bearer ${token}`,
+              token: token,
+              "Content-Type": "multipart/form-data"
+            },
+          }).catch((error) => {
+            return {
+              data: [],
+              status: error.response.status,
+            };
+          });
+          this.$message({
+            message: "Jogo cadastrado com sucesso",
+            type: "success",
+          });
+          this.dialogo = false;
+          const fileInput = document.querySelector("#file")
+          fileInput.value = ""
+          this.allData();
         } else {
           this.$message({
             message: "Selecione uma imagem.",
