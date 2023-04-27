@@ -14,8 +14,11 @@
         </div>
         <!-- TABLE -->
         <div class="flex">
-          <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
+          <el-table empty-text="No Stores Indexed" :data="tableData" v-loading="loading" size="small" style="width: 80%">
             <el-table-column prop="Image" label="Image"></el-table-column>
+            <!-- <template slot-scope="scope">
+              <img :src="scope.row.Image" width="100" height="100">
+            </template> -->
             <el-table-column prop="name" label="Name"> </el-table-column>
             <el-table-column prop="describe" label="Description"> </el-table-column>
             <el-table-column prop="link" label="Link"> </el-table-column>
@@ -24,6 +27,7 @@
       </div>
     </div>
     <!-- Form -->
+
     <el-dialog width="40%" height="40%" ref="loja" title="New Store" :visible.sync="dialogo"
       :close-on-click-modal="false">
       <el-form ref="loja" :model="loja" :rules="rules" label-position="top">
@@ -54,11 +58,13 @@
         </div>
       </el-form>
 
+
     </el-dialog>
   </div>
 </template>
   
 <script>
+
 import ImageLoad from '../components/image.vue'
 
 function limpaLoja() {
@@ -116,12 +122,14 @@ export default {
         ]
       }
     }
+
   },
   mounted() {
     this.allData();
   },
   methods: {
     async allData() {
+
       const token = JSON.parse(localStorage.getItem('token'));
       try {
         const { data, status } = await this.$axios.get('/getallstore', {
@@ -137,6 +145,7 @@ export default {
 
         } catch (error) {
         throw error;
+
       }
     },
     novaLoja() {
@@ -148,6 +157,7 @@ export default {
     statusDialogoDepartamento(value) {
       this.dialogo = value;
     },
+
     onChangeFileUpload(event) {
       console.log('event', event.target.files[0]);
       // this.file = this.$refs.file.files[0];
@@ -196,6 +206,7 @@ export default {
       )
     },
   }
+
 };
 </script>
   
@@ -210,6 +221,7 @@ export default {
   font-weight: 500;
   font-size: 32px;
 }
+
 
 .input-container {
   display: flex;
@@ -238,4 +250,5 @@ select {
   flex-direction: column;
   margin-bottom: 20px;
 }
+
 </style>

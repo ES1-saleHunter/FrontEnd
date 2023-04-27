@@ -8,7 +8,8 @@ import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '../assets/css/tailwind.css'
 
-import '../node_modules/element-ui/lib/theme-chalk/index.css'
+import '..\\node_modules\\element-ui\\lib\\theme-chalk\\index.css'
+
 
 import _9f3a2e20 from '../layouts/components/cadastro/formCadastro.vue'
 import _8542348e from '../layouts/components/loading.vue'
