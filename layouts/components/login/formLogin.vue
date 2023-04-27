@@ -63,7 +63,10 @@ export default {
                 password: this.password,
             }
             if(this.password == "" || this.email == "" ){
-                alert("dados não informados");
+                this.$message({
+                message: "Dados não informados",
+                type: "warning",
+              });
             }
             else{
 
@@ -79,7 +82,10 @@ export default {
                 this.email = "";
                 this.password = "";
                 if(res.mensagem == 'ERRO - Falha login'){
-                    alert("Falha login");
+                    this.$message({
+                        message: "Falha no login",
+                        type: "warning",
+                    });
                 }else{
                     localStorage.setItem('token', JSON.stringify(res.token));
                     this.$router.push('/jogos')

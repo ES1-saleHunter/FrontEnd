@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <sideBar />
         <navbar/>
@@ -67,8 +68,10 @@
 </template>
   
 <script>
+
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
+
 
 function limpaLoja() {
     return {
@@ -77,6 +80,7 @@ function limpaLoja() {
         link: '',
         image: null
     }
+
 }
 
 export default {
@@ -249,14 +253,17 @@ export default {
           throw error;
         }
       }
+
     }
 };
 </script>
   
 <style>
 .font {
+
     font-weight: 500;
     font-size: 32px;
+
 }
 
 input,
@@ -283,4 +290,5 @@ select {
     background-color: transparent;
     color: #222;
 }
+
 </style>

@@ -2,64 +2,72 @@
   {
     "name": "jogos",
     "path": "/jogos",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/jogos/index.vue",
-    "chunkName": "pages/jogos/index",
-    "_name": "_25d0dec3"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/index.vue",
+    "chunkName": "pages/jogos/index"
   },
   {
     "name": "lojas",
     "path": "/lojas",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/lojas/index.vue",
-    "chunkName": "pages/lojas/index",
-    "_name": "_3959bb96"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
+    "chunkName": "pages/lojas/index"
   },
   {
     "name": "usuarios",
     "path": "/usuarios",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/index.vue",
-    "chunkName": "pages/usuarios/index",
-    "_name": "_71015ac4"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
+    "chunkName": "pages/usuarios/index"
   },
   {
     "name": "components-image",
     "path": "/components/image",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/components/image.vue",
-    "chunkName": "pages/components/image",
-    "_name": "_254c9df8"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/components/image.vue",
+    "chunkName": "pages/components/image"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/cadastro.vue",
-    "chunkName": "pages/usuarios/cadastro",
-    "_name": "_1325bd9d"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
+    "chunkName": "pages/usuarios/cadastro"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/login.vue",
-    "chunkName": "pages/usuarios/login",
-    "_name": "_ddb21496"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/login.vue",
+    "chunkName": "pages/usuarios/login"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/recuperarsenha.vue",
-    "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_30f39790"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "chunkName": "pages/usuarios/recuperarsenha"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/redefinirsenha.vue",
+
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
     "chunkName": "pages/usuarios/redefinirsenha",
-    "_name": "_36dfe88e"
+    "_name": "_af7d33d6"
+    },
+    {
+    "name": "lojas",
+    "path": "/lojas",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
+    "chunkName": "pages/lojas/index"
+  },
+  {
+    "name": "usuarios",
+    "path": "/usuarios",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
+    "chunkName": "pages/usuarios/index"
+
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/index.vue",
+
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_14cd8c28"
+    "_name": "_24b486b2"
   }
 ]

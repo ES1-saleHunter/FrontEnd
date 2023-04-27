@@ -71,7 +71,10 @@ export default {
         async cadastro(e) {
             e.preventDefault();
             if(this.passwordconfirmation != this.password){
-                alert("senhas não coincidem");
+                this.$message({
+                        message: "senhas não coincidem",
+                        type: "warning"
+                    });
                 return 1;
             }
             const data = {
@@ -80,7 +83,10 @@ export default {
                 password: this.password,
             }
             if(this.password == "" || this.email == "" || this.name == "" ){
-                alert("dados não informados");
+                this.$message({
+                        message: "dados não informados",
+                        type: "warning"
+                    });
             }
             else{
 
@@ -98,10 +104,17 @@ export default {
 
                 console.log(res);
                 if(res.mensagem == undefined){
-                    alert(res.mensage);
+                    this.$message({
+                        message: "Algo deu problema.",
+                        type: "danger"
+                    });
                 }else if (res.mensagem == "usuario criado com sucesso"){
                    console.log("usuario criado com sucesso");
-                   alert("Cadastro concluido com sucesso");
+                   
+                   this.$message({
+                        message: "Cadastro concluido com sucesso",
+                        type: "success"
+                    });
                    this.$router.push('/usuarios/login');  
                 }
             }
