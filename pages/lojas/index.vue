@@ -18,11 +18,17 @@
                         <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
                             <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
                                 <template slot-scope="scope">
-                      <img :src="scope.row.Image" />
-</template>
+                                <img :src="scope.row.Image" />
+                            </template >
               </el-table-column> <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column prop="link" label="Link"> </el-table-column>
+              <el-table-column prop="name" label="Name" :v-bind="name"> 
+              <template slot-scope="scope">
+                <el-button icon="el-icon-delete" @click="DeleteStore(scope.row.name)">
+                </el-button>
+              </template>
+            </el-table-column>
             </el-table>
           </div>
         </div>
@@ -209,6 +215,40 @@ export default {
                 }
             })
         },
+        async DeleteStore(store){
+        
+        try {
+          const token = JSON.parse(localStorage.getItem('token'));
+          const storename ={
+            name: store
+          }
+          const { data, status } = await this.$axios({
+              method: "DELETE",
+              url: "/deletestore",
+              data: storename,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                token: token,
+              },
+            })
+          if (status === 200){
+            this.$message({
+              message: "Loja Deletada com Sucesso",
+              type: "success",
+            });
+            this.allData();
+          }
+          else
+          this.$message({
+              message: "Algo deu problema.",
+              type: "danger",
+          });
+          
+          console.log(data);
+          } catch (error) {
+          throw error;
+        }
+      }
     }
 };
 </script>
