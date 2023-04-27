@@ -23,7 +23,7 @@
               </el-table-column> <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column prop="link" label="Link"> </el-table-column>
-              <el-table-column prop="name" label="Name" :v-bind="name"> 
+              <el-table-column prop="comando" label="" :v-bind="name"> 
               <template slot-scope="scope">
                 <el-button icon="el-icon-delete" @click="DeleteStore(scope.row.name)">
                 </el-button>
