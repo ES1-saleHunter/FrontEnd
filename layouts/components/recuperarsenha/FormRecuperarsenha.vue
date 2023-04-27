@@ -10,7 +10,7 @@
                 </div>
                
                 <div class="bnt">
-                    <input type="submit" class="submit-btn" id="bnt" value="Recover Password ">
+                    <input type="submit" class="submit-btn" id="bnt" value="Recover Password">
                 </div>
             
             </form>
@@ -26,15 +26,32 @@ export default {
     name: "formrecuperarsenha",
     data(){
         return {
-            name: "",
             email: "",
-            password: "",
-            passwordconfirmation: "",
-            urlback: "http://localhost:3333",
-            urlbackprocess: process.env.VITE_APP_API_LINK,
+            urlback: process.env.API_BASE_URL,
         }
     },
     methods: {
+        async logado(){ 
+            const token = JSON.parse( localStorage.getItem('token') );
+            if(!token){
+                return 1;
+            } 
+            const obj = {
+                token: token
+            }
+            const req = await fetch(`${this.urlback}/verificationonline`, {
+                    method: "POST",
+                    headers: { "Content-Type" : "application/json" },
+                    body: JSON.stringify(obj)
+                });
+            const res = await req.json()
+            if(res.status == "false"){
+                localStorage. removeItem("token");
+            } 
+                
+            if(res.mensagem == "logado") this.$router.push('/jogos')
+                
+        },
         async recuperarsenha(e) {
             e.preventDefault();
          
@@ -42,7 +59,10 @@ export default {
                 email: this.email,
             }
             if(this.email == "" ){
-                alert("email não informado");
+                this.$message({
+                        message: "email não informado",
+                        type: "warning"
+                });
             }
             else{
                 const user  = JSON.stringify(data)
@@ -56,15 +76,22 @@ export default {
                
                 console.log(res);
                 if(res.mensagem == "Email enviado para recuperação da senha"){
-                    alert("Email para recuperar senha enviado!!!");
+                    this.$message({
+                        message: "Email para recuperar senha enviado!!!",
+                        type: "success"
+                     });
                     this.$router.push('/usuarios/redefinirsenha');  
                 }else{
-                    alert("Email não vinculado");
+                    this.$message({
+                        message: "Email não vinculado",
+                        type: "warning"
+                     });
                 }
             }
         }
         }, 
         mounted() {
+        this.logado()
         this.email = "";
   
     }
