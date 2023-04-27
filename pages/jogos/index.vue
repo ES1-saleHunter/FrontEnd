@@ -18,7 +18,7 @@
           <!-- TABLE -->
           <div class="flex">
             <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
-              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
+              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
@@ -28,8 +28,8 @@
               <el-table-column prop="link" label="Link"> </el-table-column>
               <el-table-column prop="comands" label="" :v-bind="name">
                 <template slot-scope="scope">
-                  <el-button icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
-                  <el-button icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
+                  <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
+                  <el-button class="new-btn" icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
                   </el-button>
                 </template>
               </el-table-column>
@@ -62,6 +62,37 @@
             </el-button>
           </div>
         </el-form>
+
+      </el-dialog>
+
+      <!-- Form relationships -->
+      <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
+        :close-on-click-modal="false">
+        <el-form ref="gamainstore" :model="gamainstore" label-position="top">
+          <div class="flex flex-wrap flex-col">
+            <el-form-item label="Store" prop="store">
+              <el-select v-model="gamainstore.store" :placeholder="Select">
+                <el-option v-for="item in stores" :key="item.name" :label="item.name" :value="item.name">
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="Price" prop="price">
+              <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            </el-form-item>
+            <el-form-item label="Link" prop="link">
+              <el-input v-model="gamainstore.link"></el-input>
+            </el-form-item>
+          </div>
+          <div class="flex justify-end">
+            <el-button type="danger" size="small" @click="dialogostore = false">
+              Cancelar
+            </el-button>
+            <el-button type="success" @click="submitships()" size="small ">
+              Salvar
+            </el-button>
+          </div>
+        </el-form>
+
       </el-dialog>
     </div>
   </div>
@@ -90,7 +121,7 @@ function gameinstore() {
 }
 
 export default {
-  components: { sideBar },
+  components: { sideBar, navbar },
   data() {
     return {
       Image: null,
@@ -218,8 +249,6 @@ export default {
 
     async submitships() {
       try {
-
-
         const token = JSON.parse(localStorage.getItem('token'));
 
         this.gamainstore.game = this.gameinstorename;
@@ -299,7 +328,7 @@ export default {
               this.file = null
               this.game = limpaGame()
               this.allData();
-
+              location.reload();
             } else {
               this.$message({
                 message: "Erro ao cadastrar Jogo",
@@ -389,4 +418,5 @@ select {
 .new-btn:hover {
   background-color: transparent;
   color: #222;
-}</style>
+}
+</style>
