@@ -28,7 +28,7 @@ export default {
                 localStorage. removeItem("token");
             } 
                 
-            if(res.mensagem == "logado") this.$router.push('/home')
+            if(res.mensagem == "logado") this.$router.push('/jogos')
         },
         async verificar(){
            if(this.logado()){
