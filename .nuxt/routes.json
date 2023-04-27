@@ -1,35 +1,50 @@
 [
   {
+    "name": "jogos",
+    "path": "/jogos",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/index.vue",
+    "chunkName": "pages/jogos/index"
+  },
+  {
+    "name": "lojas",
+    "path": "/lojas",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
+    "chunkName": "pages/lojas/index"
+  },
+  {
     "name": "usuarios",
     "path": "/usuarios",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
-    "chunkName": "pages/usuarios/index",
-    "_name": "_03d9a0c2"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
+    "chunkName": "pages/usuarios/index"
+  },
+  {
+    "name": "components-image",
+    "path": "/components/image",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/components/image.vue",
+    "chunkName": "pages/components/image"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
-    "chunkName": "pages/usuarios/cadastro",
-    "_name": "_64110cf9"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
+    "chunkName": "pages/usuarios/cadastro"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
-    "chunkName": "pages/usuarios/login",
-    "_name": "_64fd784e"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/login.vue",
+    "chunkName": "pages/usuarios/login"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
-    "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_16b61c28"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "chunkName": "pages/usuarios/recuperarsenha"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
+
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
     "chunkName": "pages/usuarios/redefinirsenha",
     "_name": "_af7d33d6"
@@ -45,14 +60,14 @@
     "path": "/usuarios",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
     "chunkName": "pages/usuarios/index"
+
   },
   {
     "name": "index",
     "path": "/",
+
     "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
     "_name": "_24b486b2"
-    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
-    "chunkName": "pages/index"
   }
 ]

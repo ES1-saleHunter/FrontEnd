@@ -12,6 +12,7 @@ const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsen
 const _24b486b2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 const _0d13c56f = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
 const _b40163b6 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+
 const _0e9c4af6 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -26,24 +27,36 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/jogos",
+    component: _0cea2ec8,
+    name: "jogos"
+  }, {
+    path: "/lojas",
+    component: _0d13c56f,
+    name: "lojas"
+  }, {
     path: "/usuarios",
-    component: _03d9a0c2,
+    component: _b40163b6,
     name: "usuarios"
   }, {
+    path: "/components/image",
+    component: _63bbd3bf,
+    name: "components-image"
+  }, {
     path: "/usuarios/cadastro",
-    component: _64110cf9,
+    component: _bac57e94,
     name: "usuarios-cadastro"
   }, {
     path: "/usuarios/login",
-    component: _64fd784e,
+    component: _6fa6f13c,
     name: "usuarios-login"
   }, {
     path: "/usuarios/recuperarsenha",
-    component: _16b61c28,
+    component: _05f8a3e9,
     name: "usuarios-recuperarsenha"
   }, {
     path: "/usuarios/redefinirsenha",
-    component: _af7d33d6,
+    component: _8cd5cfdc,
     name: "usuarios-redefinirsenha"
   }, {
     path: "/lojas",
@@ -55,7 +68,7 @@ export const routerOptions = {
     name: "usuarios"
   }, {
     path: "/",
-    component: _24b486b2,
+    component: _0e9c4af6,
     name: "index"
   }],
 

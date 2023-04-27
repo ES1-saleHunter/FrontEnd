@@ -200,7 +200,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {"API_BASE_URL":"http://localhost:3333"}
+      env: {"API_BASE_URL":"http://localhost:3000","API_FILES":"/files"}
     }
     // Only set once
 
