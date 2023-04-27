@@ -32,6 +32,7 @@
               </el-table-column>
 
               <!-- <el-table-column prop="link" label="Link"> </el-table-column> -->
+
               <el-table-column prop="comands" label="" :v-bind="name">
                 <template slot-scope="scope">
                   <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
@@ -45,7 +46,9 @@
       </div>
       <!-- Form -->
       <el-dialog width="40%" height="40%" ref="game" title="New Game" :visible.sync="dialogo"
+
       :close-on-click-modal="false">
+
         <el-form ref="game" :model="game" :rules="rules" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Name" prop="name">
@@ -68,7 +71,9 @@
             </el-button>
           </div>
         </el-form>
+
       </el-dialog>
+
 
       <!-- Form relationships -->
       <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
@@ -76,7 +81,10 @@
         <el-form ref="gamainstore" :model="gamainstore" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Store" prop="store">
+
               <el-select v-model="gamainstore.store" placeholder="Select">
+
+
                 <el-option v-for="item in stores" :key="item.name" :label="item.name" :value="item.name">
                 </el-option>
               </el-select>
@@ -107,6 +115,7 @@
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 
+
 function limpaGame() {
   return {
     name: '',
@@ -126,7 +135,9 @@ function gameinstore() {
 }
 
 export default {
+
   components: { sideBar, navbar },
+
   data() {
     return {
       Image: null,
@@ -205,6 +216,7 @@ export default {
             datagame[element.id - 1] = element
             datagame[element.id - 1].Image = temp
           });
+
           this.games = datagame;
         }
         else
@@ -249,6 +261,7 @@ export default {
       this.file = event.target.files[0];
     },
 
+
     async submitships() {
       try {
         const token = JSON.parse(localStorage.getItem('token'));
@@ -288,6 +301,7 @@ export default {
         });
       }
     },
+
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
         if (this.file != null) {
@@ -297,6 +311,55 @@ export default {
               this.link = '/updategame'
 
             const token = JSON.parse(localStorage.getItem('token'));
+
+
+            let formData = new FormData();
+            formData.append('image', this.file);
+            formData.append('name', this.game.name)
+            formData.append('describe', this.game.describe)
+            formData.append('link', this.game.link)
+
+            const { data, status } = await this.$axios({
+              method: this.methods,
+              url: this.link,
+              data: formData,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                token: token,
+                "Content-Type": "multipart/form-data"
+              },
+            }).catch((error) => {
+              return {
+                data: [],
+                status: error.response.status,
+              };
+            });
+            if (status === 200) {
+              this.$message({
+                message: "Jogo cadastrado com sucesso",
+                type: "success",
+              });
+              this.dialogo = false;
+              const fileInput = document.querySelector("#file")
+              fileInput.value = ""
+              this.file = null
+              this.game = limpaGame()
+              this.allData();
+              location.reload();
+            } else {
+              this.$message({
+                message: "Erro ao cadastrar Jogo",
+                type: "warning",
+              });
+            }
+          } else {
+            this.$message({
+              message: "Algo deu problema.",
+              type: "danger",
+            });
+          }
+
+
 
             let formData = new FormData();
             formData.append('image', this.file);
@@ -384,6 +447,9 @@ export default {
             type: "danger",
           });
 
+
+        console.log(data);
+
       } catch (error) {
         throw error;
       }
@@ -396,6 +462,14 @@ export default {
 .font {
   font-weight: 500;
   font-size: 32px;
+}
+
+
+input,
+select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 300px;
 }
 
 .new-btn {
