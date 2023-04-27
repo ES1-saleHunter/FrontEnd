@@ -402,14 +402,7 @@ export default {
                 type: "warning",
               });
             }
-          } else {
-            this.$message({
-              message: "Algo deu problema.",
-              type: "danger",
-            });
-          }
-
-        } else {
+          }  else {
           this.$message({
             message: "Selecione uma imagem.",
             type: "danger",
