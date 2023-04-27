@@ -59,7 +59,10 @@ export default {
                 email: this.email,
             }
             if(this.email == "" ){
-                alert("email não informado");
+                this.$message({
+                        message: "email não informado",
+                        type: "warning"
+                });
             }
             else{
                 const user  = JSON.stringify(data)
@@ -73,10 +76,16 @@ export default {
                
                 console.log(res);
                 if(res.mensagem == "Email enviado para recuperação da senha"){
-                    alert("Email para recuperar senha enviado!!!");
+                    this.$message({
+                        message: "Email para recuperar senha enviado!!!",
+                        type: "success"
+                     });
                     this.$router.push('/usuarios/redefinirsenha');  
                 }else{
-                    alert("Email não vinculado");
+                    this.$message({
+                        message: "Email não vinculado",
+                        type: "warning"
+                     });
                 }
             }
         }

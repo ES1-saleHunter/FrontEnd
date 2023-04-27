@@ -72,7 +72,10 @@ export default {
         async redefinirsenha(e) {
             e.preventDefault();
             if(this.passwordconfirmation != this.password){
-                alert("senhas não coincidem");
+                this.$message({
+                        message: "senhas não coincidem",
+                        type: "warning"
+                     });
                 return 1;
             }
             const data = {
@@ -81,7 +84,10 @@ export default {
                 token: this.token
             }
             if(this.email == "" || this.token == "" || this.password == ""){
-                alert("dados não informados");
+                this.$message({
+                        message: "dados não informados",
+                        type: "warning"
+                 });
             }
             else{
                 const user  = JSON.stringify(data)
@@ -98,10 +104,16 @@ export default {
                 console.log(data);
                 console.log(res);
                 if(res.mensagem == "Senha alterada com sucesso"){
-                    alert("Senha Alterada com Sucesso!!!");
+                    this.$message({
+                        message: "Senha Alterada com Sucesso!!!",
+                        type: "success"
+                 });
                     this.$router.push('/usuarios/login');  
                 }else{
-                    alert("Token Invalido");
+                    this.$message({
+                        message: "Token Invalido",
+                        type: "warning"
+                 });
                 }
             }
         }
