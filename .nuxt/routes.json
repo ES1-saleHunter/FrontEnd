@@ -24,6 +24,13 @@
     "chunkName": "pages/components/image"
   },
   {
+    "name": "jogos-compara",
+    "path": "/jogos/compara",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/compara/index.vue",
+    "chunkName": "pages/jogos/compara/index",
+    "_name": "_17e89a24"
+  },
+  {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",

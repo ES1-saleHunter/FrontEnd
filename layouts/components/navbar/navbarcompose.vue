@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mr-5 flex flex-nowrap align-middle justify-end">
-      <p class="my-auto mr-4">Usuário</p>
+      <p class="my-auto mr-4">User</p>
       <Avatar class="p-3" />
     </div>
   </div>
