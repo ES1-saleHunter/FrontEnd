@@ -312,55 +312,6 @@ export default {
 
             const token = JSON.parse(localStorage.getItem('token'));
 
-
-            let formData = new FormData();
-            formData.append('image', this.file);
-            formData.append('name', this.game.name)
-            formData.append('describe', this.game.describe)
-            formData.append('link', this.game.link)
-
-            const { data, status } = await this.$axios({
-              method: this.methods,
-              url: this.link,
-              data: formData,
-              headers: {
-                Authorization: `Bearer ${token}`,
-                token: token,
-                "Content-Type": "multipart/form-data"
-              },
-            }).catch((error) => {
-              return {
-                data: [],
-                status: error.response.status,
-              };
-            });
-            if (status === 200) {
-              this.$message({
-                message: "Jogo cadastrado com sucesso",
-                type: "success",
-              });
-              this.dialogo = false;
-              const fileInput = document.querySelector("#file")
-              fileInput.value = ""
-              this.file = null
-              this.game = limpaGame()
-              this.allData();
-              location.reload();
-            } else {
-              this.$message({
-                message: "Erro ao cadastrar Jogo",
-                type: "warning",
-              });
-            }
-          } else {
-            this.$message({
-              message: "Algo deu problema.",
-              type: "danger",
-            });
-          }
-
-
-
             let formData = new FormData();
             formData.append('image', this.file);
             formData.append('name', this.game.name)
@@ -408,7 +359,7 @@ export default {
               type: "danger",
             });
           }
-
+        
         } else {
           this.$message({
             message: "Selecione uma imagem.",
