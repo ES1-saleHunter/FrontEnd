@@ -7,39 +7,6 @@
         h-screen
         divide-y divide-gray-200 divide-solid
         border-r
-<<<<<<< Updated upstream
-      " v-if="collapsed == true" style="width: 4%">
-    <div class="cursor-pointer h-16">
-      <img src="../sidebar/icons/icon.png" class="m-auto p-2 2xl:h-14 h-14"/>
-    </div>
-    <div class="transition-all">
-      <el-menu class="">
-        <el-menu-item index="1" class="pt-5 cursor-pointer hover:bg-gray-100">
-          <div class="pt-3">
-            <nuxt-link to="../jogos" class="text-center">
-              <div class="flex">
-                <i-box theme="outline" size="20" :strokeWidth="2" class="mr-3 2xl:pl-1 mt-2" alt="" />
-              </div>
-            </nuxt-link>
-          </div>
-          
-          <el-menu-item index="projetos">
-            <span slot="title" class="pl-2">Projetos</span>
-          </el-menu-item>
-
-        </el-menu-item>
-        <el-menu-item index="2" class="py-5 cursor-pointer hover:bg-gray-100">
-          <div class="pt-3">
-            <nuxt-link to="../clientes">
-              <div class="flex">
-                <i-user theme="outline" size="20" fill="#4a4a4a" :strokeWidth="2" class="mr-3 2xl:pl-1 mt-2" alt="" />
-              </div>
-            </nuxt-link>
-          </div>
-        </el-menu-item>
-      </el-menu>
-    </div>
-=======
       " v-if="collapsed == true" style="width: 5%">
     <el-menu class="h-screen" :collapse="!collapsed" background-color="#C94F32" text-color="#ffffff"
       active-text-color="#34512a" @select="menuSelect">
@@ -69,7 +36,6 @@
             </div>
           </el-menu-item> </el-tooltip></nuxt-link>
     </el-menu>
->>>>>>> Stashed changes
   </div>
 
   <!------------------------------------------------------------->
@@ -164,8 +130,6 @@ export default {
     }),
     ...mapMutations(["toggleCollapse"]),
   },
-<<<<<<< Updated upstream
-=======
   methods: {
     menuSelect(index) {
       this.$router.push(`/${index}`)
@@ -187,6 +151,5 @@ export default {
       console.log('user', this.user);
     },
   },
->>>>>>> Stashed changes
 };
 </script>
