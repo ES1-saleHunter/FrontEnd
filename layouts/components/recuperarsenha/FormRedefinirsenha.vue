@@ -66,7 +66,7 @@ export default {
                 localStorage. removeItem("token");
             } 
                 
-            if(res.mensagem == "logado") this.$router.push('/jogos')
+            if(res.mensagem == "logado") this.$router.push('/jogos/compara')
                 
         },
         async redefinirsenha(e) {
