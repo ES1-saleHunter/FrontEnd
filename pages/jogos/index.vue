@@ -353,7 +353,8 @@ export default {
               type: "danger",
             });
           }
-        
+
+
       })
     },
     async DeleteGame(game) {
