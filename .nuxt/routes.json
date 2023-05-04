@@ -1,9 +1,70 @@
 [
   {
+<<<<<<< Updated upstream
     "name": "index",
     "path": "/",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
     "chunkName": "pages/index",
     "_name": "_0e9c4af6"
+=======
+    "name": "jogos",
+    "path": "/jogos",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/index.vue",
+    "chunkName": "pages/jogos/index"
+  },
+  {
+    "name": "lojas",
+    "path": "/lojas",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/lojas/index.vue",
+    "chunkName": "pages/lojas/index"
+  },
+  {
+    "name": "usuarios",
+    "path": "/usuarios",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/index.vue",
+    "chunkName": "pages/usuarios/index"
+  },
+  {
+    "name": "components-image",
+    "path": "/components/image",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/components/image.vue",
+    "chunkName": "pages/components/image"
+  },
+  {
+    "name": "jogos-compara",
+    "path": "/jogos/compara",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/jogos/compara/index.vue",
+    "chunkName": "pages/jogos/compara/index"
+  },
+  {
+    "name": "usuarios-cadastro",
+    "path": "/usuarios/cadastro",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
+    "chunkName": "pages/usuarios/cadastro"
+  },
+  {
+    "name": "usuarios-login",
+    "path": "/usuarios/login",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/login.vue",
+    "chunkName": "pages/usuarios/login"
+  },
+  {
+    "name": "usuarios-recuperarsenha",
+    "path": "/usuarios/recuperarsenha",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "chunkName": "pages/usuarios/recuperarsenha"
+  },
+  {
+    "name": "usuarios-redefinirsenha",
+    "path": "/usuarios/redefinirsenha",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/usuarios/redefinirsenha.vue",
+    "chunkName": "pages/usuarios/redefinirsenha"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software 1/saleHunter/FrontEnd/pages/index.vue",
+    "chunkName": "pages/index"
+>>>>>>> Stashed changes
   }
 ]
