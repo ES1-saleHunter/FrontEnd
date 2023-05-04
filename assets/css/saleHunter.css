@@ -80,7 +80,7 @@ body {
 }
 
 .headerText {
-  @apply text-[25px];
+  /* @apply text-[25px]; */
   @apply font-semibold;
 }
 

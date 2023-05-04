@@ -2,19 +2,30 @@
     <div>
         <message :msg="msg" v-show="msg"/>
         <div>
-            <form id="login-form" @submit="login">
+            <form id="redefinirsenha-form" @submit="redefinirsenha">
+             
                 <div class="input-container">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" v-model="email" placeholder="insert your email">
                 </div>
                 <div class="input-container">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" v-model="password" placeholder="insert your password">
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password" name="password" v-model="password" placeholder="insert your new password">
+                </div>
+                <div class="input-container">
+                    <label for="passwordconfirmation">Confirmation Password:</label>
+                    <input type="password" id="password" name="passwordconfirmation" v-model="passwordconfirmation" placeholder="insert your new password">
+                </div>
+
+                <div class="input-container">
+                    <label for="token">Token:</label>
+                    <input type="text"  maxlength="500" id="token" name="token" v-model="token" placeholder="insert your token">
                 </div>
                
-                <div class="input-container" id="submit">
-                    <input type="submit" class="submit-btn" value="sing in">
+                <div class="bnt">
+                    <input type="submit" class="submit-btn" id="bnt" value="Redefine password">
                 </div>
+            
             </form>
         </div>
     </div>
@@ -25,13 +36,15 @@
 
 export default {
     
-    name: "formlogin",
+    name: "formredefinirsenha",
     data(){
         return {
-            email: null,
-            password: null,
-            msg: null,
+            email: "",
+            password: "",
+            passwordconfirmation: "",
+            token: "",
             urlback: process.env.API_BASE_URL,
+        
         }
     },
     methods: {
@@ -56,39 +69,51 @@ export default {
             if(res.mensagem == "logado") this.$router.push('/jogos')
                 
         },
-        async login(e) {
+        async redefinirsenha(e) {
             e.preventDefault();
+            if(this.passwordconfirmation != this.password){
+                this.$message({
+                        message: "senhas não coincidem",
+                        type: "warning"
+                     });
+                return 1;
+            }
             const data = {
                 email: this.email,
                 password: this.password,
+                token: this.token
             }
-            if(this.password == "" || this.email == "" ){
+            if(this.email == "" || this.token == "" || this.password == ""){
                 this.$message({
-                message: "Dados não informados",
-                type: "warning",
-              });
+                        message: "dados não informados",
+                        type: "warning"
+                 });
             }
             else{
-
                 const user  = JSON.stringify(data)
-                console.log(data);
-                const req = await fetch(`${this.urlback}/login`, {
+                const req = await fetch(`${this.urlback}/resetpassword`, {
                     method: "POST",
                     headers: { "Content-Type" : "application/json" },
                     body: user
                 });
                 const res = await req.json()
-                console.log(res);
                 this.email = "";
-                this.password = "";
-                if(res.mensagem == 'ERRO - Falha login'){
+                this.password = "",
+                this.passwordconfirmation = "",
+                this.token = "",
+                console.log(data);
+                console.log(res);
+                if(res.mensagem == "Senha alterada com sucesso"){
                     this.$message({
-                        message: "Falha no login",
-                        type: "warning",
-                    });
+                        message: "Senha Alterada com Sucesso!!!",
+                        type: "success"
+                 });
+                    this.$router.push('/usuarios/login');  
                 }else{
-                    localStorage.setItem('token', JSON.stringify(res.token));
-                    this.$router.push('/jogos')
+                    this.$message({
+                        message: "Token Invalido",
+                        type: "warning"
+                 });
                 }
             }
         }
@@ -96,12 +121,12 @@ export default {
         mounted() {
         this.logado();
         this.email = "";
-        this.password = "";
+  
     }
 }
 </script>
 <style scoped>
-  #login-form {
+  #redefinirsenha-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 8px;
@@ -125,24 +150,25 @@ export default {
   input, select {
     padding: 5px 10px;
     border-radius: 5px;
-    width: 300px;
-  }
-  #opcionais-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  #opcionais-title {
-    width: 100%;
+    width: 350px;
   }
 
- 
+
+    #bnt {
+        padding: 10px 80px 10px 80px;
+        border-radius: 20px;
+        font-size: 16px;
+        margin: 0 30px 10px 30px;
+        width: auto;
+    }
+
+
   .submit-btn {
     background-color: #C94F32;
     color:#FFF;
     font-weight: bold;
     border: 2px solid #C94F32;
     padding: 10px;
-
     border-radius: 20px;
     font-size: 16px;
     margin: 0 auto;

@@ -14,7 +14,23 @@
           </div>
           <!-- TABLE -->
           <div class="flex">
-          
+            <!-- <el-table empty-text="No Stores or Games" :data="games" v-loading="loading" size="small" style="width: 80%">
+                <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
+                  <template slot-scope="scope">
+                    <img :src="scope.row.Image" />
+                  </template>
+                </el-table-column>
+                <el-table-column prop="name" label="Name"> </el-table-column>
+                <el-table-column prop="describe" label="Description"> </el-table-column>
+                <el-table-column prop="link" label="Link"> </el-table-column>
+                <el-table-column prop="comands" label="" :v-bind="name">
+                  <template slot-scope="scope">
+                    <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
+                    <el-button class="new-btn" icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
+                    </el-button>
+                  </template>
+                </el-table-column>
+              </el-table> -->
           </div>
         </div>
       </div>
@@ -31,6 +47,50 @@ export default {
   data() {
     return {
       games: [],
+      stores: [],
+      showDrawer: false,
+      loading: false,
+      drawer: false,
+      urlFiltro: null,
+      file: null,
+      urlBack: process.env.API_BASE_URL,
+      urlFile: process.env.API_FILES,
+      game: limpaGame(),
+      gamainstore: gameinstore(),
+      rules: {
+        name: [
+          {
+            required: true,
+            message: 'Input the game´s name.',
+            trigger: 'blur',
+          },
+        ],
+        describe: [
+          {
+            required: true,
+            message: 'Input the game´s description.',
+            trigger: 'blur',
+          },
+        ],
+        link: [
+          {
+            required: true,
+            message: 'Input the game´s address link.',
+            trigger: 'blur',
+          },
+        ],
+        image: [
+          {
+            required: true,
+            message: 'Select the game´s image.',
+            trigger: 'blur',
+          },
+        ]
+      },
+      iconButtons: [
+        { icon: "fa-smile" },
+        { icon: "fa-sad-tear" }
+      ]
     }
   },
   mounted() {
@@ -47,7 +107,6 @@ export default {
             token: token
           },
         });
-        console.log('data', data);
         if (status === 200) {
           let datagame = [];
           let temp = "";
@@ -75,7 +134,6 @@ export default {
         });
         if (status === 200) {
           this.stores = data.store;
-          console.log(this.stores);
         }
         else
           this.stores = []

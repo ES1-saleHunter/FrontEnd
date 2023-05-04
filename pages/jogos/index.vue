@@ -33,10 +33,9 @@
 
               <!-- <el-table-column prop="link" label="Link"> </el-table-column> -->
 
-              <el-table-column prop="comands">
+              <el-table-column prop="comands" label="" :v-bind="name">
                 <template slot-scope="scope">
-                  <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in
-                    store</el-button>
+                  <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
                   <el-button class="new-btn" icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
                   </el-button>
                 </template>
@@ -45,9 +44,11 @@
           </div>
         </div>
       </div>
-
+      <!-- Form -->
       <el-dialog width="40%" height="40%" ref="game" title="New Game" :visible.sync="dialogo"
-        :close-on-click-modal="false">
+
+      :close-on-click-modal="false">
+
         <el-form ref="game" :model="game" :rules="rules" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Name" prop="name">
@@ -70,7 +71,9 @@
             </el-button>
           </div>
         </el-form>
+
       </el-dialog>
+
 
       <!-- Form relationships -->
       <el-dialog width="40%" height="40%" ref="gamainstore" title="add in stores" :visible.sync="dialogostore"
@@ -256,6 +259,8 @@ export default {
     onChangeFileUpload(event) {
       this.file = event.target.files[0];
     },
+
+
     async submitships() {
       try {
         const token = JSON.parse(localStorage.getItem('token'));
@@ -286,7 +291,9 @@ export default {
           type: "success",
         });
         this.dialogostore = false;
-      } catch {
+
+      } catch
+      {
         this.$message({
           message: "Algo deu problema.",
           type: "danger",
@@ -303,7 +310,6 @@ export default {
               this.link = '/updategame'
 
             const token = JSON.parse(localStorage.getItem('token'));
-
 
             let formData = new FormData();
             formData.append('image', this.file);
@@ -327,17 +333,19 @@ export default {
               };
             });
             if (status === 200) {
-              this.$message({
-                message: "Jogo cadastrado com sucesso",
-                type: "success",
-              });
-              this.dialogo = false;
               const fileInput = document.querySelector("#file")
               fileInput.value = ""
               this.file = null
               this.game = limpaGame()
               this.allData();
+              
+              this.$message({
+                message: "Jogo cadastrado com sucesso",
+                type: "success",
+              });
+              this.dialogo = false;
               location.reload();
+              
             } else {
               this.$message({
                 message: "Erro ao cadastrar Jogo",
@@ -350,48 +358,7 @@ export default {
               type: "danger",
             });
           }
-
-          let formData = new FormData();
-          formData.append('image', this.file);
-          formData.append('name', this.game.name)
-          formData.append('describe', this.game.describe)
-          formData.append('link', this.game.link)
-
-          const { data, status } = await this.$axios({
-            method: this.methods,
-            url: this.link,
-            data: formData,
-            headers: {
-              Authorization: `Bearer ${token}`,
-              token: token,
-              "Content-Type": "multipart/form-data"
-            },
-          }).catch((error) => {
-            return {
-              data: [],
-              status: error.response.status,
-            };
-          });
-          if (status === 200) {
-            const fileInput = document.querySelector("#file")
-            fileInput.value = ""
-            this.file = null
-            this.game = limpaGame()
-            this.allData();
-
-            this.$message({
-              message: "Jogo cadastrado com sucesso",
-              type: "success",
-            });
-            this.dialogo = false;
-            location.reload();
-
-          } else {
-            this.$message({
-              message: "Erro ao cadastrar Jogo",
-              type: "warning",
-            });
-          }
+        
         } else {
           this.$message({
             message: "Selecione uma imagem.",
@@ -401,6 +368,8 @@ export default {
       })
     },
     async DeleteGame(game) {
+
+
       try {
         const token = JSON.parse(localStorage.getItem('token'));
         const gamename = {
@@ -427,6 +396,10 @@ export default {
             message: "Algo deu problema.",
             type: "danger",
           });
+
+
+        console.log(data);
+
       } catch (error) {
         throw error;
       }
