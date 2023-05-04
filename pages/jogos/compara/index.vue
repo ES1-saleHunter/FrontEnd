@@ -14,23 +14,21 @@
           </div>
           <!-- TABLE -->
           <div class="flex">
-            <!-- <el-table empty-text="No Stores or Games" :data="games" v-loading="loading" size="small" style="width: 80%">
+             <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
+              <!-- TABLE 
                 <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
                   <template slot-scope="scope">
                     <img :src="scope.row.Image" />
                   </template>
                 </el-table-column>
-                <el-table-column prop="name" label="Name"> </el-table-column>
-                <el-table-column prop="describe" label="Description"> </el-table-column>
-                <el-table-column prop="link" label="Link"> </el-table-column>
-                <el-table-column prop="comands" label="" :v-bind="name">
-                  <template slot-scope="scope">
-                    <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
-                    <el-button class="new-btn" icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
-                    </el-button>
+                -->
+                <el-table-column prop="name" label="Game"></el-table-column>
+                <el-table-column  prop="name" label="Stores"> 
+                  <template slot-scope="scope"> 
+                    <template v-for="item in scope.row.stores" > |{{ item.name }} - R${{ item.gamestore.price }}|</template>
                   </template>
                 </el-table-column>
-              </el-table> -->
+              </el-table> 
           </div>
         </div>
       </div>
@@ -47,7 +45,7 @@ export default {
   data() {
     return {
       games: [],
-      stores: [],
+      gameswithstore: [],
       showDrawer: false,
       loading: false,
       drawer: false,
@@ -55,8 +53,6 @@ export default {
       file: null,
       urlBack: process.env.API_BASE_URL,
       urlFile: process.env.API_FILES,
-      game: limpaGame(),
-      gamainstore: gameinstore(),
       rules: {
         name: [
           {
@@ -94,8 +90,7 @@ export default {
     }
   },
   mounted() {
-    this.allData();
-    this.getStores();
+    this.allData()
   },
   methods: {
     async allData() {
@@ -108,14 +103,14 @@ export default {
           },
         });
         if (status === 200) {
-          let datagame = [];
-          let temp = "";
-          data.game.forEach(element => {
-            temp = this.urlBack + this.urlFile + element.Image.replace('src', '');
-            datagame[element.id - 1] = element
-            datagame[element.id - 1].Image = temp
-          });
-          this.games = datagame;
+          this.games = data.game;
+          console.log(this.games)
+          this.games.forEach(async (game)=>{
+            await this.getStores(game.name)
+          })
+          //console.log(this.games)
+          //console.log(this.gameswithstore)
+          
         }
         else
           this.games = []
@@ -123,20 +118,24 @@ export default {
         throw error;
       }
     },
-    async getStores() {
+    async getStores(name) {
       const token = JSON.parse(localStorage.getItem('token'));
       try {
-        const { data, status } = await this.$axios.get('getallstore', {
+        const { data, status } = await this.$axios({
+          method: "POST",
+          url: "getgamestore",
+          data: {name:name},
           headers: {
-            Authorization: `Bearer ${token}`,
-            token: token
-          },
-        });
+          Authorization: `Bearer ${token}`,
+           token: token
+         },
+         })
         if (status === 200) {
-          this.stores = data.store;
+          console.log(data.game)
+          this.gameswithstore.push(data.game)
         }
         else
-          this.stores = []
+          console.log(data)
       } catch (error) {
         throw error;
       }

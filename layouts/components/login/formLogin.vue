@@ -53,7 +53,7 @@ export default {
                 localStorage. removeItem("token");
             } 
                 
-            if(res.mensagem == "logado") this.$router.push('/jogos')
+            if(res.mensagem == "logado") this.$router.push('/jogos/compara')
                 
         },
         async login(e) {
@@ -88,7 +88,7 @@ export default {
                     });
                 }else{
                     localStorage.setItem('token', JSON.stringify(res.token));
-                    this.$router.push('/jogos')
+                    this.$router.push('/jogos/compara')
                 }
             }
         }

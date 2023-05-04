@@ -18,11 +18,13 @@
           <!-- TABLE -->
           <div class="flex">
             <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
+              <!-- Form
               <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
+            -->
               <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column label="Link" prop="link">
@@ -60,7 +62,9 @@
             <el-form-item label="Link" prop="link">
               <el-input v-model="game.link"></el-input>
             </el-form-item>
+            <!-- Form
             <input type="file" v-on:change="onChangeFileUpload" />
+            -->
           </div>
           <div class="flex justify-end">
             <el-button type="danger" size="small" @click="dialogo = false">
@@ -303,48 +307,39 @@ export default {
 
     async submitGame() {
       this.$refs["game"].validate(async (valid) => {
-        if (this.file != null) {
           if (valid) {
             this.methods === 'POST' ?
               this.link = '/registergame' :
               this.link = '/updategame'
 
             const token = JSON.parse(localStorage.getItem('token'));
-
-            let formData = new FormData();
-            formData.append('image', this.file);
-            formData.append('name', this.game.name)
-            formData.append('describe', this.game.describe)
-            formData.append('link', this.game.link)
-
+            this.game.image = "";
             const { data, status } = await this.$axios({
               method: this.methods,
               url: this.link,
-              data: formData,
+              data: this.game,
               headers: {
                 Authorization: `Bearer ${token}`,
-                token: token,
-                "Content-Type": "multipart/form-data"
+                token: token
               },
             }).catch((error) => {
               return {
                 data: [],
                 status: error.response.status,
-              };
+              }
             });
             if (status === 200) {
-              const fileInput = document.querySelector("#file")
-              fileInput.value = ""
-              this.file = null
-              this.game = limpaGame()
-              this.allData();
-              
+
               this.$message({
                 message: "Jogo cadastrado com sucesso",
                 type: "success",
               });
-              this.dialogo = false;
-              location.reload();
+ 
+            
+              this.dialogo = false
+              this.file = null
+              this.game = limpaLoja()
+              location.reload()
               
             } else {
               this.$message({
@@ -359,12 +354,6 @@ export default {
             });
           }
         
-        } else {
-          this.$message({
-            message: "Selecione uma imagem.",
-            type: "danger",
-          });
-        }
       })
     },
     async DeleteGame(game) {

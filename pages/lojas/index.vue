@@ -17,11 +17,14 @@
                     <!-- TABLE -->
                     <div class="flex">
                         <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
+                            <!-- img
                             <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
                                 <template slot-scope="scope">
-                                <img :src="scope.row.Image" />
-                            </template >
-              </el-table-column> <el-table-column prop="name" label="Name"> </el-table-column>
+                                    <img :src="scope.row.Image" />
+                                </template >
+                            </el-table-column> 
+                             -->
+              <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column prop="link" label="Link"> </el-table-column>
               <el-table-column prop="comando" label="" :v-bind="name"> 
@@ -48,9 +51,11 @@
             <el-form-item label="Link" prop="link">
               <el-input v-model="loja.link"></el-input>
             </el-form-item>
-            <el-form-item label="Image">
-              <input type="file" v-on:change="onChangeFileUpload" />
-            </el-form-item>
+            <!-- img 
+                <el-form-item label="Image">
+                    <input type="file" v-on:change="onChangeFileUpload" />
+                </el-form-item>
+            -->
           </div>
           <div class="flex justify-end">
             <el-button type="danger" size="small" @click="dialogo = false">
@@ -161,7 +166,6 @@ export default {
         },
         async submitLoja() {
             this.$refs["loja"].validate(async (valid) => {
-                if (this.file != null) {
                     if (valid) {
                         this.methods === 'POST' ?
                             this.link = '/registerstore' :
@@ -169,27 +173,17 @@ export default {
 
                         const token = JSON.parse(localStorage.getItem('token'));
 
-                        let formData = new FormData();
-                        formData.append('image', this.file);
-                        formData.append('name', this.loja.name)
-                        formData.append('describe', this.loja.describe)
-                        formData.append('link', this.loja.link)
-
+    
+                        this.loja.image = "";
                         const { data, status } = await this.$axios({
                             method: this.methods,
                             url: this.link,
-                            data: formData,
+                            data: this.loja,
                             headers: {
                                 Authorization: `Bearer ${token}`,
-                                token: token,
-                                "Content-Type": "multipart/form-data"
+                                token: token
                             },
-                        }).catch((error) => {
-                            return {
-                                data: [],
-                                status: error.response.status,
-                            };
-                        });
+                        })
                         if (status === 200) {
                             this.$message({
                                 message: "Loja cadastrada com sucesso",
@@ -198,6 +192,7 @@ export default {
                             this.dialogo = false
                             this.file = null
                             this.store = limpaLoja()
+                            this.allData();
                             location.reload()
                         } else {
                             this.$message({
@@ -211,12 +206,7 @@ export default {
                             type: "danger",
                         });
                     }
-                } else {
-                    this.$message({
-                        message: "Selecione uma imagem.",
-                        type: "danger",
-                    });
-                }
+              
             })
         },
         async DeleteStore(store){
