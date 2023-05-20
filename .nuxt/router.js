@@ -4,16 +4,16 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _25d0dec3 = () => interopDefault(import('../pages/jogos/index.vue' /* webpackChunkName: "pages/jogos/index" */))
-const _3959bb96 = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
-const _71015ac4 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
-const _254c9df8 = () => interopDefault(import('../pages/components/image.vue' /* webpackChunkName: "pages/components/image" */))
-const _64689215 = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
-const _1325bd9d = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
-const _ddb21496 = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
-const _30f39790 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
-const _36dfe88e = () => interopDefault(import('../pages/usuarios/redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
-const _14cd8c28 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _e4dbedb2 = () => interopDefault(import('..\\pages\\jogos\\index.vue' /* webpackChunkName: "pages/jogos/index" */))
+const _29b67298 = () => interopDefault(import('..\\pages\\lojas\\index.vue' /* webpackChunkName: "pages/lojas/index" */))
+const _03d9a0c2 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+const _af93d64c = () => interopDefault(import('..\\pages\\components\\image.vue' /* webpackChunkName: "pages/components/image" */))
+const _0053fd68 = () => interopDefault(import('..\\pages\\jogos\\compara\\index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
+const _64110cf9 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
+const _64fd784e = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
+const _16b61c28 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
+const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
+const _24b486b2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -28,43 +28,43 @@ export const routerOptions = {
 
   routes: [{
     path: "/jogos",
-    component: _25d0dec3,
+    component: _e4dbedb2,
     name: "jogos"
   }, {
     path: "/lojas",
-    component: _3959bb96,
+    component: _29b67298,
     name: "lojas"
   }, {
     path: "/usuarios",
-    component: _71015ac4,
+    component: _03d9a0c2,
     name: "usuarios"
   }, {
     path: "/components/image",
-    component: _254c9df8,
+    component: _af93d64c,
     name: "components-image"
   }, {
     path: "/jogos/compara",
-    component: _64689215,
+    component: _0053fd68,
     name: "jogos-compara"
   }, {
     path: "/usuarios/cadastro",
-    component: _1325bd9d,
+    component: _64110cf9,
     name: "usuarios-cadastro"
   }, {
     path: "/usuarios/login",
-    component: _ddb21496,
+    component: _64fd784e,
     name: "usuarios-login"
   }, {
     path: "/usuarios/recuperarsenha",
-    component: _30f39790,
+    component: _16b61c28,
     name: "usuarios-recuperarsenha"
   }, {
     path: "/usuarios/redefinirsenha",
-    component: _36dfe88e,
+    component: _af7d33d6,
     name: "usuarios-redefinirsenha"
   }, {
     path: "/",
-    component: _14cd8c28,
+    component: _24b486b2,
     name: "index"
   }],
 

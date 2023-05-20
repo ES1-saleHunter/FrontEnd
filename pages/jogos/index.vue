@@ -18,13 +18,13 @@
           <!-- TABLE -->
           <div class="flex">
             <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
-              <!-- Form
-              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
+            
+              <el-table-column min-width="10" max-width="10" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-            -->
+            
               <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column label="Link" prop="link">

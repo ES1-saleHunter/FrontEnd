@@ -31,6 +31,8 @@
               <template slot-scope="scope">
                 <el-button icon="el-icon-delete" @click="DeleteStore(scope.row.name)">
                 </el-button>
+                <el-button icon="el-icon-refresh" @click="UpdateGames(scope.row.name)">
+                </el-button>
               </template>
             </el-table-column>
             </el-table>
@@ -239,6 +241,38 @@ export default {
           });
           
           console.log(data);
+          } catch (error) {
+          throw error;
+        }
+      },
+      async UpdateGames(store){ 
+        try {
+          const token = JSON.parse(localStorage.getItem('token'));
+          const storename ={
+            store: store
+          }
+          const { data, status } = await this.$axios({
+              method: "PUT",
+              url: "/updategamebank",
+              data: storename,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                token: token,
+              },
+            })
+          if (status === 200){
+            this.$message({
+              message: "Jogos atualizados com sucesso",
+              type: "success",
+            });
+            this.allData();
+          }
+          else
+          this.$message({
+              message: "Algo deu problema.",
+              type: "danger",
+          });
+          
           } catch (error) {
           throw error;
         }
