@@ -93,8 +93,14 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="Price" prop="price">
-              <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            <el-form-item label="originalprice" prop="price">
+              <el-input-number v-model="gamainstore.originalprice" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            </el-form-item>
+            <el-form-item label="discountprice" prop="price">
+              <el-input-number v-model="gamainstore.discountprice" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            </el-form-item>
+            <el-form-item label="discountpercentage" prop="price">
+              <el-input-number v-model="gamainstore.discountpercentage" :precision="2" :step="0.1" :max="100"></el-input-number>
             </el-form-item>
             <el-form-item label="Link" prop="link">
               <el-input v-model="gamainstore.link"></el-input>
@@ -134,7 +140,9 @@ function gameinstore() {
     store: '',
     game: '',
     link: '',
-    price: 0,
+    originalprice: 0,
+    discountprice: 0,
+    discountpercentage: 0
   }
 }
 
@@ -278,7 +286,9 @@ export default {
             store: this.gamainstore.store,
             game: this.gamainstore.game,
             link: this.gamainstore.link,
-            price: this.gamainstore.price.toString()
+            originalprice: this.gamainstore.originalprice.toString(),
+            discountprice: this.gamainstore.discountprice.toString(),
+            discountpercentage: this.gamainstore.discountpercentage.toString()
           },
           headers: {
             Authorization: `Bearer ${token}`,

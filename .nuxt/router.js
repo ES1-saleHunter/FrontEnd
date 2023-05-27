@@ -10,6 +10,7 @@ const _03d9a0c2 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /
 const _af93d64c = () => interopDefault(import('..\\pages\\components\\image.vue' /* webpackChunkName: "pages/components/image" */))
 const _0053fd68 = () => interopDefault(import('..\\pages\\jogos\\compara\\index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
 const _64110cf9 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
+const _203921fd = () => interopDefault(import('..\\pages\\usuarios\\favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
 const _64fd784e = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _16b61c28 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
 const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
@@ -50,6 +51,10 @@ export const routerOptions = {
     path: "/usuarios/cadastro",
     component: _64110cf9,
     name: "usuarios-cadastro"
+  }, {
+    path: "/usuarios/favoritos",
+    component: _203921fd,
+    name: "usuarios-favoritos"
   }, {
     path: "/usuarios/login",
     component: _64fd784e,
