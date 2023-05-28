@@ -8,11 +8,18 @@
                 <div>
                     <div class="flex justify-between items-center py-4">
                         <h1 class="font"><b>Stores</b></h1>
-                        <el-row :gutter="1">
-                            <div class="display-flex justify-end">
-                                <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+                        <div class="flex ">
+                          <el-row :gutter="1">
+                            <div class="display-flex justify-end mx-2">
+                              <el-button icon="el-icon-refresh" class="new-btn" @click="updatestores()">Update Stores</el-button>
                             </div>
-                        </el-row>
+                          </el-row>
+                          <el-row :gutter="1">
+                            <div class="display-flex justify-end mx-2">
+                              <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+                            </div>
+                          </el-row>
+                        </div>
                     </div>
                     <!-- TABLE -->
                     <div class="flex">
@@ -152,6 +159,39 @@ export default {
                     this.stores = datastores;
                 } else
                     this.stores = []
+
+            } catch (error) {
+                throw error;
+            }
+        },
+        async updatestores() {
+            const token = JSON.parse(localStorage.getItem('token'));
+            try {
+              const { data, status } = await this.$axios({
+          method: "PUT",
+          url: "/updategamebanks",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        }).catch((error) => {
+          return {
+            data: [],
+            status: error.response.status,
+          };
+        });
+                if (status === 200) {
+                  this.$message({
+                                message: "Lojas atualizadas com sucesso",
+                                type: "success",
+                            });
+                }else{
+                  this.$message({
+                        message: "Erro ao atualizar as lojas",
+                        type: "warning",
+                     });
+                }
+                    
 
             } catch (error) {
                 throw error;
