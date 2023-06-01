@@ -2,7 +2,7 @@
     <div>
         <message :msg="msg" v-show="msg"/>
         <div>
-            <form id="login-form" @submit="login">
+            <form id="login-form" @submit="login" noValidate>
                 <div class="input-container">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" v-model="email" placeholder="insert your email">
@@ -13,7 +13,7 @@
                 </div>
                
                 <div class="input-container" id="submit">
-                    <input type="submit" class="submit-btn" value="sing in">
+                    <input type="submit" class="submit-btn" value="sign in">
                 </div>
             </form>
         </div>
