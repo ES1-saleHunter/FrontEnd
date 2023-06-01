@@ -2,71 +2,78 @@
   {
     "name": "jogos",
     "path": "/jogos",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/jogos/index.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\jogos\\\\index.vue",
     "chunkName": "pages/jogos/index",
-    "_name": "_25d0dec3"
+    "_name": "_e4dbedb2"
   },
   {
     "name": "lojas",
     "path": "/lojas",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/lojas/index.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\lojas\\\\index.vue",
     "chunkName": "pages/lojas/index",
-    "_name": "_3959bb96"
+    "_name": "_29b67298"
   },
   {
     "name": "usuarios",
     "path": "/usuarios",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/index.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
     "chunkName": "pages/usuarios/index",
-    "_name": "_71015ac4"
+    "_name": "_03d9a0c2"
   },
   {
     "name": "components-image",
     "path": "/components/image",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/components/image.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\components\\\\image.vue",
     "chunkName": "pages/components/image",
-    "_name": "_254c9df8"
+    "_name": "_af93d64c"
   },
   {
     "name": "jogos-compara",
     "path": "/jogos/compara",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/jogos/compara/index.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\jogos\\\\compara\\\\index.vue",
     "chunkName": "pages/jogos/compara/index",
-    "_name": "_64689215"
+    "_name": "_0053fd68"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/cadastro.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
     "chunkName": "pages/usuarios/cadastro",
-    "_name": "_1325bd9d"
+    "_name": "_64110cf9"
+  },
+  {
+    "name": "usuarios-favoritos",
+    "path": "/usuarios/favoritos",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\favoritos.vue",
+    "chunkName": "pages/usuarios/favoritos",
+    "_name": "_203921fd"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/login.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
     "chunkName": "pages/usuarios/login",
-    "_name": "_ddb21496"
+    "_name": "_64fd784e"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
     "chunkName": "pages/usuarios/recuperarsenha",
-    "_name": "_30f39790"
+    "_name": "_16b61c28"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/usuarios/redefinirsenha.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
     "chunkName": "pages/usuarios/redefinirsenha",
-    "_name": "_36dfe88e"
+    "_name": "_af7d33d6"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/renan/Área de trabalho/ES1-SALEHUNTER/FrontEnd/pages/index.vue",
+    "component": "C:\\\\Users\\\\renan\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_14cd8c28"
+    "_name": "_24b486b2"
   }
 ]

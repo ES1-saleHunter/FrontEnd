@@ -18,13 +18,13 @@
           <!-- TABLE -->
           <div class="flex">
             <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
-              <!-- Form
-              <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image">
+            
+              <el-table-column min-width="10" max-width="10" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-            -->
+            
               <el-table-column prop="name" label="Name"> </el-table-column>
               <el-table-column prop="describe" label="Description"> </el-table-column>
               <el-table-column label="Link" prop="link">
@@ -93,8 +93,14 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="Price" prop="price">
-              <el-input-number v-model="gamainstore.price" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            <el-form-item label="originalprice" prop="price">
+              <el-input-number v-model="gamainstore.originalprice" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            </el-form-item>
+            <el-form-item label="discountprice" prop="price">
+              <el-input-number v-model="gamainstore.discountprice" :precision="2" :step="0.1" :max="1000"></el-input-number>
+            </el-form-item>
+            <el-form-item label="discountpercentage" prop="price">
+              <el-input-number v-model="gamainstore.discountpercentage" :precision="2" :step="0.1" :max="100"></el-input-number>
             </el-form-item>
             <el-form-item label="Link" prop="link">
               <el-input v-model="gamainstore.link"></el-input>
@@ -134,7 +140,9 @@ function gameinstore() {
     store: '',
     game: '',
     link: '',
-    price: 0,
+    originalprice: 0,
+    discountprice: 0,
+    discountpercentage: 0
   }
 }
 
@@ -278,7 +286,9 @@ export default {
             store: this.gamainstore.store,
             game: this.gamainstore.game,
             link: this.gamainstore.link,
-            price: this.gamainstore.price.toString()
+            originalprice: this.gamainstore.originalprice.toString(),
+            discountprice: this.gamainstore.discountprice.toString(),
+            discountpercentage: this.gamainstore.discountpercentage.toString()
           },
           headers: {
             Authorization: `Bearer ${token}`,
