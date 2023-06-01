@@ -8,25 +8,17 @@
         <!-- HEADER -->
         <div class="">
           <div class="flex justify-between items-center py-4">
-            <h1 class="font"><b>Compare Prices</b></h1>
-            <el-row :gutter="1">
-            </el-row>
+            <h1 class="font"><b>favorite games</b></h1>
           </div>
-          <!-- TABLE -->
-          <div class="flex">
+               <!-- TABLE -->
+               <div class="flex">
              <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
-              <el-table-column :min-width="12" prop="comands" label="" :v-bind="name">
-                <template slot-scope="scope">
-                  <el-button class="new-btn" icon="el-icon-star-on"  @click="favoritegame(scope.row.name)">
-                  </el-button>
-                </template>
-              </el-table-column>
-              <el-table-column min-width="40" max-width="40" :v-bind="Image" prop="Image">
-                <template slot-scope="scope">
-                  <img :src="scope.row.Image" />
-                </template>
-              </el-table-column>
-              
+               
+                <el-table-column min-width="40" max-width="40" :v-bind="Image" prop="Image">
+                  <template slot-scope="scope">
+                    <img :src="scope.row.Image" />
+                  </template>
+                </el-table-column>
                 
                 <el-table-column prop="name" label="Game"></el-table-column>
                 <el-table-column  prop="name" label="Stores"> 
@@ -34,6 +26,12 @@
                     <template v-for="item in scope.row.stores" > |{{ item.name }} - R${{ item.gamestore.discountprice }}|</template>
                   </template>
                 </el-table-column>
+                <el-table-column :min-width="12" prop="comands" label="" :v-bind="name">
+                <template slot-scope="scope">
+                  <el-button class="new-btn" icon="el-icon-close"  @click="removegame(scope.row.name)">
+                  </el-button>
+                </template>
+              </el-table-column>
               </el-table> 
           </div>
         </div>
@@ -41,7 +39,7 @@
     </div>
   </div>
 </template>
-    
+  
 <script>
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
@@ -74,13 +72,6 @@ export default {
             trigger: 'blur',
           },
         ],
-        link: [
-          {
-            required: true,
-            message: 'Input the game´s address link.',
-            trigger: 'blur',
-          },
-        ],
         image: [
           {
             required: true,
@@ -102,17 +93,20 @@ export default {
     async allData() {
       const token = JSON.parse(localStorage.getItem('token'));
       try {
-        const { data, status } = await this.$axios.get('/getallgame', {
+        const { data, status } = await this.$axios.get('/getusergames', {
           headers: {
             Authorization: `Bearer ${token}`,
             token: token
           },
         });
         if (status === 200) {
-          this.games = data.game;
+          this.games = data.user.games;
+          console.log(this.games)
           this.games.forEach(async (game)=>{
             await this.getStores(game.name)
           })
+          //console.log(this.games)
+          //console.log(this.gameswithstore)
           
         }
         else
@@ -143,12 +137,12 @@ export default {
         throw error;
       }
     },
-    async favoritegame(game) {
+    async removegame(game) {
       const token = JSON.parse(localStorage.getItem('token'));
       try {
         const { data, status } = await this.$axios({
           method: "POST",
-          url: "relationgametouser",
+          url: "removerelationgametouser",
           data: {game:game},
           headers: {
           Authorization: `Bearer ${token}`,
@@ -156,11 +150,13 @@ export default {
          },
          })
         if (status === 200) {
+          
           this.$message({
-              message: "Jogo adicionado aos favoritos com sucesso",
+              message: "Jogo removido com sucesso",
               type: "success",
           });
-
+          this.allData(),
+          location.reload()
         }
         else{
           this.$message({
@@ -170,17 +166,17 @@ export default {
         }
         } catch (error) {
         throw error;
-      }
-    },
+      }}
   }
 };
 </script>
-    
+  
 <style>
 .font {
   font-weight: 500;
   font-size: 32px;
 }
+
 
 input,
 select {
@@ -198,15 +194,12 @@ select {
   border-radius: 20px;
   font-size: 16px;
   margin: 0 auto;
-  margin-right: -300px;
   cursor: pointer;
   transition: .5s;
 }
-
 
 .new-btn:hover {
   background-color: transparent;
   color: #222;
 }
 </style>
-  

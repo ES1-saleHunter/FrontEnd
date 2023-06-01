@@ -8,11 +8,18 @@
                 <div>
                     <div class="flex justify-between items-center py-4">
                         <h1 class="font"><b>Stores</b></h1>
-                        <el-row :gutter="1">
-                            <div class="display-flex justify-end">
-                                <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+                        <div class="flex ">
+                          <el-row :gutter="1">
+                            <div class="display-flex justify-end mx-2">
+                              <el-button icon="el-icon-refresh" class="new-btn" @click="updatestores()">Update Stores</el-button>
                             </div>
-                        </el-row>
+                          </el-row>
+                          <el-row :gutter="1">
+                            <div class="display-flex justify-end mx-2">
+                              <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+                            </div>
+                          </el-row>
+                        </div>
                     </div>
                     <!-- TABLE -->
                     <div class="flex">
@@ -30,6 +37,8 @@
               <el-table-column prop="comando" label="" :v-bind="name"> 
               <template slot-scope="scope">
                 <el-button icon="el-icon-delete" @click="DeleteStore(scope.row.name)">
+                </el-button>
+                <el-button icon="el-icon-refresh" @click="UpdateGames(scope.row.name)">
                 </el-button>
               </template>
             </el-table-column>
@@ -155,6 +164,39 @@ export default {
                 throw error;
             }
         },
+        async updatestores() {
+            const token = JSON.parse(localStorage.getItem('token'));
+            try {
+              const { data, status } = await this.$axios({
+          method: "PUT",
+          url: "/updategamebanks",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        }).catch((error) => {
+          return {
+            data: [],
+            status: error.response.status,
+          };
+        });
+                if (status === 200) {
+                  this.$message({
+                                message: "Lojas atualizadas com sucesso",
+                                type: "success",
+                            });
+                }else{
+                  this.$message({
+                        message: "Erro ao atualizar as lojas",
+                        type: "warning",
+                     });
+                }
+                    
+
+            } catch (error) {
+                throw error;
+            }
+        },
         novaLoja() {
             this.dialogo = true;
         },
@@ -239,6 +281,38 @@ export default {
           });
           
           console.log(data);
+          } catch (error) {
+          throw error;
+        }
+      },
+      async UpdateGames(store){ 
+        try {
+          const token = JSON.parse(localStorage.getItem('token'));
+          const storename ={
+            store: store
+          }
+          const { data, status } = await this.$axios({
+              method: "PUT",
+              url: "/updategamebank",
+              data: storename,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                token: token,
+              },
+            })
+          if (status === 200){
+            this.$message({
+              message: "Jogos atualizados com sucesso",
+              type: "success",
+            });
+            this.allData();
+          }
+          else
+          this.$message({
+              message: "Algo deu problema.",
+              type: "danger",
+          });
+          
           } catch (error) {
           throw error;
         }
