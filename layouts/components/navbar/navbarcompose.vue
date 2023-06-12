@@ -6,10 +6,10 @@
       <span class=" text-white self-center text-2xl font-semibold whitespace-nowrap">SaleHunter</span>
   </a>
   <div class="flex md:order-2">
-      <button type="button" class="text-white font-medium rounded-lg">User</button>
+      <p class="text-white mt-2 font-medium rounded-lg">User</p>
       <Avatar class="ml-4" />
   </div>
-  <div class="items-center justify-between hidden w-full md:flex w-auto md:order-1" id="navbar-sticky">
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
     <ul class="flex flex-col p-4 p-0 mt-4 font-medium rounded-lg bg-gray-800 md:flex-row md:space-x-8 md:mt-0 md:border-0">
       <li>
         <nuxt-link class="text-white"  to="/jogos/compara">Home</nuxt-link>
