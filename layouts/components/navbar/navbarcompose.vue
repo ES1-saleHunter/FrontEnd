@@ -6,7 +6,7 @@
       <span class=" text-white self-center text-2xl font-semibold whitespace-nowrap">SaleHunter</span>
   </a>
   <div class="flex md:order-2">
-      <p class="text-white mt-2 font-medium rounded-lg">User</p>
+      <p class="text-white mt-2 font-medium rounded-lg">{{ user.name }}</p>
       <Avatar class="ml-4" />
   </div>
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
