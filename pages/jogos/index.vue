@@ -26,22 +26,15 @@
               </el-table-column>
               <el-table-column   >
                 <template slot-scope="scope" >
-                  <h1  class="uppercase font-bold text-xl"> {{ scope.row.name }} </h1>
+                  <h1  class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </h1>
                   <p class="text-base/6 mb-4"> {{ scope.row.describe }} </p>
                   <div class="flex justify-end">
                     <el-button  icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
-                    <el-button  icon="el-icon-delete" @click="DeleteGame(scope.row.name)"></el-button>
+                    <el-button  icon="el-icon-delete" @click="DeleteGame(scope.row.name)">Delete</el-button>
                   </div>
                 </template>
 
               </el-table-column>
-            
-
-              <!-- <el-table-column prop="link" label="Link"> </el-table-column> -->
-
-
-             
-             
             </el-table>
           </div>
         </div>

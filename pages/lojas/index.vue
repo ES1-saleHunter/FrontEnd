@@ -4,42 +4,47 @@
         <sideBar />
         <navbar/>
         <div class="w-full flex justify-center">
-            <div class="w-3/4">
+            <div class="w-3/5">
                 <div>
-                    <div class="flex justify-between items-center py-4">
+                    <div class="flex justify-between items-center pt-4">
                         <h1 class="font"><b>Stores</b></h1>
                         <div class="flex ">
                           <el-row :gutter="1">
                             <div class="display-flex justify-end mx-2">
-                              <el-button icon="el-icon-refresh" class="new-btn" @click="updatestores()">Update Stores</el-button>
+                              <el-button icon="el-icon-refresh"  @click="updatestores()">Update Stores</el-button>
                             </div>
                           </el-row>
                           <el-row :gutter="1">
                             <div class="display-flex justify-end mx-2">
-                              <el-button icon="el-icon-plus" class="new-btn" @click="novaLoja()">New Store</el-button>
+                              <el-button icon="el-icon-plus"  @click="novaLoja()">New Store</el-button>
                             </div>
                           </el-row>
                         </div>
                     </div>
                     <!-- TABLE -->
                     <div class="flex">
-                        <el-table empty-text="No Stores Indexed" :data="stores" v-loading="loading" size="small" style="width: 80%">
-                            <!-- img
-                            <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" label="Image">
+                        <el-table  empty-text="No Stores Indexed" :data="stores" v-loading="loading">
+                            
+                            <el-table-column min-width="15" max-width="15" :v-bind="Image" prop="Image" >
                                 <template slot-scope="scope">
-                                    <img :src="scope.row.Image" />
+                                    <el-image :src="scope.row.Image">
+                                    </el-image>
                                 </template >
                             </el-table-column> 
-                             -->
-              <el-table-column prop="name" label="Name"> </el-table-column>
-              <el-table-column prop="describe" label="Description"> </el-table-column>
-              <el-table-column prop="link" label="Link"> </el-table-column>
-              <el-table-column prop="comando" label="" :v-bind="name"> 
-              <template slot-scope="scope">
-                <el-button icon="el-icon-delete" @click="DeleteStore(scope.row.name)">
-                </el-button>
-                <el-button icon="el-icon-refresh" @click="UpdateGames(scope.row.name)">
-                </el-button>
+                             
+              <el-table-column  prop="name" > 
+                <template slot-scope="scope">
+                  <h1 class="uppercase justify-start font-bold text-xl">
+                      {{ scope.row.name }}          
+                    </h1>
+                </template >
+              </el-table-column>
+              <el-table-column  prop="comando"  :v-bind="name"> 
+              <template  slot-scope="scope">
+                  <div class="flex justify-end">
+                    <el-button  icon="el-icon-plus" @click="UpdateGames(scope.row.name)">Update</el-button>
+                    <el-button  icon="el-icon-delete" @click="DeleteStore(scope.row.name)">Delete</el-button>
+                  </div>  
               </template>
             </el-table-column>
             </el-table>
@@ -149,14 +154,7 @@ export default {
                 });
                 if (status === 200) {
                     this.stores = data.store
-                    let datastores = [];
-                    let temp = "";
-                    data.store.forEach(element => {
-                        temp = this.urlBack + this.urlFile + element.Image.replace('src', '');
-                        datastores[element.id - 1] = element
-                        datastores[element.id - 1].Image = temp
-                    });
-                    this.stores = datastores;
+                    console.log(this.stores)
                 } else
                     this.stores = []
 
