@@ -1,7 +1,7 @@
 <template>
 <nav class="bg-gray-800 w-full z-20 top-0 left-0 border-b border-gray-200">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="/jogos/compara" class="flex items-center">
+  <a href="" class="flex items-center">
       <img src="~/assets/public/logo.png" id="logo" class="h-14 mr-3" alt="Logo">
       <span class=" text-white self-center text-2xl font-semibold whitespace-nowrap">SaleHunter</span>
   </a>
