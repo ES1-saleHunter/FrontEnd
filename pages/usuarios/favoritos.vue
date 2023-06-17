@@ -29,7 +29,6 @@
                   <template slot-scope="scope" > 
                     <div class="flex flex-col">
                       <pricedesc :price=scope.row.stores[0]></pricedesc>
-                     
                     </div>
                   </template>
                  
