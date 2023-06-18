@@ -111,9 +111,9 @@ export default {
         if (status === 200) {
           this.games = data.game;
           this.games.forEach(async (game)=>{
-            await this.getStores(game.name)
+            let teste = await this.getStores(game.name)
+            console.log(teste)
           })
-          
         }
         else
           this.games = []
@@ -134,7 +134,6 @@ export default {
          },
          })
         if (status === 200) {
-          console.log(data.game)
           this.gameswithstore.push(data.game)
         }
         else

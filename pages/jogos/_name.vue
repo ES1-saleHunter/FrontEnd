@@ -7,7 +7,7 @@
     <div v-else>
     <sideBar />
     <navbar />
-      <div class="w-full flex flex-col justify-center items-center m-8 ">
+      <div class="w-full flex flex-col justify-center items-center mt-8">
         <div class="flex w-8/12 h-2/6 min-h-max max-h-full mb-0">
           <img style="height: 80%;" class="m-3" :src="games.Image">
           <div class=" ">
