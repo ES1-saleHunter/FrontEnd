@@ -2,67 +2,85 @@
   {
     "name": "jogos",
     "path": "/jogos",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\jogos\\\\index.vue",
-    "chunkName": "pages/jogos/index"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/jogos/index.vue",
+    "chunkName": "pages/jogos/index",
+    "_name": "_5e9357ea"
   },
   {
     "name": "lojas",
     "path": "/lojas",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\lojas\\\\index.vue",
-    "chunkName": "pages/lojas/index"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/lojas/index.vue",
+    "chunkName": "pages/lojas/index",
+    "_name": "_37819e44"
   },
   {
     "name": "usuarios",
     "path": "/usuarios",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\index.vue",
-    "chunkName": "pages/usuarios/index"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/index.vue",
+    "chunkName": "pages/usuarios/index",
+    "_name": "_2bca7856"
   },
   {
     "name": "components-image",
     "path": "/components/image",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\components\\\\image.vue",
-    "chunkName": "pages/components/image"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/components/image.vue",
+    "chunkName": "pages/components/image",
+    "_name": "_b93594a0"
   },
   {
     "name": "jogos-compara",
     "path": "/jogos/compara",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\jogos\\\\compara\\\\index.vue",
-    "chunkName": "pages/jogos/compara/index"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/jogos/compara/index.vue",
+    "chunkName": "pages/jogos/compara/index",
+    "_name": "_54483f5d"
   },
   {
     "name": "usuarios-cadastro",
     "path": "/usuarios/cadastro",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\cadastro.vue",
-    "chunkName": "pages/usuarios/cadastro"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/cadastro.vue",
+    "chunkName": "pages/usuarios/cadastro",
+    "_name": "_58201ce5"
   },
   {
     "name": "usuarios-favoritos",
     "path": "/usuarios/favoritos",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\favoritos.vue",
-    "chunkName": "pages/usuarios/favoritos"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/favoritos.vue",
+    "chunkName": "pages/usuarios/favoritos",
+    "_name": "_a3e7e0de"
   },
   {
     "name": "usuarios-login",
     "path": "/usuarios/login",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\login.vue",
-    "chunkName": "pages/usuarios/login"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/login.vue",
+    "chunkName": "pages/usuarios/login",
+    "_name": "_151bc926"
   },
   {
     "name": "usuarios-recuperarsenha",
     "path": "/usuarios/recuperarsenha",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\recuperarsenha.vue",
-    "chunkName": "pages/usuarios/recuperarsenha"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/recuperarsenha.vue",
+    "chunkName": "pages/usuarios/recuperarsenha",
+    "_name": "_b9a93e50"
   },
   {
     "name": "usuarios-redefinirsenha",
     "path": "/usuarios/redefinirsenha",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\usuarios\\\\redefinirsenha.vue",
-    "chunkName": "pages/usuarios/redefinirsenha"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/redefinirsenha.vue",
+    "chunkName": "pages/usuarios/redefinirsenha",
+    "_name": "_56c7d501"
+  },
+  {
+    "name": "jogos-name",
+    "path": "/jogos/:name",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/jogos/_name.vue",
+    "chunkName": "pages/jogos/_name",
+    "_name": "_73f252a3"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\CI\\\\Desktop\\\\FrontEnd\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41f24534"
   }
 ]

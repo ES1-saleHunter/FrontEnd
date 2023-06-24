@@ -202,7 +202,9 @@ export default {
           }else{
             this.like = true;
           }
-  
+          console.log(this.games)
+          this.getgamelike(this.games.id)
+
         }
         else
           this.games = null
@@ -302,6 +304,36 @@ export default {
         }
       
       },
+    async getgamelike(idgame) {
+      const token = JSON.parse(localStorage.getItem('token'));
+      try {
+        const { data, status } = await this.$axios({
+          method: "GET",
+          url: "getusergameslike",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        })
+        if (status === 200) {
+          console.log("AAAAAAAAAAAAAAAAAAAAAA")
+          
+          if(data.user.games.findIndex(x => x.id === idgame) < 0){
+            this.like = false;
+          }else{
+            this.like = true;
+          }
+  
+        }
+        else
+          this.games = null
+
+        
+      } catch (error) {
+        throw error;
+      }
+    
+    },
     statusDrawer(value) {
       this.showDrawer = value;
     },
