@@ -26,7 +26,7 @@
               </el-table-column>
               <el-table-column   >
                 <template slot-scope="scope" >
-                  <h1  class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </h1>
+                  <a :href="linkgame + scope.row.name" class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </a>
                   <p class="text-base/6 mb-4"> {{ scope.row.describe }} </p>
                   <div class="flex justify-end">
                     <el-button  icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
@@ -146,6 +146,7 @@ export default {
   data() {
     return {
       Image: null,
+      linkgame: "/jogos/",
       hover: false,
       dialogo: false,
       dialogostore: false,
