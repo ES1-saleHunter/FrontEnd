@@ -4,7 +4,7 @@
     <navbar />
     <div class="w-full flex justify-center">
       <!-- Table -->
-      <div class="w-3/4">
+      <div class="w-3/5">
         <!-- HEADER -->
         <div class="">
           <div class="flex justify-between items-center py-4">
@@ -15,23 +15,24 @@
           <!-- TABLE -->
           <div class="flex">
              <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
-              <el-table-column :min-width="12" prop="comands" label="" :v-bind="name">
-                <template slot-scope="scope">
-                  <el-button class="new-btn" icon="el-icon-star-on"  @click="favoritegame(scope.row.name)">
-                  </el-button>
-                </template>
-              </el-table-column>
-              <el-table-column min-width="40" max-width="40" :v-bind="Image" prop="Image">
+           
+              <el-table-column min-width="50" max-width="50" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-              
                 
-                <el-table-column prop="name" label="Game"></el-table-column>
-                <el-table-column  prop="name" label="Stores"> 
-                  <template slot-scope="scope"> 
-                    <template v-for="item in scope.row.stores" > |{{ item.name }} - R${{ item.gamestore.discountprice }}|</template>
+
+                <el-table-column prop="name" >
+                  <template slot-scope="scope" >
+                  <a :href="linkgame + scope.row.name"  class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </a>
+                </template>
+                </el-table-column>
+                <el-table-column  prop="name" > 
+                  <template slot-scope="scope" > 
+                    <div class="flex flex-col">
+                      <pricedesc :price=scope.row.stores[0]></pricedesc>
+                    </div>
                   </template>
                 </el-table-column>
               </el-table> 
@@ -45,12 +46,14 @@
 <script>
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
+import pricedesc from '~/layouts/components/preco/pricedesc.vue'
 
 export default {
-  components: { sideBar, navbar },
+  components: { sideBar, navbar, pricedesc },
   data() {
     return {
       games: [],
+      linkgame: "/jogos/",
       gameswithstore: [],
       showDrawer: false,
       loading: false,
