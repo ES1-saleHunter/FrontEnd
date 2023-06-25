@@ -44,7 +44,7 @@
             </el-table>
           </div>
           <div class="flex w-8/12 h-2/6 min-h-max max-h-full mt-16 flex-col ">
-            <p class="font2 font-bold uppercase">Price History of {{ games.name }}</p>
+            <p class="font2  uppercase">Price History of {{ games.name }}</p>
             <LineChart class="justify-center" :chartData="chartData" :options="chartOptions" />
           </div>
         </div>
@@ -304,7 +304,6 @@ export default {
 .font2 {
   font-weight: 500;
   font-size: 25px;
-  font-weight: bold;
   color: rgb(11, 11, 11);
 }
 
