@@ -4,17 +4,17 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _e4dbedb2 = () => interopDefault(import('..\\pages\\jogos\\index.vue' /* webpackChunkName: "pages/jogos/index" */))
-const _29b67298 = () => interopDefault(import('..\\pages\\lojas\\index.vue' /* webpackChunkName: "pages/lojas/index" */))
-const _03d9a0c2 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /* webpackChunkName: "pages/usuarios/index" */))
-const _af93d64c = () => interopDefault(import('..\\pages\\components\\image.vue' /* webpackChunkName: "pages/components/image" */))
-const _0053fd68 = () => interopDefault(import('..\\pages\\jogos\\compara\\index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
-const _64110cf9 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
-const _203921fd = () => interopDefault(import('..\\pages\\usuarios\\favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
-const _64fd784e = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
-const _16b61c28 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
-const _af7d33d6 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
-const _24b486b2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _5e9357ea = () => interopDefault(import('../pages/jogos/index.vue' /* webpackChunkName: "pages/jogos/index" */))
+const _37819e44 = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
+const _2bca7856 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+const _b93594a0 = () => interopDefault(import('../pages/components/image.vue' /* webpackChunkName: "pages/components/image" */))
+const _54483f5d = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
+const _58201ce5 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
+const _a3e7e0de = () => interopDefault(import('../pages/usuarios/favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
+const _151bc926 = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
+const _b9a93e50 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
+const _56c7d501 = () => interopDefault(import('../pages/usuarios/redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
+const _41f24534 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -29,47 +29,47 @@ export const routerOptions = {
 
   routes: [{
     path: "/jogos",
-    component: _e4dbedb2,
+    component: _5e9357ea,
     name: "jogos"
   }, {
     path: "/lojas",
-    component: _29b67298,
+    component: _37819e44,
     name: "lojas"
   }, {
     path: "/usuarios",
-    component: _03d9a0c2,
+    component: _2bca7856,
     name: "usuarios"
   }, {
     path: "/components/image",
-    component: _af93d64c,
+    component: _b93594a0,
     name: "components-image"
   }, {
     path: "/jogos/compara",
-    component: _0053fd68,
+    component: _54483f5d,
     name: "jogos-compara"
   }, {
     path: "/usuarios/cadastro",
-    component: _64110cf9,
+    component: _58201ce5,
     name: "usuarios-cadastro"
   }, {
     path: "/usuarios/favoritos",
-    component: _203921fd,
+    component: _a3e7e0de,
     name: "usuarios-favoritos"
   }, {
     path: "/usuarios/login",
-    component: _64fd784e,
+    component: _151bc926,
     name: "usuarios-login"
   }, {
     path: "/usuarios/recuperarsenha",
-    component: _16b61c28,
+    component: _b9a93e50,
     name: "usuarios-recuperarsenha"
   }, {
     path: "/usuarios/redefinirsenha",
-    component: _af7d33d6,
+    component: _56c7d501,
     name: "usuarios-redefinirsenha"
   }, {
     path: "/",
-    component: _24b486b2,
+    component: _41f24534,
     name: "index"
   }],
 

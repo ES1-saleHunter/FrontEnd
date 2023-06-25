@@ -2,7 +2,7 @@
     <div>
         <message :msg="msg" v-show="msg"/>
         <div>
-            <form id="cadastro-form" @submit="cadastro">
+            <form id="cadastro-form" @submit="cadastro" noValidate>
                 <div class="input-container">
                     <label for="name">name:</label>
                     <input type="name" id="name" name="name" v-model="name" placeholder="insert your name">
@@ -21,9 +21,9 @@
                 </div>
                 <div class="bnt">
                     
-                    <router-link class="submit-btn" id="bnt1" to="/usuarios/login">sing in</router-link>
+                    <router-link class="submit-btn" id="bnt1" to="/usuarios/login">sign in</router-link>
                    
-                    <input type="submit" class="submit-btn" id="bnt" value="sing up">
+                    <input type="submit" class="submit-btn" id="bnt" value="sign up">
                 </div>
             
             </form>

@@ -199,7 +199,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {"API_BASE_URL":"http://localhost:3332","API_FILES":"/files"}
+      env: {"API_BASE_URL":"https://backend-production-b806.up.railway.app","API_FILES":"/files"}
     }
     // Only set once
 
