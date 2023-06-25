@@ -2,6 +2,12 @@
   <div>
     <sideBar />
     <navbar />
+
+    <!-- Filtros -->
+    <div  class=" flex align-center justify-center">
+      <Filters/>
+    </div>
+    
     <div class="w-full flex justify-center">
       <!-- Table -->
       <div class="w-3/4">
@@ -9,45 +15,68 @@
         <div class="">
           <div class="flex justify-between items-center py-4">
             <h1 class="font"><b>Compare Prices</b></h1>
-            <el-row :gutter="1">
-            </el-row>
+            <el-row :gutter="1"> </el-row>
           </div>
           <!-- TABLE -->
           <div class="flex">
-             <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
-              <el-table-column :min-width="12" prop="comands" label="" :v-bind="name">
+            <el-table
+              empty-text="No Stores or Games"
+              :data="gameswithstore"
+              v-loading="loading"
+              size="small"
+              style="width: 80%"
+            >
+              <el-table-column
+                :min-width="12"
+                prop="comands"
+                label=""
+                :v-bind="name"
+              >
                 <template slot-scope="scope">
-                  <el-button class="new-btn" icon="el-icon-star-on"  @click="favoritegame(scope.row.name)">
+                  <el-button
+                    class="new-btn"
+                    icon="el-icon-star-on"
+                    @click="favoritegame(scope.row.name)"
+                  >
                   </el-button>
                 </template>
               </el-table-column>
-              <el-table-column min-width="40" max-width="40" :v-bind="Image" prop="Image">
+              <el-table-column
+                min-width="40"
+                max-width="40"
+                :v-bind="Image"
+                prop="Image"
+              >
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-              
-                
-                <el-table-column prop="name" label="Game"></el-table-column>
-                <el-table-column  prop="name" label="Stores"> 
-                  <template slot-scope="scope"> 
-                    <template v-for="item in scope.row.stores" > |{{ item.name }} - R${{ item.gamestore.discountprice }}|</template>
-                  </template>
-                </el-table-column>
-              </el-table> 
+
+              <el-table-column prop="name" label="Game"></el-table-column>
+              <el-table-column prop="name" label="Stores">
+                <template slot-scope="scope">
+                  <template v-for="item in scope.row.stores">
+                    |{{ item.name }} - R${{
+                      item.gamestore.discountprice
+                    }}|</template
+                  >
+                </template>
+              </el-table-column>
+            </el-table>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-    
+
 <script>
-import sideBar from '~/layouts/components/sidebar/sidebar.vue';
-import navbar from '~/layouts/components/navbar/navbarcompose.vue'
+import sideBar from "~/layouts/components/sidebar/sidebar.vue";
+import navbar from "~/layouts/components/navbar/navbarcompose.vue";
+import Filters from "../../components/filtros/filtrosJogos.vue";
 
 export default {
-  components: { sideBar, navbar },
+  components: { sideBar, navbar, Filters },
   data() {
     return {
       games: [],
@@ -63,120 +92,110 @@ export default {
         name: [
           {
             required: true,
-            message: 'Input the game´s name.',
-            trigger: 'blur',
+            message: "Input the game´s name.",
+            trigger: "blur",
           },
         ],
         describe: [
           {
             required: true,
-            message: 'Input the game´s description.',
-            trigger: 'blur',
+            message: "Input the game´s description.",
+            trigger: "blur",
           },
         ],
         link: [
           {
             required: true,
-            message: 'Input the game´s address link.',
-            trigger: 'blur',
+            message: "Input the game´s address link.",
+            trigger: "blur",
           },
         ],
         image: [
           {
             required: true,
-            message: 'Select the game´s image.',
-            trigger: 'blur',
+            message: "Select the game´s image.",
+            trigger: "blur",
           },
-        ]
+        ],
       },
-      iconButtons: [
-        { icon: "fa-smile" },
-        { icon: "fa-sad-tear" }
-      ]
-    }
+      iconButtons: [{ icon: "fa-smile" }, { icon: "fa-sad-tear" }],
+    };
   },
   mounted() {
-    this.allData()
+    this.allData();
   },
   methods: {
     async allData() {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
-        const { data, status } = await this.$axios.get('/getallgame', {
+        const { data, status } = await this.$axios.get("/getallgame", {
           headers: {
             Authorization: `Bearer ${token}`,
-            token: token
+            token: token,
           },
         });
         if (status === 200) {
           this.games = data.game;
-          this.games.forEach(async (game)=>{
-            await this.getStores(game.name)
-          })
-          
-        }
-        else
-          this.games = []
+          this.games.forEach(async (game) => {
+            await this.getStores(game.name);
+          });
+        } else this.games = [];
       } catch (error) {
         throw error;
       }
     },
     async getStores(name) {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
         const { data, status } = await this.$axios({
           method: "POST",
           url: "getgamestore",
-          data: {name:name},
+          data: { name: name },
           headers: {
-          Authorization: `Bearer ${token}`,
-           token: token
-         },
-         })
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
         if (status === 200) {
-          console.log(data.game)
-          this.gameswithstore.push(data.game)
-        }
-        else
-          console.log(data)
+          console.log(data.game);
+          this.gameswithstore.push(data.game);
+        } else console.log(data);
       } catch (error) {
         throw error;
       }
     },
     async favoritegame(game) {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
         const { data, status } = await this.$axios({
           method: "POST",
           url: "relationgametouser",
-          data: {game:game},
+          data: { game: game },
           headers: {
-          Authorization: `Bearer ${token}`,
-           token: token
-         },
-         })
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
         if (status === 200) {
           this.$message({
-              message: "Jogo adicionado aos favoritos com sucesso",
-              type: "success",
+            message: "Jogo adicionado aos favoritos com sucesso",
+            type: "success",
           });
-
-        }
-        else{
+        } else {
           this.$message({
             message: "ocorreu um erro, tente novamente",
             type: "warning",
           });
         }
-        } catch (error) {
+      } catch (error) {
         throw error;
       }
     },
-  }
+  },
 };
 </script>
-    
-<style>
+
+<style scoped>
 .font {
   font-weight: 500;
   font-size: 32px;
@@ -190,23 +209,21 @@ select {
 }
 
 .new-btn {
-  background-color: #C94F32;
-  color: #FFF;
+  background-color: #c94f32;
+  color: #fff;
   font-weight: bold;
-  border: 2px solid #C94F32;
+  border: 2px solid #c94f32;
   padding: 10px;
   border-radius: 20px;
   font-size: 16px;
   margin: 0 auto;
   margin-right: -300px;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
-
 
 .new-btn:hover {
   background-color: transparent;
   color: #222;
 }
 </style>
-  

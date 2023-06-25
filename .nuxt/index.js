@@ -5,7 +5,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '..\\layouts\\error.vue'
+import NuxtError from '../layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -13,12 +13,12 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_18324980 from 'nuxt_plugin_plugin_18324980' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_templatesplugin4191a73c_4f0b0310 from 'nuxt_plugin_templatesplugin4191a73c_4f0b0310' // Source: .\\templates.plugin.4191a73c.js (mode: 'all')
-import nuxt_plugin_axios_4dc5a13a from 'nuxt_plugin_axios_4dc5a13a' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_elementui_d905880e from 'nuxt_plugin_elementui_d905880e' // Source: ..\\plugins\\element-ui (mode: 'all')
-import nuxt_plugin_maskplugin_7e3f8a80 from 'nuxt_plugin_maskplugin_7e3f8a80' // Source: ..\\plugins\\mask-plugin (mode: 'all')
-import nuxt_plugin_iconpark_4aeae94a from 'nuxt_plugin_iconpark_4aeae94a' // Source: ..\\plugins\\icon-park (mode: 'all')
+import nuxt_plugin_plugin_786a7ed4 from 'nuxt_plugin_plugin_786a7ed4' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_templatesplugin7aeb8d56_7fbb5174 from 'nuxt_plugin_templatesplugin7aeb8d56_7fbb5174' // Source: ./templates.plugin.7aeb8d56.js (mode: 'all')
+import nuxt_plugin_axios_12d547ea from 'nuxt_plugin_axios_12d547ea' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_elementui_d905880e from 'nuxt_plugin_elementui_d905880e' // Source: ../plugins/element-ui (mode: 'all')
+import nuxt_plugin_maskplugin_7e3f8a80 from 'nuxt_plugin_maskplugin_7e3f8a80' // Source: ../plugins/mask-plugin (mode: 'all')
+import nuxt_plugin_iconpark_4aeae94a from 'nuxt_plugin_iconpark_4aeae94a' // Source: ../plugins/icon-park (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -213,16 +213,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_18324980 === 'function') {
-    await nuxt_plugin_plugin_18324980(app.context, inject)
+  if (typeof nuxt_plugin_plugin_786a7ed4 === 'function') {
+    await nuxt_plugin_plugin_786a7ed4(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_templatesplugin4191a73c_4f0b0310 === 'function') {
-    await nuxt_plugin_templatesplugin4191a73c_4f0b0310(app.context, inject)
+  if (typeof nuxt_plugin_templatesplugin7aeb8d56_7fbb5174 === 'function') {
+    await nuxt_plugin_templatesplugin7aeb8d56_7fbb5174(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_4dc5a13a === 'function') {
-    await nuxt_plugin_axios_4dc5a13a(app.context, inject)
+  if (typeof nuxt_plugin_axios_12d547ea === 'function') {
+    await nuxt_plugin_axios_12d547ea(app.context, inject)
   }
 
   if (typeof nuxt_plugin_elementui_d905880e === 'function') {

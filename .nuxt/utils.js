@@ -199,7 +199,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {"API_BASE_URL":"http://localhost:3334","API_FILES":"/files"}
+      env: {"API_BASE_URL":"http://localhost:8000","API_FILES":"/files"}
     }
     // Only set once
 
@@ -276,6 +276,10 @@ export async function setContext (app, context) {
     app.context.from = fromRouteData
   }
 
+  if (context.error) {
+    app.context.error = context.error
+  }
+
   app.context.next = context.next
   app.context._redirected = false
   app.context._errored = false
@@ -284,13 +288,13 @@ export async function setContext (app, context) {
   app.context.query = app.context.route.query || {}
 }
 
-export function middlewareSeries (promises, appContext) {
-  if (!promises.length || appContext._redirected || appContext._errored) {
+export function middlewareSeries (promises, appContext, renderState) {
+  if (!promises.length || appContext._redirected || appContext._errored || (renderState && renderState.aborted)) {
     return Promise.resolve()
   }
   return promisify(promises[0], appContext)
     .then(() => {
-      return middlewareSeries(promises.slice(1), appContext)
+      return middlewareSeries(promises.slice(1), appContext, renderState)
     })
 }
 
