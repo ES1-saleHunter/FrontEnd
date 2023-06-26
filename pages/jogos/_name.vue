@@ -45,6 +45,10 @@
             </el-table-column>
             </el-table>
           </div>
+          <div class="flex w-8/12 h-2/6 min-h-max max-h-full mt-16 flex-col ">
+            <p class="font2  uppercase">Price History of {{ games.name }}</p>
+            <LineChart class="justify-center" :chartData="chartData" :options="chartOptions" />
+          </div>
         </div>
       </div>
   </div>
@@ -55,6 +59,7 @@ import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue';
 import error from "~/layouts/error.vue";
 import pricedesc from '~/layouts/components/preco/pricedesc.vue'
+import LineChart from '~/layouts/components/preco/LineChart.vue'
 const erro = { statusCode: "404", message: { title: "errr" } } 
 function limpaGame() {
   return {
@@ -77,11 +82,34 @@ function gameinstore() {
 }
 
 export default {
-
-  components: { sideBar, navbar, error, pricedesc},
+ 
+  components: { sideBar, navbar, error, pricedesc, LineChart },
 
   data() {
     return {
+      chartData:{
+        labels: [],
+        datasets:[{
+          label: "",
+          borderColor: "",
+          borderwidth: 4,
+          fill: false,
+          data: []
+        },
+        {
+          label: "",
+          borderColor: "",
+          borderwidth: 4,
+          fill: false,
+          data: []
+        }
+      ]
+      },
+      chartOptions:{
+        maintainAspectRatio: false,
+        responsive: true
+      },
+      reload: false,
       Image: null,
       like: false,
       hover: false,
@@ -133,9 +161,12 @@ export default {
         })
         if (status === 200) {
           this.games = data.game
+          console.log(data.game.id)
           this.stores = data.game.stores
-          console.log(this.games)
+
+          await this.getgameprice(data.game.id);
           this.getgamelike(this.games.id)
+
 
         }
         else
@@ -146,18 +177,84 @@ export default {
       }
     
     },
+
+
     async getgamelike(idgame) {
       const token = JSON.parse(localStorage.getItem('token'));
       try {
         const { data, status } = await this.$axios({
           method: "GET",
           url: "getusergameslike",
+ 
           headers: {
             Authorization: `Bearer ${token}`,
             token: token,
           },
         })
         if (status === 200) {
+          //console.log(data.relationexist)
+          let labels = []
+          let storesData = []
+          let datasets =[]
+
+          for (let index = 0; index < this.stores.length; index++) {
+            const element = this.stores[index].id;
+            console.log(data.relationexist["idstore"] )
+            let stores = [];
+            for (let index2 = 0; index2 < data.relationexist.length; index2++) {
+            const elementdata = data.relationexist[index2].idstore;
+            if(elementdata == element) {
+                stores.push(data.relationexist[index2]);
+              }
+            }
+            storesData.push(stores)
+          }
+          console.log(storesData)
+          for (let index = 0; index < data.relationexist.length; index++) {
+            const element = data.relationexist[index].date;
+            const elementdata = data.relationexist[index].idstore;
+            if(labels.indexOf(element) === -1) {
+                labels.push(element);
+              }
+          }
+          
+          for (let index = 0; index < storesData.length; index++) {
+            const element = storesData[index];
+            let data = []
+            let name = null
+            element.forEach(element =>{
+              data.push(element.discountprice)
+            })
+            element.forEach(element =>{
+              this.stores.forEach(element2 =>{
+                if(element2.id == element.idstore){
+                  name = element2.name
+                }
+              })
+            })
+            datasets.push({
+              label: name,
+              data: data
+            })
+            console.log(datasets, "CCCCCCCCCCCCCCCC")
+          }
+
+          this.chartData.labels = labels
+          datasets.forEach((element, index) => {
+            console.log(element)
+            let cores = ["#1270db", "#103969"]
+            let random = Math.floor(Math.random() * 2);
+            this.chartData.datasets[index].borderColor = cores[index % 2]
+            this.chartData.datasets[index].label = element.label
+            this.chartData.datasets[index].data = element.data
+          })
+   
+          if(this.reload == false){
+            this.allData();
+            //window.location.reload(true)
+            this.reload = true;
+          }
+
           console.log("AAAAAAAAAAAAAAAAAAAAAA")
           
           if(data.user.games.findIndex(x => x.id === idgame) < 0){
@@ -285,6 +382,12 @@ export default {
   font-weight: 500;
   font-size: 32px;
   font-weight: bold;
+  color: rgb(11, 11, 11);
+}
+
+.font2 {
+  font-weight: 500;
+  font-size: 25px;
   color: rgb(11, 11, 11);
 }
 
