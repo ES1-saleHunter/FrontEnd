@@ -22,7 +22,7 @@
                 
                 <el-table-column prop="name" >
                   <template slot-scope="scope" > 
-                  <h1  class="uppercase text-start font-bold text-base	"> {{ scope.row.name }} </h1>
+                  <a :href="linkgame + scope.row.name" class="uppercase text-start font-bold text-base	"> {{ scope.row.name }} </a>
                  </template>
                 </el-table-column>
                 <el-table-column  prop="name" > 
@@ -60,6 +60,7 @@ export default {
     return {
       games: [],
       username: null,
+      linkgame: "/jogos/",
       gameswithstore: [],
       showDrawer: false,
       loading: false,
@@ -111,15 +112,14 @@ export default {
           },
         });
         if (status === 200) {
-          this.games = data.user.games;
-         
+          this.games = data.games;
+          console.log(data)
+          
           this.games.forEach(async (game)=>{
             await this.getStores(game.name)
           })
-          console.log(data.user)
+       
           this.username = data.user.name;
-          //console.log(this.gameswithstore)
-          
         }
         else
           this.games = []
