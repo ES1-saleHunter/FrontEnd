@@ -48,6 +48,8 @@
           <div class="flex w-8/12 h-2/6 min-h-max max-h-full mt-16 flex-col ">
             <p class="font2  uppercase">Price History of {{ games.name }}</p>
             <LineChart class="justify-center" :chartData="chartData" :options="chartOptions" />
+            <Bar :chart-data="chartData" />
+            <Line :chartData="chartData" :options="chartOptions" />
           </div>
         </div>
       </div>
@@ -83,10 +85,11 @@ function gameinstore() {
 
 export default {
  
-  components: { sideBar, navbar, error, pricedesc, LineChart },
+  components: { sideBar, navbar, error, pricedesc, LineChart},
 
   data() {
     return {
+
       chartData:{
         labels: [],
         datasets:[{
@@ -136,6 +139,7 @@ export default {
     }
   },
   mounted() {
+   // this.renderChart(this.chartData, this.chartOptions);
     this.allData();
     this.getgamelike();
   },
@@ -355,22 +359,25 @@ export default {
               })
               console.log(datasets, "CCCCCCCCCCCCCCCC")
             }
-  
-            this.chartData.labels = labels
+            
+            let datasetss = []
             datasets.forEach((element, index) => {
               console.log(element)
               let cores = ["#1270db", "#103969"]
-              let random = Math.floor(Math.random() * 2);
-              this.chartData.datasets[index].borderColor = cores[index % 2]
-              this.chartData.datasets[index].label = element.label
-              this.chartData.datasets[index].data = element.data
+              datasetss.push({
+                        label: element.label,
+                        borderColor: cores[index % 2],
+                        borderwidth: 4,
+                        fill: false,
+                        data: element.data
+                      })
             })
+ 
+            this.chartData = {
+                labels: labels,
+                datasets: datasetss
+              }
      
-            if(this.reload == false){
-              this.allData();
-              //window.location.reload(true)
-              this.reload = true;
-            }
           }
           else
             this.games = null
