@@ -14,7 +14,10 @@
             <h1 class="font font-bold uppercase">{{ games.name }}</h1>
             <p class="fontp font-bold text-lg   ">{{ games.describe }}</p>
             <div class="flex justify-start mt-3">
-              <el-button  icon="el-icon-star-on" @click="favoritegame(games.name)">whitlist it</el-button>
+              <el-button  icon="el-icon-s-order" @click="favoritegame(games.name)">Whitlist it</el-button>
+              <el-button  v-if="this.like == false" icon="el-icon-star-off" @click="likegame(games.id)">{{games.likes}} like it</el-button>
+              <el-button  v-else icon="el-icon-star-on" @click="deslikegame(games.id)">{{games.likes}} dislike it</el-button>
+
             </div>
           </div>
         </div>
@@ -38,7 +41,6 @@
               <el-table-column  prop="comando"  :v-bind="name"> 
               <template  slot-scope="scope">
                   <pricedesc :price=scope.row></pricedesc>
-              
               </template>
             </el-table-column>
             </el-table>
@@ -81,6 +83,7 @@ export default {
   data() {
     return {
       Image: null,
+      like: false,
       hover: false,
       dialogo: false,
       dialogostore: false,
@@ -106,9 +109,11 @@ export default {
   },
   mounted() {
     this.allData();
+    this.getgamelike();
   },
   methods: {
     async allData() {
+      
       this.getgame();
       this.getgameStores();
     },
@@ -129,12 +134,43 @@ export default {
         if (status === 200) {
           this.games = data.game
           this.stores = data.game.stores
-          console.log(this.stores)
-          
+          console.log(this.games)
+          this.getgamelike(this.games.id)
+
         }
         else
           this.games = null
 
+      } catch (error) {
+        throw error;
+      }
+    
+    },
+    async getgamelike(idgame) {
+      const token = JSON.parse(localStorage.getItem('token'));
+      try {
+        const { data, status } = await this.$axios({
+          method: "GET",
+          url: "getusergameslike",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        })
+        if (status === 200) {
+          console.log("AAAAAAAAAAAAAAAAAAAAAA")
+          
+          if(data.user.games.findIndex(x => x.id === idgame) < 0){
+            this.like = false;
+          }else{
+            this.like = true;
+          }
+  
+        }
+        else
+          this.games = null
+
+        
       } catch (error) {
         throw error;
       }
@@ -175,7 +211,72 @@ export default {
         throw error;
       }
     
-  }}
+  },
+  async likegame(game) {
+      const token = JSON.parse(localStorage.getItem('token'));
+      try {
+        const { data, status } = await this.$axios({
+          method: "POST",
+          url: "relationgametouserlike",
+          data: {idgame:game},
+          headers: {
+          Authorization: `Bearer ${token}`,
+           token: token
+         },
+         })
+        if (status === 200) {
+          this.$message({
+              message: "like adicionado com sucesso",
+              type: "success",
+          });
+          this.like = true;
+          this.allData()
+
+        }
+        else{
+          this.$message({
+            message: "ocorreu um erro, tente novamente",
+            type: "warning",
+          });
+        }
+        } catch (error) {
+        throw error;
+      }
+    
+  },
+  async deslikegame(game) {
+      const token = JSON.parse(localStorage.getItem('token'));
+      try {
+        const { data, status } = await this.$axios({
+          method: "POST",
+          url: "removerelationgametouserlike",
+          data: {idgame:game},
+          headers: {
+          Authorization: `Bearer ${token}`,
+           token: token
+         },
+         })
+        if (status === 200) {
+          this.$message({
+              message: "like removido com sucesso",
+              type: "success",
+          });
+          this.like = false;
+          this.allData()
+        }
+        else{
+          this.$message({
+            message: "ocorreu um erro, tente novamente",
+            type: "warning",
+          });
+        }
+        } catch (error) {
+        throw error;
+      }
+    
+  }
+},
+  
 };
 </script>
   
