@@ -182,6 +182,8 @@ export default {
           data: {
             idgame: id
           },
+          method: "GET",
+          url: "getusergameslike",
           headers: {
             Authorization: `Bearer ${token}`,
             token: token,
@@ -292,6 +294,92 @@ export default {
       }
     
     },
+    async getgameprice(id) {
+        const token = JSON.parse(localStorage.getItem('token'));
+        try {
+          const { data, status } = await this.$axios({
+            method: "POST",
+            url: "getgamestoreprice",
+            data: {
+              idgame: id
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+              token: token,
+            },
+          })
+          if (status === 200) {
+            //console.log(data.relationexist)
+            let labels = []
+            let storesData = []
+            let datasets =[]
+  
+            for (let index = 0; index < this.stores.length; index++) {
+              const element = this.stores[index].id;
+              console.log(data.relationexist["idstore"] )
+              let stores = [];
+              for (let index2 = 0; index2 < data.relationexist.length; index2++) {
+              const elementdata = data.relationexist[index2].idstore;
+              if(elementdata == element) {
+                  stores.push(data.relationexist[index2]);
+                }
+              }
+              storesData.push(stores)
+            }
+            console.log(storesData)
+            for (let index = 0; index < data.relationexist.length; index++) {
+              const element = data.relationexist[index].date;
+              const elementdata = data.relationexist[index].idstore;
+              if(labels.indexOf(element) === -1) {
+                  labels.push(element);
+                }
+            }
+            
+            for (let index = 0; index < storesData.length; index++) {
+              const element = storesData[index];
+              let data = []
+              let name = null
+              element.forEach(element =>{
+                data.push(element.discountprice)
+              })
+              element.forEach(element =>{
+                this.stores.forEach(element2 =>{
+                  if(element2.id == element.idstore){
+                    name = element2.name
+                  }
+                })
+              })
+              datasets.push({
+                label: name,
+                data: data
+              })
+              console.log(datasets, "CCCCCCCCCCCCCCCC")
+            }
+  
+            this.chartData.labels = labels
+            datasets.forEach((element, index) => {
+              console.log(element)
+              let cores = ["#1270db", "#103969"]
+              let random = Math.floor(Math.random() * 2);
+              this.chartData.datasets[index].borderColor = cores[index % 2]
+              this.chartData.datasets[index].label = element.label
+              this.chartData.datasets[index].data = element.data
+            })
+     
+            if(this.reload == false){
+              this.allData();
+              //window.location.reload(true)
+              this.reload = true;
+            }
+          }
+          else
+            this.games = null
+  
+        } catch (error) {
+          throw error;
+        }
+      
+      },
     statusDrawer(value) {
       this.showDrawer = value;
     },
