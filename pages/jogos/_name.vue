@@ -7,8 +7,8 @@
     <div v-else>
     <sideBar />
     <navbar />
-      <div class="w-full flex flex-col justify-center items-center mt-8">
-        <div class="flex w-8/12 h-2/6 min-h-max max-h-full mb-0">
+      <div class="w-full flex flex-col justify-center items-center mt-8  ">
+        <div class="flex w-8/12 h-2/6 min-h-max max-h-full mb-0 shadow-lg pb-1">
           <img style="height: 80%;" class="m-3" :src="games.Image">
           <div class=" ">
             <h1 class="font font-bold uppercase">{{ games.name }}</h1>
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="flex w-8/12 h-2/6 min-h-max max-h-full">
+        <div class="flex w-8/12 h-2/6 min-h-max max-h-full shadow-lg">
               <el-table cell-mouse-enter="false" show-header="false" strip="true" style="width: 100%" :data="stores" v-loading="loading">
                   <el-table-column  min-width="15" max-width="15" :v-bind="Image" prop="Image" >
                       <template slot-scope="scope">
@@ -45,8 +45,8 @@
             </el-table-column>
             </el-table>
           </div>
-          <div class="flex w-8/12 h-2/6 min-h-max max-h-full mt-16 flex-col ">
-            <p class="font2  uppercase">Price History of {{ games.name }}</p>
+          <div class="flex w-8/12 h-2/6  min-h-max max-h-full mt-16 flex-col shadow-lg mb-10">
+            <p class="font2 mb-3 mt-5 pl-5 uppercase">Price History of {{ games.name }}</p>
             <LineChart class="justify-center" :chartData="chartData" :options="chartOptions" />
             <Bar :chart-data="chartData" />
             <Line :chartData="chartData" :options="chartOptions" />

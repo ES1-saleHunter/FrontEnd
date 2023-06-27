@@ -2,13 +2,14 @@
   <div>
     <sideBar />
     <navbar />
-    <div class="w-full flex justify-center">
+    <div class="w-full flex justify-center ">
       <!-- Table -->
-      <div class="w-3/5">
+
+      <div class="w-3/5 shadow-2xl mt-3">
         <!-- HEADER -->
         <div class="">
-          <div class="flex justify-between items-center pt-4">
-            <h1 class="font"><b>Games</b></h1>
+          <div class="flex justify-between items-center pt-4 " >
+            <h1 class="font pl-5"><b>Games</b></h1>
             <el-row :gutter="1">
               <div class="display-flex justify-end">
                 <el-button icon="el-icon-plus" @click="novagame()">New Game</el-button>

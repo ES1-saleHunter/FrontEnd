@@ -1,19 +1,41 @@
 <template>
-  <div>
+  <div class="">
     <sideBar />
     <navbar />
     <div class="w-full flex justify-center">
       <!-- Table -->
       <div class="w-3/5">
         <!-- HEADER -->
-        <div class="">
-          <div class="flex justify-between items-center py-4">
+        <div style="width: auto; height: auto;" class="my-8 shadow-2xl	">
+          <el-carousel trigger="click" height="14em" >
+            <el-carousel-item v-for="item in games2">
+              <div class="flex flex-row justify-center	content-center items-center self-center pt-1 " >
+                  <el-image :src="item[0].Image" style="width: auto">
+                    <div slot="placeholder" class="image-slot">
+                      Loading<span class="dot">...</span>
+                    </div>
+                  </el-image>
+             
+                  <el-image :src="item[1].Image" style="width: auto">
+                    <div slot="placeholder" class="image-slot">
+                      Loading<span class="dot">...</span>
+                    </div>
+                  </el-image>
+              
+           
+              </div>
+            </el-carousel-item>
+          </el-carousel>
+
+        </div>
+        <div class="shadow-2xl" >
+          <div class="flex justify-between items-center py-4 ">
             <h1 class="font"><b>Compare Prices</b></h1>
             <el-row :gutter="1">
             </el-row>
           </div>
           <!-- TABLE -->
-          <div class="flex">
+          <div class="flex ">
              <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
            
               <el-table-column min-width="50" max-width="50" :v-bind="Image" prop="Image">
@@ -49,10 +71,11 @@ import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 import pricedesc from '~/layouts/components/preco/pricedesc.vue'
 
 export default {
-  components: { sideBar, navbar, pricedesc },
+  components: { sideBar, navbar, pricedesc},
   data() {
     return {
       games: [],
+      games2:[],
       linkgame: "/jogos/",
       gameswithstore: [],
       showDrawer: false,
@@ -98,10 +121,25 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.allData()
+  async mounted() {
+    await this.allData();
+    this.gamescarousel()
   },
   methods: {
+    async gamescarousel(){
+      let games = []
+      let indexaux = 0;
+      for (let index = 25; index < 34; index++) {
+        indexaux = indexaux + 1;
+        games.push(this.games[index])
+        if(indexaux == 3){
+          this.games2.push(games)
+          games = []
+          indexaux = 0
+        }
+           
+      }
+    },
     async allData() {
       const token = JSON.parse(localStorage.getItem('token'));
       try {

@@ -4,10 +4,10 @@
         <sideBar />
         <navbar/>
         <div class="w-full flex justify-center">
-            <div class="w-3/5">
+            <div class="w-3/5 shadow-2xl mt-3">
                 <div>
                     <div class="flex justify-between items-center pt-4">
-                        <h1 class="font"><b>Stores</b></h1>
+                        <h1 class="font pl-5"><b>Stores</b></h1>
                         <div class="flex ">
                           <el-row :gutter="1">
                             <div class="display-flex justify-end mx-2">
