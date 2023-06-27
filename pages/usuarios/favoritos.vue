@@ -2,13 +2,13 @@
   <div>
     <sideBar />
     <navbar />
-    <div class="w-full flex justify-center">
+    <div class="w-full flex justify-center ">
       <!-- Table -->
-      <div class="w-3/5">
+      <div class="w-3/5 shadow-2xl mt-3">
         <!-- HEADER -->
         <div class="">
           <div class="flex justify-between items-center py-4">
-            <h1 class="font"><b>{{username}}'s favorite games</b></h1>
+            <h1 class="font pl-5 "><b>{{username}}'s favorite games</b></h1>
             
           </div>
                <!-- TABLE -->
