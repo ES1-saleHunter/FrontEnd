@@ -31,6 +31,8 @@
                   <p class="text-base/6 mb-4"> {{ scope.row.describe }} </p>
                   <div class="flex justify-end">
                     <el-button  icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
+
+                    <el-button  icon="el-icon-edit" @click="EditGame(scope.row)">Edit</el-button>
                     <el-button  icon="el-icon-delete" @click="DeleteGame(scope.row.name)">Delete</el-button>
                   </div>
                 </template>
@@ -79,10 +81,7 @@
         <el-form ref="gamainstore" :model="gamainstore" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Store" prop="store">
-
               <el-select v-model="gamainstore.store" placeholder="Select">
-
-
                 <el-option v-for="item in stores" :key="item.name" :label="item.name" :value="item.name">
                 </el-option>
               </el-select>
@@ -109,7 +108,6 @@
             </el-button>
           </div>
         </el-form>
-
       </el-dialog>
     </div>
   </div>
@@ -260,7 +258,12 @@ export default {
     onChangeFileUpload(event) {
       this.file = event.target.files[0];
     },
-
+    EditGame(row) {
+      this.methods = 'PUT'
+      this.dialogo = true;
+      this.game = row;
+      this.game.likes = 0
+    },
 
     async submitships() {
       try {
@@ -311,6 +314,7 @@ export default {
               this.link = '/registergame' :
               this.link = '/updategame'
 
+            if (this.methods === 'PUT') this.game.newname = this.game.name
             const token = JSON.parse(localStorage.getItem('token'));
             this.game.image = "";
             const { data, status } = await this.$axios({
@@ -328,9 +332,15 @@ export default {
               }
             });
             if (status === 200) {
-
+              this.methods === 'POST'
+              ?
               this.$message({
                 message: "Jogo cadastrado com sucesso",
+                type: "success",
+              })
+              
+              : this.$message({
+                message: "Jogo atualizado com sucesso",
                 type: "success",
               });
  
