@@ -167,11 +167,8 @@ export default {
           this.games = data.game
           console.log(data.game.id)
           this.stores = data.game.stores
-
           await this.getgameprice(data.game.id);
           this.getgamelike(this.games.id)
-
-
         }
         else
           this.games = null
@@ -181,6 +178,7 @@ export default {
       }
     
     },
+
 
 
     async getgamelike(idgame) {
@@ -201,25 +199,19 @@ export default {
         })
         if (status === 200) {
           console.log("AAAAAAAAAAAAAAAAAAAAAA")
-          
           if(data.user.games.findIndex(x => x.id === idgame) < 0){
             this.like = false;
           }else{
             this.like = true;
           }
-          console.log(this.games)
-          this.getgamelike(this.games.id)
-
         }
-        else
-          this.games = null
 
-        
       } catch (error) {
         throw error;
       }
     
     },
+
     async getgameprice(id) {
         const token = JSON.parse(localStorage.getItem('token'));
         try {
@@ -399,23 +391,25 @@ export default {
                 data: data
               })
               console.log(datasets, "CCCCCCCCCCCCCCCC")
-            }
-  
-            this.chartData.labels = labels
+            }           
+            let datasetss = []
             datasets.forEach((element, index) => {
               console.log(element)
               let cores = ["#1270db", "#103969"]
-              let random = Math.floor(Math.random() * 2);
-              this.chartData.datasets[index].borderColor = cores[index % 2]
-              this.chartData.datasets[index].label = element.label
-              this.chartData.datasets[index].data = element.data
+              datasetss.push({
+                        label: element.label,
+                        borderColor: cores[index % 2],
+                        borderwidth: 4,
+                        fill: false,
+                        data: element.data
+                      })
             })
+ 
+            this.chartData = {
+                labels: labels,
+                datasets: datasetss
+              }
      
-            if(this.reload == false){
-              this.allData();
-              //window.location.reload(true)
-              this.reload = true;
-            }
           }
           else
             this.games = null

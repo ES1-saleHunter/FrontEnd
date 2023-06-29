@@ -31,6 +31,7 @@
                   <p class="text-base/6 mb-4"> {{ scope.row.describe }} </p>
                   <div class="flex justify-end">
                     <el-button  icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
+
                     <el-button  icon="el-icon-edit" @click="EditGame(scope.row)">Edit</el-button>
                     <el-button  icon="el-icon-delete" @click="DeleteGame(scope.row.name)">Delete</el-button>
                   </div>
