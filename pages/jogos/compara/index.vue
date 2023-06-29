@@ -3,58 +3,59 @@
     <sideBar />
     <navbar />
 
-    <!-- Filtros -->
-    <div class="flex align-center justify-center">
-      <!-- <Filters @aplicaFiltro="aplicaFiltro(value)" /> -->
-      <el-row :gutter="8">
-        <el-col :span="10">
-          <el-select
-            v-model="filtro"
-            prop="filtro"
-            placeholder="Select the filter"
-          >
-            <el-option value="name" label="Name"> </el-option>
-          </el-select>
-        </el-col>
-        <el-col :span="10">
-          <el-input v-model="valor" prop="valor"></el-input>
-        </el-col>
-        <el-col :span="2">
-          <el-button icon="el-icon-search" @click="aplicaFiltro()"
-            >Search</el-button
-          >
-        </el-col>
-      </el-row>
-    </div>
 
     <div class="w-full flex justify-center">
       <!-- Table -->
       <div class="w-3/5">
         <!-- HEADER -->
         <div style="width: auto; height: auto;" class="my-8 shadow-2xl	">
-          <el-carousel trigger="click" height="14em" >
+          <el-carousel trigger="click" height="13em" >
             <el-carousel-item v-for="item in games2">
               <div class="flex flex-row justify-center	content-center items-center self-center pt-1 " >
-                  <el-image :src="item[0].Image" style="width: auto">
+                  <el-image :src="item[0].Image" style="width: 50%">
                     <div slot="placeholder" class="image-slot">
                       Loading<span class="dot">...</span>
                     </div>
                   </el-image>
              
-                  <el-image :src="item[1].Image" style="width: auto">
+                  <el-image :src="item[1].Image" style="width: 50%">
                     <div slot="placeholder" class="image-slot">
                       Loading<span class="dot">...</span>
                     </div>
                   </el-image>
               
-           
               </div>
             </el-carousel-item>
           </el-carousel>
 
         </div>
+            <!-- Filtros -->
+
+
         <div class="shadow-2xl" >
-          <div class="flex justify-between items-center py-4 ">
+          <div class="flex align-center justify-center pt-6">
+        <!-- <Filters @aplicaFiltro="aplicaFiltro(value)" /> -->
+        <el-row :gutter="8">
+          <el-col :span="10">
+            <el-select
+              v-model="filtro"
+              prop="filtro"
+              placeholder="Select the filter"
+            >
+              <el-option value="name" label="Name"> </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="10">
+            <el-input v-model="valor" prop="valor"></el-input>
+          </el-col>
+          <el-col :span="2">
+            <el-button icon="el-icon-search" @click="aplicaFiltro()"
+              >Search</el-button
+            >
+          </el-col>
+        </el-row>
+      </div>
+          <div class="flex justify-between items-center py-4 pl-3 ">
             <h1 class="font"><b>Compare Prices</b></h1>
             <el-row :gutter="1"> </el-row>
           </div>
