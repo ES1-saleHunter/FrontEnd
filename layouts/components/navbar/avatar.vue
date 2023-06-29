@@ -123,7 +123,7 @@ export default {
         });
         if (status === 200) {
           this.$message({
-            message: "Pefil atualizado com sucesso!",
+            message: "Perfil atualizado com sucesso!",
             type: "success",
           });
           this.dialogo = false;

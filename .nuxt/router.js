@@ -4,17 +4,21 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5382e15b = () => interopDefault(import('..\\pages\\jogos\\index.vue' /* webpackChunkName: "pages/jogos/index" */))
-const _9dd4c230 = () => interopDefault(import('..\\pages\\lojas\\index.vue' /* webpackChunkName: "pages/lojas/index" */))
-const _cb9d27e4 = () => interopDefault(import('..\\pages\\usuarios\\index.vue' /* webpackChunkName: "pages/usuarios/index" */))
-const _07c83d26 = () => interopDefault(import('..\\pages\\components\\image.vue' /* webpackChunkName: "pages/components/image" */))
-const _7e432398 = () => interopDefault(import('..\\pages\\jogos\\compara\\index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
-const _127823a6 = () => interopDefault(import('..\\pages\\usuarios\\cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
-const _383b316e = () => interopDefault(import('..\\pages\\usuarios\\favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
-const _63d90f25 = () => interopDefault(import('..\\pages\\usuarios\\login.vue' /* webpackChunkName: "pages/usuarios/login" */))
-const _52af1c20 = () => interopDefault(import('..\\pages\\usuarios\\recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
-const _064b9049 = () => interopDefault(import('..\\pages\\usuarios\\redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
-const _794e121a = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _5e9357ea = () => interopDefault(import('../pages/jogos/index.vue' /* webpackChunkName: "pages/jogos/index" */))
+const _37819e44 = () => interopDefault(import('../pages/lojas/index.vue' /* webpackChunkName: "pages/lojas/index" */))
+const _2bca7856 = () => interopDefault(import('../pages/usuarios/index.vue' /* webpackChunkName: "pages/usuarios/index" */))
+const _b93594a0 = () => interopDefault(import('../pages/components/image.vue' /* webpackChunkName: "pages/components/image" */))
+const _54483f5d = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
+const _58201ce5 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
+const _a3e7e0de = () => interopDefault(import('../pages/usuarios/favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
+
+const _21fc37ca = () => interopDefault(import('../pages/usuarios/lista/index.vue' /* webpackChunkName: "pages/usuarios/lista/index" */))
+const _151bc926 = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
+const _b9a93e50 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
+const _56c7d501 = () => interopDefault(import('../pages/usuarios/redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
+const _73f252a3 = () => interopDefault(import('../pages/jogos/_name.vue' /* webpackChunkName: "pages/jogos/_name" */))
+
+const _41f24534 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -29,47 +33,61 @@ export const routerOptions = {
 
   routes: [{
     path: "/jogos",
-    component: _5382e15b,
+    component: _5e9357ea,
     name: "jogos"
   }, {
     path: "/lojas",
-    component: _9dd4c230,
+    component: _37819e44,
     name: "lojas"
   }, {
     path: "/usuarios",
-    component: _cb9d27e4,
+    component: _2bca7856,
     name: "usuarios"
   }, {
     path: "/components/image",
-    component: _07c83d26,
+    component: _b93594a0,
     name: "components-image"
   }, {
     path: "/jogos/compara",
-    component: _7e432398,
+    component: _54483f5d,
     name: "jogos-compara"
   }, {
     path: "/usuarios/cadastro",
-    component: _127823a6,
+    component: _58201ce5,
     name: "usuarios-cadastro"
   }, {
     path: "/usuarios/favoritos",
-    component: _383b316e,
+    component: _a3e7e0de,
     name: "usuarios-favoritos"
   }, {
+    path: "/usuarios/lista",
+    component: _21fc37ca,
+    name: "usuarios-lista"
+  }, {
     path: "/usuarios/login",
-    component: _63d90f25,
+    component: _151bc926,
     name: "usuarios-login"
   }, {
     path: "/usuarios/recuperarsenha",
-    component: _52af1c20,
+    component: _b9a93e50,
     name: "usuarios-recuperarsenha"
   }, {
     path: "/usuarios/redefinirsenha",
-    component: _064b9049,
+    component: _56c7d501,
     name: "usuarios-redefinirsenha"
   }, {
+
+    path: "/components/filtros/filtrosJogos",
+    component: _fe3b164c,
+    name: "components-filtros-filtrosJogos"
+
+    path: "/jogos/:name",
+    component: _73f252a3,
+    name: "jogos-name"
+
+  }, {
     path: "/",
-    component: _794e121a,
+    component: _41f24534,
     name: "index"
   }],
 
