@@ -47,6 +47,15 @@
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/favoritos.vue",
     "chunkName": "pages/usuarios/favoritos",
     "_name": "_a3e7e0de"
+
+  },
+  {
+    "name": "usuarios-lista",
+    "path": "/usuarios/lista",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/lista/index.vue",
+    "chunkName": "pages/usuarios/lista/index",
+    "_name": "_21fc37ca"
+
   },
   {
     "name": "usuarios-login",
@@ -70,11 +79,19 @@
     "_name": "_56c7d501"
   },
   {
+
     "name": "components-filtros-filtrosJogos",
     "path": "/components/filtros/filtrosJogos",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/components/filtros/filtrosJogos.vue",
     "chunkName": "pages/components/filtros/filtrosJogos",
     "_name": "_fe3b164c"
+
+    "name": "jogos-name",
+    "path": "/jogos/:name",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/jogos/_name.vue",
+    "chunkName": "pages/jogos/_name",
+    "_name": "_73f252a3"
+
   },
   {
     "name": "index",

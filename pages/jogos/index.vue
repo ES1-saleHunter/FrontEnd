@@ -2,45 +2,40 @@
   <div>
     <sideBar />
     <navbar />
-    <div class="w-full flex justify-center">
+    <div class="w-full flex justify-center ">
       <!-- Table -->
-      <div class="w-3/4">
+
+      <div class="w-3/5 shadow-2xl mt-3">
         <!-- HEADER -->
         <div class="">
-          <div class="flex justify-between items-center py-4">
-            <h1 class="font"><b>Games</b></h1>
+          <div class="flex justify-between items-center pt-4 " >
+            <h1 class="font pl-5"><b>Games</b></h1>
             <el-row :gutter="1">
               <div class="display-flex justify-end">
-                <el-button icon="el-icon-plus" class="new-btn" @click="novagame()">New Game</el-button>
+                <el-button icon="el-icon-plus" @click="novagame()">New Game</el-button>
               </div>
             </el-row>
           </div>
           <!-- TABLE -->
           <div class="flex">
-            <el-table empty-text="No games Indexed" :data="games" v-loading="loading" size="small" style="width: 80%">
-            
-              <el-table-column min-width="10" max-width="10" :v-bind="Image" prop="Image">
+            <el-table empty-text="No games Indexed"  :data="games" v-loading="loading" >
+              
+              <el-table-column min-width="50" max-width="50" :v-bind="Image" prop="Image">
                 <template slot-scope="scope">
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-            
-              <el-table-column prop="name" label="Name"> </el-table-column>
-              <el-table-column prop="describe" label="Description"> </el-table-column>
-              <el-table-column label="Link" prop="link">
-                <template slot-scope="scope">
-                  <a :href="getLink(scope.row)">{{ scope.row.link }}</a>
+              <el-table-column   >
+                <template slot-scope="scope" >
+                  <a :href="linkgame + scope.row.name" class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </a>
+                  <p class="text-base/6 mb-4"> {{ scope.row.describe }} </p>
+                  <div class="flex justify-end">
+                    <el-button  icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
+                    <el-button  icon="el-icon-edit" @click="EditGame(scope.row)">Edit</el-button>
+                    <el-button  icon="el-icon-delete" @click="DeleteGame(scope.row.name)">Delete</el-button>
+                  </div>
                 </template>
-              </el-table-column>
 
-              <!-- <el-table-column prop="link" label="Link"> </el-table-column> -->
-
-              <el-table-column prop="comands" label="" :v-bind="name">
-                <template slot-scope="scope">
-                  <el-button class="new-btn" icon="el-icon-plus" @click="addinstore(scope.row.name)">add in store</el-button>
-                  <el-button class="new-btn" icon="el-icon-delete" @click="DeleteGame(scope.row.name)">
-                  </el-button>
-                </template>
               </el-table-column>
             </el-table>
           </div>
@@ -85,10 +80,7 @@
         <el-form ref="gamainstore" :model="gamainstore" label-position="top">
           <div class="flex flex-wrap flex-col">
             <el-form-item label="Store" prop="store">
-
               <el-select v-model="gamainstore.store" placeholder="Select">
-
-
                 <el-option v-for="item in stores" :key="item.name" :label="item.name" :value="item.name">
                 </el-option>
               </el-select>
@@ -115,7 +107,6 @@
             </el-button>
           </div>
         </el-form>
-
       </el-dialog>
     </div>
   </div>
@@ -153,6 +144,7 @@ export default {
   data() {
     return {
       Image: null,
+      linkgame: "/jogos/",
       hover: false,
       dialogo: false,
       dialogostore: false,
@@ -221,14 +213,8 @@ export default {
           },
         });
         if (status === 200) {
-          let datagame = [];
-          let temp = "";
-          data.game.forEach(element => {
-            temp = this.urlBack + this.urlFile + element.Image.replace('src', '');
-            datagame[element.id - 1] = element
-            datagame[element.id - 1].Image = temp
-          });
-          this.games = datagame;
+          this.games = data.game;
+
         }
         else
           this.games = []
@@ -271,7 +257,12 @@ export default {
     onChangeFileUpload(event) {
       this.file = event.target.files[0];
     },
-
+    EditGame(row) {
+      this.methods = 'PUT'
+      this.dialogo = true;
+      this.game = row;
+      this.game.likes = 0
+    },
 
     async submitships() {
       try {
@@ -322,6 +313,7 @@ export default {
               this.link = '/registergame' :
               this.link = '/updategame'
 
+            if (this.methods === 'PUT') this.game.newname = this.game.name
             const token = JSON.parse(localStorage.getItem('token'));
             this.game.image = "";
             const { data, status } = await this.$axios({
@@ -339,9 +331,15 @@ export default {
               }
             });
             if (status === 200) {
-
+              this.methods === 'POST'
+              ?
               this.$message({
                 message: "Jogo cadastrado com sucesso",
+                type: "success",
+              })
+              
+              : this.$message({
+                message: "Jogo atualizado com sucesso",
                 type: "success",
               });
               
@@ -415,6 +413,7 @@ export default {
 }
 
 
+
 input,
 select {
   padding: 5px 10px;
@@ -422,21 +421,16 @@ select {
   width: 300px;
 }
 
-.new-btn {
-  background-color: #C94F32;
-  color: #FFF;
-  font-weight: bold;
-  border: 2px solid #C94F32;
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 16px;
-  margin: 0 auto;
-  cursor: pointer;
-  transition: .5s;
-}
+
 
 .new-btn:hover {
   background-color: transparent;
   color: #222;
 }
+
+
+  .el-table .success-row {
+    background: #4e8232;
+  }
+
 </style>
