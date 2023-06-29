@@ -11,11 +11,13 @@ const _b93594a0 = () => interopDefault(import('../pages/components/image.vue' /*
 const _54483f5d = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
 const _58201ce5 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
 const _a3e7e0de = () => interopDefault(import('../pages/usuarios/favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
+
 const _21fc37ca = () => interopDefault(import('../pages/usuarios/lista/index.vue' /* webpackChunkName: "pages/usuarios/lista/index" */))
 const _151bc926 = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _b9a93e50 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
 const _56c7d501 = () => interopDefault(import('../pages/usuarios/redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
 const _73f252a3 = () => interopDefault(import('../pages/jogos/_name.vue' /* webpackChunkName: "pages/jogos/_name" */))
+
 const _41f24534 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -74,9 +76,15 @@ export const routerOptions = {
     component: _56c7d501,
     name: "usuarios-redefinirsenha"
   }, {
+
+    path: "/components/filtros/filtrosJogos",
+    component: _fe3b164c,
+    name: "components-filtros-filtrosJogos"
+
     path: "/jogos/:name",
     component: _73f252a3,
     name: "jogos-name"
+
   }, {
     path: "/",
     component: _41f24534,

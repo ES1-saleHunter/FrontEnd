@@ -16,6 +16,7 @@ import _2754c95c from '../layouts/components/login/formLogin.vue'
 import _7a147216 from '../layouts/components/navbar/avatar.vue'
 import _4ff3bca8 from '../layouts/components/navbar/navbar.vue'
 import _3ff45666 from '../layouts/components/navbar/navbarcompose.vue'
+
 import _5e1477e7 from '../layouts/components/preco/LineChart.vue'
 import _56d9a9d2 from '../layouts/components/preco/pricedesc.vue'
 import _651b1b30 from '../layouts/components/recuperarsenha/FormRecuperarsenha.vue'

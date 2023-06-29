@@ -2,6 +2,31 @@
   <div class="">
     <sideBar />
     <navbar />
+
+    <!-- Filtros -->
+    <div class="flex align-center justify-center">
+      <!-- <Filters @aplicaFiltro="aplicaFiltro(value)" /> -->
+      <el-row :gutter="8">
+        <el-col :span="10">
+          <el-select
+            v-model="filtro"
+            prop="filtro"
+            placeholder="Select the filter"
+          >
+            <el-option value="name" label="Name"> </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="10">
+          <el-input v-model="valor" prop="valor"></el-input>
+        </el-col>
+        <el-col :span="2">
+          <el-button icon="el-icon-search" @click="aplicaFiltro()"
+            >Search</el-button
+          >
+        </el-col>
+      </el-row>
+    </div>
+
     <div class="w-full flex justify-center">
       <!-- Table -->
       <div class="w-3/5">
@@ -31,10 +56,10 @@
         <div class="shadow-2xl" >
           <div class="flex justify-between items-center py-4 ">
             <h1 class="font"><b>Compare Prices</b></h1>
-            <el-row :gutter="1">
-            </el-row>
+            <el-row :gutter="1"> </el-row>
           </div>
           <!-- TABLE -->
+
           <div class="flex ">
              <el-table empty-text="No Stores or Games"  :data="gameswithstore" v-loading="loading" size="small" style="width: 80%">
            
@@ -43,8 +68,8 @@
                   <img :src="scope.row.Image" />
                 </template>
               </el-table-column>
-                
 
+          
                 <el-table-column prop="name" >
                   <template slot-scope="scope" >
                   <a :href="linkgame + scope.row.name"  class="uppercase justify-start font-bold text-xl"> {{ scope.row.name }} </a>
@@ -64,16 +89,21 @@
     </div>
   </div>
 </template>
-    
+
 <script>
+
 import sideBar from '~/layouts/components/sidebar/sidebar.vue';
 import navbar from '~/layouts/components/navbar/navbarcompose.vue'
 import pricedesc from '~/layouts/components/preco/pricedesc.vue'
+import Filters from "../../components/filtros/filtrosJogos.vue";
 
 export default {
-  components: { sideBar, navbar, pricedesc},
+  components: { sideBar, navbar, pricedesc, Filters},
   data() {
     return {
+      valor: null,
+      filtro: null,
+      options: [{ value: "name", label: "Name" }],
       games: [],
       games2:[],
       linkgame: "/jogos/",
@@ -89,38 +119,36 @@ export default {
         name: [
           {
             required: true,
-            message: 'Input the game´s name.',
-            trigger: 'blur',
+            message: "Input the game´s name.",
+            trigger: "blur",
           },
         ],
         describe: [
           {
             required: true,
-            message: 'Input the game´s description.',
-            trigger: 'blur',
+            message: "Input the game´s description.",
+            trigger: "blur",
           },
         ],
         link: [
           {
             required: true,
-            message: 'Input the game´s address link.',
-            trigger: 'blur',
+            message: "Input the game´s address link.",
+            trigger: "blur",
           },
         ],
         image: [
           {
             required: true,
-            message: 'Select the game´s image.',
-            trigger: 'blur',
+            message: "Select the game´s image.",
+            trigger: "blur",
           },
-        ]
+        ],
       },
-      iconButtons: [
-        { icon: "fa-smile" },
-        { icon: "fa-sad-tear" }
-      ]
-    }
+      iconButtons: [{ icon: "fa-smile" }, { icon: "fa-sad-tear" }],
+    };
   },
+
   async mounted() {
     await this.allData();
     this.gamescarousel()
@@ -141,16 +169,17 @@ export default {
       }
     },
     async allData() {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
-        const { data, status } = await this.$axios.get('/getallgame', {
+        const { data, status } = await this.$axios.get("/getallgame", {
           headers: {
             Authorization: `Bearer ${token}`,
-            token: token
+            token: token,
           },
         });
         if (status === 200) {
           this.games = data.game;
+
           this.games.forEach(async (game)=>{
             let teste = await this.getStores(game.name)
             console.log(teste)
@@ -163,17 +192,17 @@ export default {
       }
     },
     async getStores(name) {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
         const { data, status } = await this.$axios({
           method: "POST",
           url: "getgamestore",
-          data: {name:name},
+          data: { name: name },
           headers: {
-          Authorization: `Bearer ${token}`,
-           token: token
-         },
-         })
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
         if (status === 200) {
           this.gameswithstore.push(data.game)
         }
@@ -184,39 +213,59 @@ export default {
       }
     },
     async favoritegame(game) {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = JSON.parse(localStorage.getItem("token"));
       try {
         const { data, status } = await this.$axios({
           method: "POST",
           url: "relationgametouser",
-          data: {game:game},
+          data: { game: game },
           headers: {
-          Authorization: `Bearer ${token}`,
-           token: token
-         },
-         })
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
         if (status === 200) {
           this.$message({
-              message: "Jogo adicionado aos favoritos com sucesso",
-              type: "success",
+            message: "Jogo adicionado aos favoritos com sucesso",
+            type: "success",
           });
-
-        }
-        else{
+        } else {
           this.$message({
             message: "ocorreu um erro, tente novamente",
             type: "warning",
           });
         }
-        } catch (error) {
+      } catch (error) {
         throw error;
       }
     },
-  }
+    async aplicaFiltro() {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const filtro = this.filtro;
+      const valor = this.valor;
+      console.log("filtergame?" + `${filtro}` + "=" + `${valor}`);
+      try {
+        const { data, status } = await this.$axios({
+          method: "GET",
+          url: "filtergame?" + `${filtro}` + "=" + `${valor}`,
+          data: { name: name },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
+        if (status === 200) {
+          this.gameswithstore = data.games;
+        }
+      } catch (error) {
+        throw error;
+      }
+    },
+  },
 };
 </script>
-    
-<style>
+
+<style scoped>
 .font {
   font-weight: 500;
   font-size: 32px;
@@ -230,23 +279,21 @@ select {
 }
 
 .new-btn {
-  background-color: #C94F32;
-  color: #FFF;
+  background-color: #c94f32;
+  color: #fff;
   font-weight: bold;
-  border: 2px solid #C94F32;
+  border: 2px solid #c94f32;
   padding: 10px;
   border-radius: 20px;
   font-size: 16px;
   margin: 0 auto;
   margin-right: -300px;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
-
 
 .new-btn:hover {
   background-color: transparent;
   color: #222;
 }
 </style>
-  

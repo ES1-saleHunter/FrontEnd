@@ -342,7 +342,7 @@ export default {
                 message: "Jogo atualizado com sucesso",
                 type: "success",
               });
- 
+              
             
               this.dialogo = false
               this.file = null
