@@ -24,7 +24,7 @@
         <nuxt-link class="text-white" v-if="user.isadm === true" to="/lojas">Stores</nuxt-link>
      </li>
      <li>
-        <nuxt-link class="text-white" v-if="user.isadm === true" to="/jogos">Users</nuxt-link>
+        <nuxt-link class="text-white" v-if="user.isadm === true" to="/usuarios/lista">Users</nuxt-link>
      </li>
     </ul>
   </div>
