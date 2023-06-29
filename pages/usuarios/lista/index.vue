@@ -11,10 +11,15 @@
             placeholder="Select the filter"
           >
             <el-option value="name" label="Name"> </el-option>
+            <el-option value="state" label="Status"> </el-option>
           </el-select>
         </el-col>
         <el-col :span="10">
-          <el-input v-model="valor" prop="valor"></el-input>
+          <el-select v-if="filtro === 'state'" v-model="valor" prop="valor" placeholder="Select the value">
+            <el-option value="1" label="Active"> </el-option>
+            <el-option value="0" label="Inactive"> </el-option>
+          </el-select>  
+          <el-input v-else v-model="valor" prop="valor"></el-input>
         </el-col>
         <el-col :span="2">
           <el-button icon="el-icon-search" @click="aplicaFiltro()"
