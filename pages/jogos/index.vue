@@ -344,7 +344,7 @@ export default {
                 message: "Jogo cadastrado com sucesso",
                 type: "success",
               });
- 
+              
             
               this.dialogo = false
               this.file = null

@@ -32,8 +32,28 @@ export default {
     };
   },
   methods: {
-    aplicaFiltro() {
-      console.log("valor", this.valor);
+    async aplicaFiltro() {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const filtro = this.filtro;
+      const valor = this.valor;
+      console.log("filtergame?"+`${filtro}`+"="+`${valor}`);
+      try {
+        const { data, status } = await this.$axios({
+          method: "GET",
+          url: "filtergame?"+`${filtro}`+"="+`${valor}`,
+          data: { name: name },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
+        if (status === 200) {
+          this.gameswithstore = data.games
+          this.$emit("aplicaFiltro", this.gameswithstore);
+        }
+      } catch (error) {
+        throw error;
+      }
     },
   },
 };

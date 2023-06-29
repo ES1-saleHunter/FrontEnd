@@ -4,10 +4,29 @@
     <navbar />
 
     <!-- Filtros -->
-    <div  class=" flex align-center justify-center">
-      <Filters/>
+    <div class="flex align-center justify-center">
+      <!-- <Filters @aplicaFiltro="aplicaFiltro(value)" /> -->
+      <el-row :gutter="8">
+        <el-col :span="10">
+          <el-select
+            v-model="filtro"
+            prop="filtro"
+            placeholder="Select the filter"
+          >
+            <el-option value="name" label="Name"> </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="10">
+          <el-input v-model="valor" prop="valor"></el-input>
+        </el-col>
+        <el-col :span="2">
+          <el-button icon="el-icon-search" @click="aplicaFiltro()"
+            >Search</el-button
+          >
+        </el-col>
+      </el-row>
     </div>
-    
+
     <div class="w-full flex justify-center">
       <!-- Table -->
       <div class="w-3/4">
@@ -79,6 +98,9 @@ export default {
   components: { sideBar, navbar, Filters },
   data() {
     return {
+      valor: null,
+      filtro: null,
+      options: [{ value: "name", label: "Name" }],
       games: [],
       gameswithstore: [],
       showDrawer: false,
@@ -157,7 +179,6 @@ export default {
           },
         });
         if (status === 200) {
-          console.log(data.game);
           this.gameswithstore.push(data.game);
         } else console.log(data);
       } catch (error) {
@@ -186,6 +207,28 @@ export default {
             message: "ocorreu um erro, tente novamente",
             type: "warning",
           });
+        }
+      } catch (error) {
+        throw error;
+      }
+    },
+    async aplicaFiltro() {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const filtro = this.filtro;
+      const valor = this.valor;
+      console.log("filtergame?" + `${filtro}` + "=" + `${valor}`);
+      try {
+        const { data, status } = await this.$axios({
+          method: "GET",
+          url: "filtergame?" + `${filtro}` + "=" + `${valor}`,
+          data: { name: name },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            token: token,
+          },
+        });
+        if (status === 200) {
+          this.gameswithstore = data.games;
         }
       } catch (error) {
         throw error;
