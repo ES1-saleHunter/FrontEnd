@@ -11,6 +11,7 @@ const _b93594a0 = () => interopDefault(import('../pages/components/image.vue' /*
 const _54483f5d = () => interopDefault(import('../pages/jogos/compara/index.vue' /* webpackChunkName: "pages/jogos/compara/index" */))
 const _58201ce5 = () => interopDefault(import('../pages/usuarios/cadastro.vue' /* webpackChunkName: "pages/usuarios/cadastro" */))
 const _a3e7e0de = () => interopDefault(import('../pages/usuarios/favoritos.vue' /* webpackChunkName: "pages/usuarios/favoritos" */))
+const _21fc37ca = () => interopDefault(import('../pages/usuarios/lista/index.vue' /* webpackChunkName: "pages/usuarios/lista/index" */))
 const _151bc926 = () => interopDefault(import('../pages/usuarios/login.vue' /* webpackChunkName: "pages/usuarios/login" */))
 const _b9a93e50 = () => interopDefault(import('../pages/usuarios/recuperarsenha.vue' /* webpackChunkName: "pages/usuarios/recuperarsenha" */))
 const _56c7d501 = () => interopDefault(import('../pages/usuarios/redefinirsenha.vue' /* webpackChunkName: "pages/usuarios/redefinirsenha" */))
@@ -56,6 +57,10 @@ export const routerOptions = {
     path: "/usuarios/favoritos",
     component: _a3e7e0de,
     name: "usuarios-favoritos"
+  }, {
+    path: "/usuarios/lista",
+    component: _21fc37ca,
+    name: "usuarios-lista"
   }, {
     path: "/usuarios/login",
     component: _151bc926,

@@ -49,6 +49,13 @@
     "_name": "_a3e7e0de"
   },
   {
+    "name": "usuarios-lista",
+    "path": "/usuarios/lista",
+    "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/lista/index.vue",
+    "chunkName": "pages/usuarios/lista/index",
+    "_name": "_21fc37ca"
+  },
+  {
     "name": "usuarios-login",
     "path": "/usuarios/login",
     "component": "/home/eduarda/Documentos/BCC/2023_01/Engenharia de Software/saleHunter/FrontEnd/pages/usuarios/login.vue",
